@@ -1,5 +1,5 @@
 <template>
-<!--  <transition name="fade">-->
+  <transition name="fade">
     <div>
 <!--        :id="this.$options.name"-->
 <!--         v-if="this.$store.getters.currentStep == this.$options.name">-->
@@ -44,38 +44,29 @@
             name="consent-accepted"
             :value="true"
             :unchecked-value="false"
-            :state="stateConsentAccepted"
-        >I agree to participate in this research. Participation in this research is voluntary, and I can stop at any
-          time
-          without penalty. I feel that I understand what I am getting into, and I know I am free to leave the experiment
-          at
-          any time by simply closing the web browser.
+            :invalid-feedback="jndxcfgvj"
+            :state="stateConsentAccepted">
+          I agree to participate in this research. Participation in this research is voluntary, and I can stop at any
+          time without penalty. I feel that I understand what I am getting into, and I know I am free to leave the experiment
+          at any time by simply closing the web browser.
 
           <b-form-invalid-feedback :state="stateConsentAccepted">You must agree to the study participation in order to
             participate in the study.
           </b-form-invalid-feedback>
 
         </b-form-checkbox>
-        <div>State: <strong>{{ state }}</strong></div>
+        <div>State: <strong>{{ this.consentAccepted }}</strong></div>
       </div>
 
+      <b-form-invalid-feedback :state="stateConsentAccepted">You must agree to the study participation in order to
+        participate in the study.
+      </b-form-invalid-feedback>
+
       <button @click="validateForm" type="submit" class="btn btn-primary">Next
-        <b-icon icon="arrow-right"></b-icon>
       </button>
 
-      <button type="button" class="ant-btn ant-btn-primary ant-btn-lg sc-iBaQBe jzwDVq"
-              style="background-color: rgb(15, 169, 182); border-color: rgb(15, 169, 182);"><span>Next <span
-          role="img" aria-label="arrow-right" class="anticon anticon-arrow-right"><svg viewBox="64 64 896 896"
-                                                                                       focusable="false"
-                                                                                       data-icon="arrow-right"
-                                                                                       width="1em"
-                                                                                       height="1em"
-                                                                                       fill="currentColor"
-                                                                                       aria-hidden="true"><path
-          d="M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-.7 5.2-2L869 536.2a32.07 32.07 0 000-48.4z"></path></svg></span></span>
-      </button>
     </div>
-<!--  </transition>-->
+  </transition>
 </template>
 
 <script>
@@ -83,10 +74,12 @@ export default {
   name: "InformedConsent",
   computed: {
     consentAccepted: {
+      // return this.stateConsentAccepted,
       // get() { return this.$store.state.answers['consent-accepted'] },
       // set(value) { this.$store.commit('setAnswer', { 'key': 'consent-accepted', 'value': value }) }
     },
     stateConsentAccepted() {
+      console.log(this.consentAccepted);
       return this.consentAccepted
     }
   },
