@@ -1,8 +1,6 @@
 <template>
-<!--  <transition name="fade">-->
-    <div>
-<!--        :id="this.$options.name"-->
-<!--         v-if="this.$store.getters.currentStep == this.$options.name">-->
+  <transition name="fade">
+    <div v-if="this.store.getCurrentStep === 'informed-consent'">
       <p>
         <span class=""><i> Please read the following information carefully before proceeding. </i></span>
       </p>
@@ -45,61 +43,57 @@
             :value="true"
             :unchecked-value="false"
             :state="stateConsentAccepted"
-        >I agree to participate in this research. Participation in this research is voluntary, and I can stop at any
-          time
-          without penalty. I feel that I understand what I am getting into, and I know I am free to leave the experiment
-          at
-          any time by simply closing the web browser.
+            >
+          I agree to participate in this research. Participation in this research is voluntary, and I can stop at any
+          time without penalty. I feel that I understand what I am getting into, and I know I am free to leave the experiment
+          at any time by simply closing the web browser.
 
-          <b-form-invalid-feedback :state="stateConsentAccepted">You must agree to the study participation in order to
-            participate in the study.
-          </b-form-invalid-feedback>
+          <b-form-invalid-feedback :state="stateConsentAccepted">Sie müssen den Informationen zur Studienteilnahme und Datenverarbeitung zustimmen, um an der Studie teilnehmen zu können.</b-form-invalid-feedback>
 
         </b-form-checkbox>
-        <div>State: <strong>{{ state }}</strong></div>
+        <div class="invalid-feedback" v-if="this.stateConsentAccepted !== true">You must agree to the study participation in order to
+          participate in the study.
+        </div>
+
+        <div>State: <strong>{{ this.stateConsentAccepted }}</strong></div>
       </div>
 
       <button @click="validateForm" type="submit" class="btn btn-primary">Next
-        <b-icon icon="arrow-right"></b-icon>
       </button>
 
-      <button type="button" class="ant-btn ant-btn-primary ant-btn-lg sc-iBaQBe jzwDVq"
-              style="background-color: rgb(15, 169, 182); border-color: rgb(15, 169, 182);"><span>Next <span
-          role="img" aria-label="arrow-right" class="anticon anticon-arrow-right"><svg viewBox="64 64 896 896"
-                                                                                       focusable="false"
-                                                                                       data-icon="arrow-right"
-                                                                                       width="1em"
-                                                                                       height="1em"
-                                                                                       fill="currentColor"
-                                                                                       aria-hidden="true"><path
-          d="M869 487.8L491.2 159.9c-2.9-2.5-6.6-3.9-10.5-3.9h-88.5c-7.4 0-10.8 9.2-5.2 14l350.2 304H152c-4.4 0-8 3.6-8 8v60c0 4.4 3.6 8 8 8h585.1L386.9 854c-5.6 4.9-2.2 14 5.2 14h91.5c1.9 0 3.8-.7 5.2-2L869 536.2a32.07 32.07 0 000-48.4z"></path></svg></span></span>
-      </button>
     </div>
-<!--  </transition>-->
+  </transition>
 </template>
 
 <script>
+import { useStore } from '@/stores/store.js'
+
 export default {
+  setup() {
+    const store = useStore();
+    return {store};
+  },
   name: "InformedConsent",
   computed: {
     consentAccepted: {
-      // get() { return this.$store.state.answers['consent-accepted'] },
-      // set(value) { this.$store.commit('setAnswer', { 'key': 'consent-accepted', 'value': value }) }
+      get() {  return { getConsentAccepted: this.store.getConsentAccepted } },
+      set(value) { this.store.userInput['consent-accepted'] = value},
     },
     stateConsentAccepted() {
+      console.log(this.consentAccepted);
       return this.consentAccepted
     }
   },
   methods: {
     validateForm: function () {
-      // When consent is null force validation error
+      // if consent is null force validation error
       if (this.stateConsentAccepted == null) {
         this.consentAccepted = false
       }
 
+      // if consent is valid, go to next step
       if (this.stateConsentAccepted) {
-        // then go to next step
-        // this.$store.commit('nextStep')
+        this.store.nextStep(this.store);
       }
     }
   }

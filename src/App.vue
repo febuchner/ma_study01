@@ -1,6 +1,7 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import InformedConsent from './components/InformedConsent.vue'
+import DemographicQuestions from "@/components/DemographicQuestions.vue";
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import InformedConsent from './components/InformedConsent.vue'
   </header>
   <main role="main" class="container">
     <InformedConsent/>
+    <DemographicQuestions/>
 
   </main>
 
