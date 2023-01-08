@@ -70,13 +70,20 @@
 </template>
 
 <script>
+import { useStore } from '@/stores/store.js'
+import {storeToRefs} from "pinia";
+
 export default {
+  setup() {
+    const store = useStore();
+    return {store};
+  },
   name: "InformedConsent",
   computed: {
     consentAccepted: {
       // return this.stateConsentAccepted,
-      // get() { return this.$store.state.answers['consent-accepted'] },
-      // set(value) { this.$store.commit('setAnswer', { 'key': 'consent-accepted', 'value': value }) }
+      // get() { return this.store.userInput['consent-accepted'] },
+      // set(value) { this.store.commit('setAnswer', { 'key': 'consent-accepted', 'value': value }) }
     },
     stateConsentAccepted() {
       console.log(this.consentAccepted);
@@ -92,7 +99,7 @@ export default {
 
       if (this.stateConsentAccepted) {
         // then go to next step
-        // this.$store.commit('nextStep')
+        this.store.commit('nextStep')
       }
     }
   }
