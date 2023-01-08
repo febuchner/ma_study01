@@ -1,5 +1,5 @@
 <template>
-  <transition name="fade">
+<!--  <transition name="fade">-->
     <div>
 <!--        :id="this.$options.name"-->
 <!--         v-if="this.$store.getters.currentStep == this.$options.name">-->
@@ -66,7 +66,7 @@
       </button>
 
     </div>
-  </transition>
+<!--  </transition>-->
 </template>
 
 <script>
@@ -82,7 +82,7 @@ export default {
   computed: {
     consentAccepted: {
       // return this.stateConsentAccepted,
-      // get() { return this.store.userInput['consent-accepted'] },
+      get() {  return { getConsentAccepted: this.store.getConsentAccepted } },
       // set(value) { this.store.commit('setAnswer', { 'key': 'consent-accepted', 'value': value }) }
     },
     stateConsentAccepted() {

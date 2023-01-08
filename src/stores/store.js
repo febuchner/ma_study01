@@ -27,6 +27,7 @@ export const useStore = defineStore('store',  {
       return currentStep;
     },
     getConsentAccepted(state) {
+      console.log(state.userInput['consent-accepted']);
       return state.userInput['consent-accepted'];
     },
     getFormattedStreet(state) {
