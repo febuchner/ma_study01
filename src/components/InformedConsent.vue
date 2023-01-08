@@ -1,8 +1,6 @@
 <template>
-<!--  <transition name="fade">-->
-    <div>
-<!--        :id="this.$options.name"-->
-<!--         v-if="this.$store.getters.currentStep == this.$options.name">-->
+  <transition name="fade">
+    <div v-if="this.store.getCurrentStep === 'informed-consent'">
       <p>
         <span class=""><i> Please read the following information carefully before proceeding. </i></span>
       </p>
@@ -44,34 +42,31 @@
             name="consent-accepted"
             :value="true"
             :unchecked-value="false"
-            :invalid-feedback="jndxcfgvj"
-            :state="stateConsentAccepted">
+            :state="stateConsentAccepted"
+            >
           I agree to participate in this research. Participation in this research is voluntary, and I can stop at any
           time without penalty. I feel that I understand what I am getting into, and I know I am free to leave the experiment
           at any time by simply closing the web browser.
 
-          <b-form-invalid-feedback :state="stateConsentAccepted">You must agree to the study participation in order to
-            participate in the study.
-          </b-form-invalid-feedback>
+          <b-form-invalid-feedback :state="stateConsentAccepted">Sie müssen den Informationen zur Studienteilnahme und Datenverarbeitung zustimmen, um an der Studie teilnehmen zu können.</b-form-invalid-feedback>
 
         </b-form-checkbox>
-        <div>State: <strong>{{ this.consentAccepted }}</strong></div>
-      </div>
+        <div class="invalid-feedback" v-if="this.stateConsentAccepted !== true">You must agree to the study participation in order to
+          participate in the study.
+        </div>
 
-      <b-form-invalid-feedback :state="stateConsentAccepted">You must agree to the study participation in order to
-        participate in the study.
-      </b-form-invalid-feedback>
+        <div>State: <strong>{{ this.stateConsentAccepted }}</strong></div>
+      </div>
 
       <button @click="validateForm" type="submit" class="btn btn-primary">Next
       </button>
 
     </div>
-<!--  </transition>-->
+  </transition>
 </template>
 
 <script>
 import { useStore } from '@/stores/store.js'
-import {storeToRefs} from "pinia";
 
 export default {
   setup() {
@@ -81,9 +76,8 @@ export default {
   name: "InformedConsent",
   computed: {
     consentAccepted: {
-      // return this.stateConsentAccepted,
       get() {  return { getConsentAccepted: this.store.getConsentAccepted } },
-      // set(value) { this.store.commit('setAnswer', { 'key': 'consent-accepted', 'value': value }) }
+      set(value) { this.store.userInput['consent-accepted'] = value},
     },
     stateConsentAccepted() {
       console.log(this.consentAccepted);
@@ -92,14 +86,14 @@ export default {
   },
   methods: {
     validateForm: function () {
-      // When consent is null force validation error
+      // if consent is null force validation error
       if (this.stateConsentAccepted == null) {
         this.consentAccepted = false
       }
 
+      // if consent is valid, go to next step
       if (this.stateConsentAccepted) {
-        // then go to next step
-        this.store.commit('nextStep')
+        this.store.nextStep(this.store);
       }
     }
   }

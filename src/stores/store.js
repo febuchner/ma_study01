@@ -7,13 +7,23 @@ export const useStore = defineStore('store',  {
       stepIndex: 0,
       steps: [
         'informed-consent',
-        'demografic-questions',
+        'demographic-questions',
         'study-introduction',
       ],
       userInput: {
         userID: null,
         "created-on": null,
         "consent-accepted": null,
+
+        "user-taken-test-before": null,
+        "user-origin-country":null,
+        "user-current-country":null,
+        "user-age":null,
+        "user-native-language":null,
+        "user-religion":null,
+        "user-education":null,
+        "user-gender":null,
+        "user-cookie-consent":null,
       },
       street: "Baker Street",
       housenumber: "221b",
@@ -30,11 +40,29 @@ export const useStore = defineStore('store',  {
       console.log(state.userInput['consent-accepted']);
       return state.userInput['consent-accepted'];
     },
-    getFormattedStreet(state) {
-      return state.street + " " + state.housenumber;
+    getUserTakenTestBefore(state) {
+      return state.userInput['user-taken-test-before'];
     },
-    getNameAndCity(){
-      return this.firstName + " is from " + this.city;
+    getUserOriginCountry(state) {
+      return state.userInput['user-origin-country'];
+    },
+    getUserCurrentCountry(state) {
+      return state.userInput['user-current-country'];
+    },
+    getUserAge(state) {
+      return state.userInput['user-age'];
+    },
+    getUserReligion(state) {
+      return state.userInput['user-religion'];
+    },
+    getUserEducation(state) {
+      return state.userInput['user-education'];
+    },
+    getUserGender(state) {
+      return state.userInput['user-gender'];
+    },
+    getUserCookieConsent(state) {
+      return state.userInput['user-cookie-consent'];
     },
   },
   actions: {
@@ -67,6 +95,12 @@ export const useStore = defineStore('store',  {
       //     .then( () => {
       //       // console.log("Updated")
       //     })
+    },
+
+    // Saves answers to answer object
+    setUserInput(state, payload) {
+      // console.log(payload)
+      state.userInput[payload.key] = payload.value
     },
   },
 })
