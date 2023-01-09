@@ -4,7 +4,7 @@
     <div class="px-3">
       <div class="mb-5">
         <p>
-          <span>Please tell us a bit about yourself. <b>Why?</b></span>
+          <span class="h2">Please tell us a bit about yourself. <a href="#" @click="showDemoQuestionsAlert"> Why are you asking?</a></span>
         </p>
         <p>
           <span><i><span class="text-danger fw-bold">*</span> marks a required field. The more information you enter, the more detailed results we can show you!</i></span>
@@ -242,6 +242,9 @@ export default {
   methods: {
     showCookieAlert: function () {
       alert('We can store your demographics information if you are on a personal computer. This will allow you to skip this form if you take this test again. If you\'d prefer not to have a saved copy, press for "No".');
+    },
+    showDemoQuestionsAlert: function () {
+      alert('Based on your data we will show you your personal results and data analysis. All of your answers will be anonymized. We take your privacy very seriously.');
     },
     isValidInputs: function () {
       let store = this.store.userInput
