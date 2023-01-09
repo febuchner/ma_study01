@@ -52,6 +52,9 @@ export const useStore = defineStore('store',  {
     getUserAge(state) {
       return state.userInput['user-age'];
     },
+    getUserNativeLanguage(state) {
+      return state.userInput['user-native-language'];
+    },
     getUserReligion(state) {
       return state.userInput['user-religion'];
     },

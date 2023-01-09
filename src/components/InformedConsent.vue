@@ -42,13 +42,10 @@
             name="consent-accepted"
             :value="true"
             :unchecked-value="false"
-            :state="stateConsentAccepted"
             >
           I agree to participate in this research. Participation in this research is voluntary, and I can stop at any
           time without penalty. I feel that I understand what I am getting into, and I know I am free to leave the experiment
           at any time by simply closing the web browser.
-
-          <b-form-invalid-feedback :state="stateConsentAccepted">Sie müssen den Informationen zur Studienteilnahme und Datenverarbeitung zustimmen, um an der Studie teilnehmen zu können.</b-form-invalid-feedback>
 
         </b-form-checkbox>
         <div class="invalid-feedback" v-if="this.stateConsentAccepted !== true">You must agree to the study participation in order to
@@ -81,7 +78,7 @@ export default {
     },
     stateConsentAccepted() {
       console.log(this.consentAccepted);
-      return this.consentAccepted
+      return this.store.getConsentAccepted
     }
   },
   methods: {
