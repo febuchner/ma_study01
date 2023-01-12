@@ -2,7 +2,7 @@
   <transition name="fade">
     <div v-if="this.store.getCurrentStep === 'informed-consent'">
       <div>
-        <span class="h2"><i> Please read the following information carefully before proceeding. </i></span>
+        <h1><i> Please read the following information carefully before proceeding. </i></h1>
       </div>
       <div class="mt-5">
         <p><b> Why we are doing this research: </b> The goal of this project is to collect data on the general public's

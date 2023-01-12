@@ -1,0 +1,25 @@
+/*--- Bootstrap ---*/
+$fw-light: 300;
+$fw-normal: 400;
+$fw-bold: 700;
+$fw-bolder: 900;
+
+//** Color system
+//$primary: red;
+//$secondary:
+$gray: #47515C;
+$white:    #fff !default;
+
+//** Global text color on `<body>`.
+$text-color: $gray;
+//$link-color: $primary;
+$grid-gutter-width: 48px;
+//$body-bg: ;
+$headings-color: $gray;
+$font-family-base: Inter, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
+Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$font-size-base: 1rem;
+$line-height-base: 1.375;
+
+
+

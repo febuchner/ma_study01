@@ -3,9 +3,9 @@
   <div v-if="this.store.getCurrentStep === 'demographic-questions'">
     <div class="px-3">
       <div class="mb-5">
-        <p>
-          <span class="h2">Please tell us a bit about yourself. <a href="#" @click="showDemoQuestionsAlert"> Why are you asking?</a></span>
-        </p>
+        <h1>
+          Please tell us a bit about yourself. <a href="#" @click="showDemoQuestionsAlert"> Why are you asking?</a>
+        </h1>
         <p>
           <span><i><span class="text-danger fw-bold">*</span> marks a required field. The more information you enter, the more detailed results we can show you!</i></span>
         </p>

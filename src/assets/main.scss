@@ -1,7 +1,14 @@
-@import './base.css';
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
 
-$fw-bold: 700;
-$fw-bolder: 900;
+@import './_variables.scss';
+@import './_typography.scss';
+//@import './_base.css';
+
+@import '../../node_modules/bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap-vue-3/dist/bootstrap-vue-3.css';
+
+
 
 #app {
   max-width: 1280px;
