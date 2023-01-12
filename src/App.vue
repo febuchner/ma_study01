@@ -2,6 +2,7 @@
 import { RouterLink, RouterView } from 'vue-router'
 import InformedConsent from './components/InformedConsent.vue'
 import DemographicQuestions from "@/components/DemographicQuestions.vue";
+import WelcomeToStudy from "@/components/WelcomeToStudy.vue";
 </script>
 
 <template>
@@ -9,6 +10,7 @@ import DemographicQuestions from "@/components/DemographicQuestions.vue";
     <img alt="labintheWild logo" class="logo d-inline-flex mb-5" src="@/assets/labintheWild-logo.png" width="150"/>
   </header>
   <main role="main" class="container">
+    <WelcomeToStudy/>
     <InformedConsent/>
     <DemographicQuestions/>
 
