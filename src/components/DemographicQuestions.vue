@@ -17,16 +17,23 @@
         <template v-slot:label>
           Have you taken this test before? <span class="text-danger fw-bolder">*</span>
         </template>
-        <b-form-radio-group
-            id="user-taken-test-before"
-            v-model="userTakenTestBefore"
-            :options="[
-                { text: 'Yes', value: 'true' },
-                { text: 'No', value: 'false' },
-              ]"
-            name="user-taken-test-before"
-            buttons
-        ></b-form-radio-group>
+
+        <b-form-radio-group id="user-taken-test-before">
+          <b-form-radio
+              v-model="userTakenTestBefore"
+              name="userTakenTestBefore"
+              value="true"
+              button
+          >Yes
+          </b-form-radio>
+          <b-form-radio
+              v-model="userTakenTestBefore"
+              name="userTakenTestBefore"
+              value="false"
+              button
+          >No
+          </b-form-radio>
+        </b-form-radio-group>
       </b-form-group>
 
       <b-form-group
@@ -41,7 +48,6 @@
             :options="this.countries">
         </b-form-select>
       </b-form-group>
-      <div>State: <strong>{{ this.store.userInput["user-origin-country"] }}</strong></div>
 
       <b-form-group
           class="mb-4"
@@ -63,7 +69,8 @@
         <template v-slot:label>
           How old are you? <span class="text-danger fw-bolder">*</span>
         </template>
-        <b-form-input v-model="userAge" type="number" min="0" max="100"></b-form-input>
+        <b-form-input v-model="userAge" type="number" min="1" max="100" @blur="isValidAge"></b-form-input>
+        <div class="mx-3 text-danger" v-if="this.showAgeError">Please enter a valid age between 1 and 100.</div>
       </b-form-group>
 
       <b-form-group
@@ -128,20 +135,40 @@
           <br>
           <a href="#" @click="showCookieAlert"> Why are we asking?</a>
         </template>
-        <b-form-radio-group
-            v-model="userCookieConsent"
-            :options="[
-                { text: 'Yes', value: 'true' },
-                { text: 'No', value: 'false' },
-              ]"
-            buttons
-        ></b-form-radio-group>
+        <b-form-radio-group>
+          <b-form-radio
+              v-model="userCookieConsent"
+              name="userCookieConsent"
+              value="true"
+              button
+          >Yes
+          </b-form-radio>
+          <b-form-radio
+              v-model="userCookieConsent"
+              name="userCookieConsent"
+              value="false"
+              button
+          >No
+          </b-form-radio>
+        </b-form-radio-group>
       </b-form-group>
 
       <div class="mx-3 text-danger" v-if="this.showFormError">Please fill in all fields of the form first.</div>
 
       <button @click="validateForm" type="submit" class="btn btn-primary mt-5">Next
       </button>
+
+      <div>State:
+        <strong>{{ this.store.userInput["user-taken-test-before"] }} </strong>
+        <strong>{{ this.store.userInput["user-origin-country"] }} </strong>
+        <strong>{{ this.store.userInput["user-current-country"] }} </strong>
+        <strong>{{ this.store.userInput["user-age"] }} </strong>
+        <strong>{{ this.store.userInput["user-native-language"] }} </strong>
+        <strong>{{ this.store.userInput["user-religion"] }} </strong>
+        <strong>{{ this.store.userInput["user-education"] }} </strong>
+        <strong>{{ this.store.userInput["user-gender"] }} </strong>
+        <strong>{{ this.store.userInput["user-cookie-consent"] }} </strong>
+      </div>
 
     </div>
   </div>
@@ -162,6 +189,9 @@ export default {
   data() {
     return {
       showFormError: false,
+      showAgeError: false,
+      minAge: 1,
+      maxAge: 100,
       countries: countries,
       languages: languages,
       religions: [
@@ -239,12 +269,24 @@ export default {
     },
 
   },
+  // watch: {
+  //   userAge(value) {
+  //     this.isValidAge(value);
+  //   },
+  // }
   methods: {
-    showCookieAlert: function () {
-      alert('We can store your demographics information if you are on a personal computer. This will allow you to skip this form if you take this test again. If you\'d prefer not to have a saved copy, press for "No".');
-    },
     showDemoQuestionsAlert: function () {
       alert('Based on your data we will show you your personal results and data analysis. All of your answers will be anonymized. We take your privacy very seriously.');
+    },
+    isValidAge: function () {
+      if (this.store.userInput['user-age'] < this.minAge || this.store.userInput['user-age'] > this.maxAge) {
+        return this.showAgeError = true;
+      } else {
+        return this.showAgeError = false;
+      }
+    },
+    showCookieAlert: function () {
+      alert('We can store your demographics information if you are on a personal computer. This will allow you to skip this form if you take this test again. If you\'d prefer not to have a saved copy, press for "No".');
     },
     isValidInputs: function () {
       let store = this.store.userInput
@@ -252,6 +294,8 @@ export default {
           store['user-origin-country'] !== null &&
           store['user-current-country'] !== null &&
           store['user-age'] !== null &&
+          store['user-age'] >= this.minAge &&
+          store['user-age'] <= this.maxAge &&
           store['user-native-language'] !== null &&
           store['user-religion'] !== null &&
           store['user-education'] !== null &&
@@ -260,8 +304,14 @@ export default {
         this.showFormError = false
         return true
       } else {
-        this.showFormError = true
-        return false
+        if (store['user-age'] < this.minAge || store['user-age'] > this.maxAge
+        ) {
+          this.showAgeError = true
+          return false
+        } else {
+          this.showFormError = true
+          return false
+        }
       }
     },
 
