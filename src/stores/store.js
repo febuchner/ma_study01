@@ -1,5 +1,4 @@
-import { ref, computed } from 'vue'
-import { defineStore } from 'pinia'
+import {defineStore} from 'pinia'
 
 export const useStore = defineStore('store',  {
   state: () => {
@@ -33,9 +32,7 @@ export const useStore = defineStore('store',  {
   },
   getters: {
     getCurrentStep(state) {
-      var currentStep = state.steps[state.stepIndex]
-      // console.log(currentStep)
-      return currentStep;
+      return state.steps[state.stepIndex];
     },
     getConsentAccepted(state) {
       console.log(state.userInput['consent-accepted']);

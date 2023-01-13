@@ -85,7 +85,6 @@ export default {
       },
     },
     stateConsentAccepted() {
-      console.log(this.consentAccepted);
       return this.store.getConsentAccepted
     }
   },
