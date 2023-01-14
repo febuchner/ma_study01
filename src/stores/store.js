@@ -8,7 +8,7 @@ export const useStore = defineStore('store',  {
         // 'welcome-to-study',
         // 'informed-consent',
         'demographic-questions',
-        'study-introduction',
+        'trial-introduction',
       ],
       userInput: {
         userID: null,
@@ -73,12 +73,12 @@ export const useStore = defineStore('store',  {
     },
 
     // Goes to next component
-    nextStep(state) {
+    nextStep(state, stepsToGo) {
       // Scroll to top
       window.scrollTo(0,0)
 
       // Update screen
-      state.stepIndex++
+      state.stepIndex += stepsToGo
 
       // Log Timestamp
       // var step = state.stepIndex + '-' + state.steps[state.stepIndex]

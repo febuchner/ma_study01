@@ -42,7 +42,7 @@ export default {
   name: "WelcomeToStudy",
   methods: {
     validateForm: function () {
-      this.store.nextStep(this.store);
+      this.store.nextStep(this.store, 1);
     }
   }
 }

@@ -50,12 +50,13 @@
           at any time by simply closing the web browser.
         </b-form-checkbox>
 
-<!--        <div>State: <strong>{{ this.stateConsentAccepted }}</strong></div>-->
+        <!--        <div>State: <strong>{{ this.stateConsentAccepted }}</strong></div>-->
       </div>
 
       <div class="mt-3 text-danger" v-if="this.showFormError">You must agree to the study
         participation in order to
-        participate in the study.</div>
+        participate in the study.
+      </div>
 
       <button @click="validateForm" type="submit" class="btn btn-primary mt-5">Next
       </button>
@@ -66,11 +67,13 @@
 
 <script>
 import {useStore} from '@/stores/store.js'
+import {inject} from "vue";
 
 export default {
   setup() {
     const store = useStore();
-    return {store};
+    const cookies = inject('$cookies');
+    return {store, cookies};
   },
   name: "InformedConsent",
   data() {
@@ -80,6 +83,8 @@ export default {
   },
   computed: {
     consentAccepted: {
+      get() {
+      },
       set(value) {
         this.store.userInput['consent-accepted'] = value
       },
@@ -90,9 +95,22 @@ export default {
   },
   methods: {
     validateForm: function () {
-      // if consent is valid, go to next step, else showFormError
+      // if consent is valid, set from cookies if exist and go to next step, else showFormError
+      let allCookies = this.cookies.keys();
+      let litwCookies = [];
+      allCookies.forEach(function (el) {
+        if (el.startsWith("LITW-") === true) {
+          litwCookies.push(el);
+        }
+      });
       if (this.stateConsentAccepted) {
-        this.store.nextStep(this.store);
+        if (litwCookies.length === 9) {
+          this.userTakenTestBefore = this.cookies.get("LITW-user-taken-test-before");
+          this.store.userInput['user-origin-country'] = this.cookies.get("LITW-user-origin-country");
+          this.store.nextStep(this.store, 2);
+        } else {
+          this.store.nextStep(this.store, 1);
+        }
       } else {
         this.showFormError = true;
       }

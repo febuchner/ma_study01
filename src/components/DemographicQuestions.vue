@@ -288,12 +288,6 @@ export default {
     },
   },
   methods: {
-    setFromCookie: function () {
-    console.log(this.cookies.keys());
-    console.log(this.cookies.get("LITWuserTakenTestBefore"));
-    this.userTakenTestBefore = this.cookies.get("LITWuserTakenTestBefore");
-    this.userOriginCountry = this.cookies.get("LITWuserOriginCountry");
-    },
     showDemoQuestionsAlert: function () {
       alert('Based on your data we will show you your personal results and data analysis. All of your answers will be anonymized. We take your privacy very seriously.');
     },
@@ -335,22 +329,24 @@ export default {
       }
     },
     setCookies: function (key, value) {
-      // let my_cookie_value = this.cookies.get("myCookie");
-      // console.log("MyCookie" + my_cookie_value);
-      this.cookies.set("LITW"+key, value, "365d", '/', window.location.hostname);
+      this.cookies.set("LITW-"+key, value, "365d", '/', window.location.hostname);
     },
 
     // if form is valid, go to next step
     validateForm: function () {
       if (this.isValidInputs()) {
-        this.setCookies("userTakenTestBefore", this.store.userInput['user-taken-test-before']);
-        this.setCookies("userOriginCountry", this.store.userInput['user-origin-country']);
-        this.store.nextStep(this.store);
+        this.setCookies("user-taken-test-before", this.store.userInput['user-taken-test-before']);
+        this.setCookies("user-origin-country", this.store.userInput['user-origin-country']);
+        this.setCookies("user-current-country", this.store.userInput['user-current-country']);
+        this.setCookies("user-age", this.store.userInput['user-age']);
+        this.setCookies("user-native-language", this.store.userInput['user-native-language']);
+        this.setCookies("user-religion", this.store.userInput['user-religion']);
+        this.setCookies("user-education", this.store.userInput['user-education']);
+        this.setCookies("user-gender", this.store.userInput['user-gender']);
+        this.setCookies("user-cookie-consent", this.store.userInput['user-cookie-consent']);
+        this.store.nextStep(this.store, 1);
       }
     }
-  },
-  mounted() {
-    this.setFromCookie();
   },
 }
 </script>
