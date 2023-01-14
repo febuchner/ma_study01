@@ -226,49 +226,55 @@ export default {
   },
   computed: {
     userTakenTestBefore: {
+      get() {},
       set(value) {
         this.store.userInput['user-taken-test-before'] = value
       },
     },
     userOriginCountry: {
-      get() {
-        this.userOriginCountry = this.cookies.get("LITWuserOriginCountry");
-      },
+      get() {},
       set(value) {
         this.store.userInput['user-origin-country'] = value
       },
     },
     userCurrentCountry: {
+      get() {},
       set(value) {
         this.store.userInput['user-current-country'] = value
       },
     },
     userAge: {
+      get() {},
       set(value) {
         this.store.userInput['user-age'] = value
       },
     },
     userNativeLanguage: {
+      get() {},
       set(value) {
         this.store.userInput['user-native-language'] = value
       },
     },
     userReligion: {
+      get() {},
       set(value) {
         this.store.userInput['user-religion'] = value
       },
     },
     userEducation: {
+      get() {},
       set(value) {
         this.store.userInput['user-education'] = value
       },
     },
     userGender: {
+      get() {},
       set(value) {
         this.store.userInput['user-gender'] = value
       },
     },
     userCookieConsent: {
+      get() {},
       set(value) {
         this.store.userInput['user-cookie-consent'] = value
       },
@@ -299,7 +305,7 @@ export default {
       }
     },
     showCookieAlert: function () {
-      alert('We can store your demographics information if you are on a personal computer. This will allow you to skip this form if you take this test again. If you\'d prefer not to have a saved copy, press for "No".');
+      alert('We can store your personal demographics information if you are on a personal computer you use on your own. This will allow you to skip this form if you take this test again. If you\'d prefer not to have a saved copy, or if others are using this computer, press "No".');
     },
     isValidInputs: function () {
       let store = this.store.userInput
