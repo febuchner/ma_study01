@@ -228,55 +228,55 @@ export default {
     userTakenTestBefore: {
       get() {},
       set(value) {
-        this.store.userInput['user-taken-test-before'] = value
+        this.store.userInput['user-taken-test-before'] = value;
       },
     },
     userOriginCountry: {
       get() {},
       set(value) {
-        this.store.userInput['user-origin-country'] = value
+        this.store.userInput['user-origin-country'] = value;
       },
     },
     userCurrentCountry: {
       get() {},
       set(value) {
-        this.store.userInput['user-current-country'] = value
+        this.store.userInput['user-current-country'] = value;
       },
     },
     userAge: {
       get() {},
       set(value) {
-        this.store.userInput['user-age'] = value
+        this.store.userInput['user-age'] = value;
       },
     },
     userNativeLanguage: {
       get() {},
       set(value) {
-        this.store.userInput['user-native-language'] = value
+        this.store.userInput['user-native-language'] = value;
       },
     },
     userReligion: {
       get() {},
       set(value) {
-        this.store.userInput['user-religion'] = value
+        this.store.userInput['user-religion'] = value;
       },
     },
     userEducation: {
       get() {},
       set(value) {
-        this.store.userInput['user-education'] = value
+        this.store.userInput['user-education'] = value;
       },
     },
     userGender: {
       get() {},
       set(value) {
-        this.store.userInput['user-gender'] = value
+        this.store.userInput['user-gender'] = value;
       },
     },
     userCookieConsent: {
       get() {},
       set(value) {
-        this.store.userInput['user-cookie-consent'] = value
+        this.store.userInput['user-cookie-consent'] = value;
       },
     },
 

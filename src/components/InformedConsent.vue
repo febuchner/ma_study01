@@ -79,6 +79,7 @@ export default {
   data() {
     return {
       showFormError: false,
+      COOKIE_PREFIX: "LITW-",
     }
   },
   computed: {
@@ -94,19 +95,27 @@ export default {
     }
   },
   methods: {
+    // if consent is valid, set from cookies if exist and go to next step, else showFormError
     validateForm: function () {
-      // if consent is valid, set from cookies if exist and go to next step, else showFormError
+      const COOKIE_PREFIX = this.COOKIE_PREFIX;
+      let store = this.store;
+      let cookies = this.cookies
+
       let allCookies = this.cookies.keys();
       let litwCookies = [];
-      allCookies.forEach(function (el) {
-        if (el.startsWith("LITW-") === true) {
-          litwCookies.push(el);
+      allCookies.forEach(function (cookie) {
+        if (cookie.startsWith(COOKIE_PREFIX) === true) {
+          litwCookies.push(cookie);
         }
       });
+
       if (this.stateConsentAccepted) {
         if (litwCookies.length === 9) {
-          this.userTakenTestBefore = this.cookies.get("LITW-user-taken-test-before");
-          this.store.userInput['user-origin-country'] = this.cookies.get("LITW-user-origin-country");
+          litwCookies.forEach(function (cookie) {
+            cookie = cookie.slice(COOKIE_PREFIX.length)
+            store.userInput[cookie] = cookies.get(COOKIE_PREFIX+cookie)
+          });
+          this.store.userInput['user-taken-test-before'] = true;
           this.store.nextStep(this.store, 2);
         } else {
           this.store.nextStep(this.store, 1);
