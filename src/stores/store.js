@@ -9,6 +9,7 @@ export const useStore = defineStore('store',  {
         'informed-consent',
         'demographic-questions',
         'trial-instruction',
+        'study-trial',
       ],
       userInput: {
         userID: null,

@@ -4,6 +4,8 @@ import InformedConsent from './components/InformedConsent.vue'
 import DemographicQuestions from "@/components/DemographicQuestions.vue";
 import WelcomeToStudy from "@/components/WelcomeToStudy.vue";
 import TrialIntroduction from "@/components/TrialInstruction.vue";
+import StudyTrial from '@/components/StudyTrial.vue';
+
 </script>
 
 <template>
@@ -15,6 +17,7 @@ import TrialIntroduction from "@/components/TrialInstruction.vue";
     <InformedConsent/>
     <DemographicQuestions/>
     <TrialIntroduction/>
+    <StudyTrial/>
 
   </main>
 
