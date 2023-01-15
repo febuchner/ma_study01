@@ -3,6 +3,7 @@ import { RouterLink, RouterView } from 'vue-router'
 import InformedConsent from './components/InformedConsent.vue'
 import DemographicQuestions from "@/components/DemographicQuestions.vue";
 import WelcomeToStudy from "@/components/WelcomeToStudy.vue";
+import TrialIntroduction from "@/components/TrialIntroduction.vue";
 </script>
 
 <template>
@@ -13,6 +14,7 @@ import WelcomeToStudy from "@/components/WelcomeToStudy.vue";
     <WelcomeToStudy/>
     <InformedConsent/>
     <DemographicQuestions/>
+    <TrialIntroduction/>
 
   </main>
 

@@ -5,8 +5,8 @@ export const useStore = defineStore('store',  {
     return {
       stepIndex: 0,
       steps: [
-        // 'welcome-to-study',
-        // 'informed-consent',
+        'welcome-to-study',
+        'informed-consent',
         'demographic-questions',
         'trial-introduction',
       ],
