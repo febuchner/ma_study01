@@ -5,11 +5,12 @@ export const useStore = defineStore('store',  {
     return {
       stepIndex: 0,
       steps: [
-        'welcome-to-study',
-        'informed-consent',
-        'demographic-questions',
-        'trial-instruction',
-        'study-trial',
+        // 'welcome-to-study',
+        // 'informed-consent',
+        // 'demographic-questions',
+        // 'trial-instruction',
+        // 'study-trial',
+        'thanks-for-participating',
       ],
       userInput: {
         userID: null,
@@ -26,6 +27,12 @@ export const useStore = defineStore('store',  {
         "user-gender":null,
         "user-cookie-consent":null,
       },
+      debrief: {
+        "user-comment": null,
+        "user-difficulties": null,
+        "user-cheat": null,
+      },
+
       street: "Baker Street",
       housenumber: "221b",
       city: "London",
