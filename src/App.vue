@@ -1,11 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import InformedConsent from './components/InformedConsent.vue'
-import DemographicQuestions from "@/components/DemographicQuestions.vue";
-import WelcomeToStudy from "@/components/WelcomeToStudy.vue";
-import TrialIntroduction from "@/components/TrialInstruction.vue";
+import DemographicQuestions from '@/components/DemographicQuestions.vue';
+import WelcomeToStudy from '@/components/WelcomeToStudy.vue';
+import TrialIntroduction from '@/components/TrialInstruction.vue';
 import StudyTrial from '@/components/StudyTrial.vue';
-import ThanksForParticipating from "@/components/ThanksForParticipating.vue";
+import Debrief from '@/components/Debrief.vue';
+import Results from '@/components/Results.vue'
 
 </script>
 
@@ -19,7 +20,8 @@ import ThanksForParticipating from "@/components/ThanksForParticipating.vue";
     <DemographicQuestions/>
     <TrialIntroduction/>
     <StudyTrial/>
-    <ThanksForParticipating/>
+    <Debrief/>
+    <Results/>
 
   </main>
 

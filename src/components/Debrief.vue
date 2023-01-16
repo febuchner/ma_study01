@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-if="this.store.getCurrentStep === 'thanks-for-participating'">
+    <div v-if="this.store.getCurrentStep === 'debrief'">
       <div class="px-3">
         <div class="mb-5">
           <h1> Thank you for participating! </h1>
