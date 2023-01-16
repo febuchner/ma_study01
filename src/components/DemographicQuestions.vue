@@ -292,7 +292,7 @@ export default {
       alert('Based on your data we will show you your personal results and data analysis. All of your answers will be anonymized. We take your privacy very seriously.');
     },
     isValidAge: function () {
-      if (this.store.userInput['user-age'] < this.minAge || this.store.userInput['user-age'] > this.maxAge) {
+      if (this.store.getUserAge < this.minAge || this.store.getUserAge > this.maxAge) {
         return this.showAgeError = true;
       } else {
         return this.showAgeError = false;
@@ -302,23 +302,22 @@ export default {
       alert('We can store your personal demographics information if you are on a personal computer you use on your own. This will allow you to skip this form if you take this test again. If you\'d prefer not to have a saved copy, or if others are using this computer, press "No".');
     },
     isValidInputs: function () {
-      let store = this.store.userInput
-      if (store['user-taken-test-before'] !== null &&
-          store['user-origin-country'] !== null &&
-          store['user-current-country'] !== null &&
-          store['user-age'] !== null &&
-          store['user-age'] >= this.minAge &&
-          store['user-age'] <= this.maxAge &&
-          store['user-native-language'] !== null &&
-          store['user-religion'] !== null &&
-          store['user-education'] !== null &&
-          store['user-gender'] !== null &&
-          store['user-cookie-consent'] !== null
+      if (this.store.getUserTakenTestBefore !== null &&
+          this.store.getUserOriginCountry !== null &&
+          this.store.getUserCurrentCountry !== null &&
+          this.store.getUserAge !== null &&
+          this.store.getUserAge >= this.minAge &&
+          this.store.getUserAge <= this.maxAge &&
+          this.store.getUserNativeLanguage !== null &&
+          this.store.getUserReligion !== null &&
+          this.store.getUserEducation !== null &&
+          this.store.getUserGender !== null &&
+          this.store.getUserCookieConsent !== null
       ) {
         this.showFormError = false
         return true
       } else {
-        if (store['user-age'] < this.minAge || store['user-age'] > this.maxAge
+        if (this.store.getUserAge < this.minAge || this.store.getUserAge > this.maxAge
         ) {
           this.showAgeError = true
           return false
@@ -335,15 +334,15 @@ export default {
     // if form is valid, go to next step
     validateForm: function () {
       if (this.isValidInputs()) {
-        this.setCookies("user-taken-test-before", this.store.userInput['user-taken-test-before']);
-        this.setCookies("user-origin-country", this.store.userInput['user-origin-country']);
-        this.setCookies("user-current-country", this.store.userInput['user-current-country']);
-        this.setCookies("user-age", this.store.userInput['user-age']);
-        this.setCookies("user-native-language", this.store.userInput['user-native-language']);
-        this.setCookies("user-religion", this.store.userInput['user-religion']);
-        this.setCookies("user-education", this.store.userInput['user-education']);
-        this.setCookies("user-gender", this.store.userInput['user-gender']);
-        this.setCookies("user-cookie-consent", this.store.userInput['user-cookie-consent']);
+        this.setCookies("user-taken-test-before", this.store.getUserTakenTestBefore);
+        this.setCookies("user-origin-country", this.store.getUserOriginCountry);
+        this.setCookies("user-current-country", this.store.getUserCurrentCountry);
+        this.setCookies("user-age", this.store.getUserAge);
+        this.setCookies("user-native-language", this.store.getUserNativeLanguage);
+        this.setCookies("user-religion", this.store.getUserReligion);
+        this.setCookies("user-education", this.store.getUserEducation);
+        this.setCookies("user-gender", this.store.getUserGender);
+        this.setCookies("user-cookie-consent", this.store.getUserCookieConsent);
         this.store.nextStep(this.store, 1);
       }
     }
