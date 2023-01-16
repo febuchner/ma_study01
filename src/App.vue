@@ -5,6 +5,7 @@ import DemographicQuestions from "@/components/DemographicQuestions.vue";
 import WelcomeToStudy from "@/components/WelcomeToStudy.vue";
 import TrialIntroduction from "@/components/TrialInstruction.vue";
 import StudyTrial from '@/components/StudyTrial.vue';
+import ThanksForParticipating from "@/components/ThanksForParticipating.vue";
 
 </script>
 
@@ -18,6 +19,7 @@ import StudyTrial from '@/components/StudyTrial.vue';
     <DemographicQuestions/>
     <TrialIntroduction/>
     <StudyTrial/>
+    <ThanksForParticipating/>
 
   </main>
 
