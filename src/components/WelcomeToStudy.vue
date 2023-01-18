@@ -3,7 +3,7 @@
     <div v-if="this.store.getCurrentStep === 'welcome-to-study'">
       <div>
         <h1>
-          Catchy Slogan, best with question mark! Let's find out!
+          Laptop or jacket? Can you distinguish them better than an AI? Let's find out!
         </h1>
         <div class="col-12 mt-5">
           <div class="row">
@@ -19,7 +19,7 @@
               </p>
             </div>
             <div class="col-12 col-lg-4">
-              <img src="@/assets/labintheWild-logo.png" class="img-fluid">
+              <img src="@/assets/images/robot_hello.png" class="img-fluid">
             </div>
           </div>
         </div>
