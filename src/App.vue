@@ -7,6 +7,7 @@ import TrialIntroduction from '@/components/TrialInstruction.vue';
 import StudyTrial from '@/components/StudyTrial.vue';
 import Debrief from '@/components/Debrief.vue';
 import Results from '@/components/Results.vue'
+import SocialMediaShare from "@/components/SocialMediaShare.vue";
 import {ref} from "vue";
 
 const sharemodal = ref(false);
@@ -19,13 +20,23 @@ const sharemodal = ref(false);
     </div>
     <div class="col-12 col-sm-6 d-flex justify-content-start justify-content-sm-end">
       <button type="button" class="btn btn-primary" @click="sharemodal = !sharemodal">
+        <font-awesome-icon icon="fa-solid fa-share-nodes"/>
         Share
       </button>
     </div>
 
     <b-modal v-model="sharemodal" title="Share the study!" hide-footer>
-      Implement in own component
+      <div class="row">
+        <div class="mb-5">
+          If you like this study, we would be happy if you share it with your friends.
+        </div>
+
+        <SocialMediaShare/>
+
+      </div>
     </b-modal>
+
+
   </header>
   <main role="main" class="container">
     <WelcomeToStudy/>

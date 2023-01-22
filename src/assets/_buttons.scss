@@ -13,3 +13,11 @@
   --bs-btn-active-border-color: #0a53be !important;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125) !important;
 }
+
+.social-button {
+  width: 4.5em;
+  height: 4.5em;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: $primary;
+}

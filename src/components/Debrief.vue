@@ -95,7 +95,8 @@
         <div class="mx-3 text-danger" v-if="this.showFormError">Please answer all required fields of the form first.
         </div>
 
-        <button @click="validateForm" type="submit" class="btn btn-primary my-5">Next
+        <button @click="validateForm" type="submit" class="btn btn-primary my-5">
+          Next <font-awesome-icon icon="fa-solid fa-arrow-right-long" />
         </button>
 
         <div>State:
