@@ -3,7 +3,7 @@
     <div v-if="this.store.getCurrentStep === 'welcome-to-study'">
       <div>
         <h1>
-          Laptop or jacket? Can you distinguish them better than an AI? Let's find out!
+          Are you as biased as an AI? Let's find out!
         </h1>
         <div class="col-12 mt-5">
           <div class="row">
