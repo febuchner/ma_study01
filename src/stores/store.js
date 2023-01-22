@@ -95,7 +95,7 @@ export const useStore = defineStore('store', {
     actions: {
         // Restarts the study
         restartStudy(state) {
-            state.stepIndex = 0
+            state.stepIndex = 0;
         },
 
         // Goes to next component

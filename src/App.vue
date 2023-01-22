@@ -27,11 +27,11 @@ const sharemodal = ref(false);
 
     <b-modal v-model="sharemodal" title="Share the study!" hide-footer>
       <div class="row">
-        <div class="mb-5">
+        <div class="mb-sm-4 mb-5">
           If you like this study, we would be happy if you share it with your friends.
         </div>
 
-        <SocialMediaShare/>
+        <SocialMediaShare class="mb-3"/>
 
       </div>
     </b-modal>
@@ -60,7 +60,7 @@ header {
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
 }
 
 nav {
