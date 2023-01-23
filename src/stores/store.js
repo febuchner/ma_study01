@@ -10,7 +10,8 @@ export const useStore = defineStore('store', {
                 'demographic-questions',
                 'trial-instruction',
                 'study-trial',
-                'thanks-for-participating',
+                'debrief',
+                'results',
             ],
             userInput: {
                 userID: null,
@@ -94,7 +95,7 @@ export const useStore = defineStore('store', {
     actions: {
         // Restarts the study
         restartStudy(state) {
-            state.stepIndex = 0
+            state.stepIndex = 0;
         },
 
         // Goes to next component

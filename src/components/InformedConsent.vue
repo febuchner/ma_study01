@@ -58,7 +58,8 @@
         participate in the study.
       </div>
 
-      <button @click="validateForm" type="submit" class="btn btn-primary mt-5">Next
+      <button @click="validateForm" type="submit" class="btn btn-primary mt-5">
+        Next <font-awesome-icon icon="fa-solid fa-arrow-right" />
       </button>
 
     </div>

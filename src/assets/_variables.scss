@@ -5,14 +5,43 @@ $fw-bold: 700;
 $fw-bolder: 900;
 
 //** Color system
-//$primary: red;
-//$secondary:
+$primary: #0d6efd !default;
+$secondary: $gray-400;
+$success: $green !default;
+$info: $cyan !default;
+$warning: $yellow !default;
+$danger: $red !default;
+$light: $gray-100 !default;
+$dark: $gray-600 !default;
+
 $gray: #47515C;
-$white:    #fff !default;
+$gray-100: #fafafa;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: rgb(86, 86, 85); // #565556
+$gray-600: rgb(60, 60, 59); //#3C3C3B
+$white: #fff !default;
+$black:    #000 !default;
+$green:   #28a745 !default;
+$cyan:    #17a2b8 !default;
+$yellow:  #ffc107 !default;
+$red:     #dc3545 !default;
+
+$theme-colors: (
+"primary": $primary,
+"secondary": $secondary,
+"success": $success,
+"info": $info,
+"warning": $warning,
+"danger": $danger,
+"light": $light,
+"dark": $dark,
+);
 
 //** Global text color on `<body>`.
 $text-color: $gray;
-//$link-color: $primary;
+$link-color: $primary;
 $grid-gutter-width: 48px;
 //$body-bg: ;
 $headings-color: $gray;

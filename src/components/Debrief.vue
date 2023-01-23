@@ -1,6 +1,6 @@
 <template>
   <transition name="fade">
-    <div v-if="this.store.getCurrentStep === 'thanks-for-participating'">
+    <div v-if="this.store.getCurrentStep === 'debrief'">
       <div class="px-3">
         <div class="mb-5">
           <h1> Thank you for participating! </h1>
@@ -95,7 +95,8 @@
         <div class="mx-3 text-danger" v-if="this.showFormError">Please answer all required fields of the form first.
         </div>
 
-        <button @click="validateForm" type="submit" class="btn btn-primary my-5">Next
+        <button @click="validateForm" type="submit" class="btn btn-primary my-5">
+          Next <font-awesome-icon icon="fa-solid fa-arrow-right-long" />
         </button>
 
         <div>State:

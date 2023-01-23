@@ -1,17 +1,42 @@
 <script setup>
-import { RouterLink, RouterView } from 'vue-router'
+import {RouterLink, RouterView} from 'vue-router'
 import InformedConsent from './components/InformedConsent.vue'
-import DemographicQuestions from "@/components/DemographicQuestions.vue";
-import WelcomeToStudy from "@/components/WelcomeToStudy.vue";
-import TrialIntroduction from "@/components/TrialInstruction.vue";
+import DemographicQuestions from '@/components/DemographicQuestions.vue';
+import WelcomeToStudy from '@/components/WelcomeToStudy.vue';
+import TrialIntroduction from '@/components/TrialInstruction.vue';
 import StudyTrial from '@/components/StudyTrial.vue';
-import ThanksForParticipating from "@/components/ThanksForParticipating.vue";
+import Debrief from '@/components/Debrief.vue';
+import Results from '@/components/Results.vue'
+import SocialMediaShare from "@/components/SocialMediaShare.vue";
+import {ref} from "vue";
 
+const sharemodal = ref(false);
 </script>
 
 <template>
-  <header>
-    <img alt="labintheWild logo" class="logo d-inline-flex mb-5" src="@/assets/labintheWild-logo.png" width="150"/>
+  <header class="row mb-5">
+    <div class="col-12 col-sm-6 d-flex justify-content-start">
+      <img alt="labintheWild logo" class="logo d-inline-flex" src="@/assets/labintheWild-logo.png" width="150"/>
+    </div>
+    <div class="col-12 col-sm-6 d-flex justify-content-start justify-content-sm-end">
+      <button type="button" class="btn btn-primary" @click="sharemodal = !sharemodal">
+        <font-awesome-icon icon="fa-solid fa-share-nodes"/>
+        Share
+      </button>
+    </div>
+
+    <b-modal v-model="sharemodal" title="Share the study!" hide-footer>
+      <div class="row">
+        <div class="mb-sm-4 mb-5">
+          If you like this study, we would be happy if you share it with your friends.
+        </div>
+
+        <SocialMediaShare class="mb-3"/>
+
+      </div>
+    </b-modal>
+
+
   </header>
   <main role="main" class="container">
     <WelcomeToStudy/>
@@ -19,11 +44,12 @@ import ThanksForParticipating from "@/components/ThanksForParticipating.vue";
     <DemographicQuestions/>
     <TrialIntroduction/>
     <StudyTrial/>
-    <ThanksForParticipating/>
+    <Debrief/>
+    <Results/>
 
   </main>
 
-<!--  <RouterView />-->
+  <!--  <RouterView />-->
 </template>
 
 <style scoped>
@@ -34,7 +60,7 @@ header {
 
 .logo {
   display: block;
-  margin: 0 auto 2rem;
+  margin: 0 auto;
 }
 
 nav {
