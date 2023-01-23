@@ -19,7 +19,8 @@
               </p>
             </div>
             <div class="col-12 col-lg-4">
-              <img src="@/assets/images/robot_hello.png" class="img-fluid">
+<!--              TODO place new image in src @/assets/images/-->
+              <img src="" class="img-fluid">
             </div>
           </div>
         </div>

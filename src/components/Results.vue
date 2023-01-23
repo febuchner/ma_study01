@@ -30,7 +30,7 @@
 
       <div>
         <div>
-          <h2>Do you want to get more results?</h2>
+          <h2>Do you want to play another round?</h2>
           <p>
             <span>
             You can compare yourself in other scenarios with humans and the AI to learn new things about yourself.
@@ -42,17 +42,6 @@
         <div>
 <!--          TODO Add image if section needed-->
         </div>
-      </div>
-
-      <hr class="my-5"/>
-
-      <div>
-        <h2 class="text-center">Credits</h2>
-        <p class="text-center">
-          All AI roboter images by <a
-            href="https://www.freepik.com/free-vector/chat-bot-set_9174411.htm#query=cute%20robot&position=21&from_view=keyword"
-            target="_blank">pch.vector</a> on Freepik.
-        </p>
       </div>
 
       <hr class="my-5"/>
