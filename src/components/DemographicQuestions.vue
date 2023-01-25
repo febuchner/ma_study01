@@ -156,7 +156,7 @@
         <div class="mx-3 text-danger" v-if="this.showFormError">Please fill in all fields of the form first.</div>
 
         <button @click="validateForm" type="submit" class="btn btn-primary mt-5">
-          Next <font-awesome-icon icon="fa-solid fa-arrow-right-long" />
+          Next <font-awesome-icon icon="fa-solid fa-arrow-right" />
         </button>
 
         <div>State:
