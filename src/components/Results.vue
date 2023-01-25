@@ -28,24 +28,6 @@
 
       <hr class="my-5"/>
 
-      <div>
-        <div>
-          <h2>Do you want to play another round?</h2>
-          <p>
-            <span>
-            You can compare yourself in other scenarios with humans and the AI to learn new things about yourself.
-            </span>
-          </p>
-          <button type="button" class="btn btn-primary" @click="playAgain">Play again!</button>
-        </div>
-
-        <div>
-<!--          TODO Add image if section needed-->
-        </div>
-      </div>
-
-      <hr class="my-5"/>
-
       <h2 class="text-center">These are other fun studies you can try if you liked ours! <br>
         Or you can return to <a href="https://www.labinthewild.org/">labinthewild.org</a>.</h2>
 
@@ -120,10 +102,6 @@ export default {
     return {}
   },
   methods: {
-    playAgain: function () {
-      // will skip the cache and reload the page from the server
-      window.location.reload(true);
-    },
   },
 }
 </script>
