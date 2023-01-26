@@ -96,7 +96,7 @@
         </div>
 
         <button @click="validateForm" type="submit" class="btn btn-primary my-5">
-          Next <font-awesome-icon icon="fa-solid fa-arrow-right-long" />
+          Next <font-awesome-icon icon="fa-solid fa-arrow-right" />
         </button>
 
         <div>State:

@@ -1,14 +1,18 @@
 <script setup>
 import {RouterLink, RouterView} from 'vue-router'
+import WelcomeToStudy from '@/components/WelcomeToStudy.vue';
 import InformedConsent from './components/InformedConsent.vue'
 import DemographicQuestions from '@/components/DemographicQuestions.vue';
-import WelcomeToStudy from '@/components/WelcomeToStudy.vue';
-import TrialIntroduction from '@/components/TrialInstruction.vue';
+import LabellingInstruction from '@/components/LabellingInstruction.vue';
+import LabellingTrial from '@/components/LabellingTrial.vue';
+import StudyIntroduction from '@/components/StudyInstruction.vue';
 import StudyTrial from '@/components/StudyTrial.vue';
+import AiInsights from '@/components/AiInsights.vue';
 import Debrief from '@/components/Debrief.vue';
 import Results from '@/components/Results.vue'
 import SocialMediaShare from "@/components/SocialMediaShare.vue";
 import {ref} from "vue";
+
 
 const sharemodal = ref(false);
 </script>
@@ -42,8 +46,11 @@ const sharemodal = ref(false);
     <WelcomeToStudy/>
     <InformedConsent/>
     <DemographicQuestions/>
-    <TrialIntroduction/>
+    <LabellingInstruction/>
+    <LabellingTrial/>
+    <StudyIntroduction/>
     <StudyTrial/>
+    <AiInsights/>
     <Debrief/>
     <Results/>
 

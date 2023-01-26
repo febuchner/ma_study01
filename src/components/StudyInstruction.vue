@@ -1,10 +1,10 @@
 <template>
   <transition name="fade">
-    <div v-if="this.store.getCurrentStep === 'trial-instruction'">
+    <div v-if="this.store.getCurrentStep === 'study-instruction'">
       <div class="px-3">
         <div class="mb-5">
           <h1>
-            Instructions
+            Study Instructions
           </h1>
         </div>
 
@@ -23,7 +23,8 @@
         <img src="https://toxicity-litw.apps.allenai.org/93a19e44bf64e2fd43b0e6d31a6c25e3.png"
              alt="Example of the experiment page" class="img-fluid">
 
-        <button @click="validateForm" type="submit" class="btn btn-primary my-5">Let's start!
+        <button @click="validateForm" type="submit" class="btn btn-primary my-5">
+          Let's start!
         </button>
 
       </div>
@@ -40,7 +41,7 @@ export default {
     const store = useStore();
     return {store};
   },
-  name: "TrialIntroduction",
+  name: "StudyIntroduction",
   methods: {
     validateForm: function () {
       this.store.nextStep(this.store, 1);
