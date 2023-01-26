@@ -31,6 +31,10 @@ export const useStore = defineStore('store', {
                 "user-gender": null,
                 "user-cookie-consent": null,
             },
+            aiInsights: {
+                "ai-included-decision": null,
+                "ai-use-prediction": null,
+            },
             debrief: {
                 "user-comment": null,
                 "user-difficulties": null,
@@ -38,7 +42,6 @@ export const useStore = defineStore('store', {
                 "user-cheat": null,
                 "user-cheat-description": null,
             },
-
             street: "Baker Street",
             housenumber: "221b",
             city: "London",
@@ -49,7 +52,6 @@ export const useStore = defineStore('store', {
             return state.steps[state.stepIndex];
         },
         getConsentAccepted(state) {
-            console.log(state.userInput['consent-accepted']);
             return state.userInput['consent-accepted'];
         },
         getUserTakenTestBefore(state) {
@@ -78,6 +80,12 @@ export const useStore = defineStore('store', {
         },
         getUserCookieConsent(state) {
             return state.userInput['user-cookie-consent'];
+        },
+        getAiIncludedDecision(state) {
+            return state.aiInsights['ai-included-decision'];
+        },
+        getAiUsePrediction(state) {
+            return state.aiInsights['ai-use-prediction'];
         },
         getUserComment(state) {
             return state.debrief['user-comment'];

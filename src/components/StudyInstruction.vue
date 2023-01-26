@@ -4,7 +4,7 @@
       <div class="px-3">
         <div class="mb-5">
           <h1>
-            Instructions
+            Study Instructions
           </h1>
         </div>
 
