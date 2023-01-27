@@ -41,32 +41,6 @@
             label-class="font-weight-bold"
         >
           <template v-slot:label>
-            Which country did you live in the longest growing up? <span class="text-danger fw-bolder">*</span>
-          </template>
-          <b-form-select
-              v-model="userOriginCountry"
-              :options="this.countries">
-          </b-form-select>
-        </b-form-group>
-
-        <b-form-group
-            class="mb-4"
-            label-class="font-weight-bold"
-        >
-          <template v-slot:label>
-            Which country do you currently live in? <span class="text-danger fw-bolder">*</span>
-          </template>
-          <b-form-select
-              v-model="userCurrentCountry"
-              :options="countries">
-          </b-form-select>
-        </b-form-group>
-
-        <b-form-group
-            class="mb-4"
-            label-class="font-weight-bold"
-        >
-          <template v-slot:label>
             How old are you? <span class="text-danger fw-bolder">*</span>
           </template>
           <b-form-input v-model="userAge" type="number" min="1" max="100" @blur="isValidAge"></b-form-input>
@@ -92,11 +66,11 @@
             label-class="font-weight-bold"
         >
           <template v-slot:label>
-            What religion or religious denomination do you belong to? <span class="text-danger fw-bolder">*</span>
+            What English skills do you have? <span class="text-danger fw-bolder">*</span>
           </template>
           <b-form-select
-              v-model="userReligion"
-              :options="religions">
+              v-model="userEnglishProficiency"
+              :options="englishProficiency">
           </b-form-select>
         </b-form-group>
 
@@ -124,6 +98,19 @@
           <b-form-select
               v-model="userGender"
               :options="genders">
+          </b-form-select>
+        </b-form-group>
+
+        <b-form-group
+            class="mb-4"
+            label-class="font-weight-bold"
+        >
+          <template v-slot:label>
+            What knowledge of machine learning do you have? <span class="text-danger fw-bolder">*</span>
+          </template>
+          <b-form-select
+              v-model="userMLKnowledge"
+              :options="mlKnowledge">
           </b-form-select>
         </b-form-group>
 
@@ -195,18 +182,13 @@ export default {
       showAgeError: false,
       minAge: 1,
       maxAge: 100,
-      countries: countries,
       languages: languages,
-      religions: [
-        {text: 'I do not belong to a religion or religious denomination', value: 'Atheist'},
-        {text: 'Buddhist', value: 'Buddhist'},
-        {text: 'Hindu', value: 'Hindu'},
-        {text: 'Jew', value: 'Jew'},
-        {text: 'Muslim', value: 'Muslim'},
-        {text: 'Orthodox (Russian/Greek/etc.)', value: 'Orthodox'},
-        {text: 'Protestant', value: 'Protestant'},
-        {text: 'Roman Catholic', value: 'Roman Catholic'},
-        {text: 'Other', value: 'other'},
+      englishProficiency: [
+        {text: 'Basic', value: 'basic'},
+        {text: 'Upper-Intermediate', value: 'upper-intermediate'},
+        {text: 'Intermediate', value: 'intermediate'},
+        {text: 'Proficient', value: 'proficient'},
+        {text: 'Mother tongue', value: 'motherTongue'},
       ],
       educationLevels: [
         {text: "pre-high school", value: "pre-high school"},
@@ -223,6 +205,11 @@ export default {
         {text: "Divers", value: "divers"},
         {text: "Other", value: "other"},
       ],
+      mlKnowledge: [
+        {text: "No experience", value: "no-experience"},
+        {text: "Some experience", value: "some-experience"},
+        {text: "A lot of experience", value: "a lot of experience"},
+      ],
     }
   },
   computed: {
@@ -230,18 +217,6 @@ export default {
       get() {},
       set(value) {
         this.store.userInput['user-taken-test-before'] = value;
-      },
-    },
-    userOriginCountry: {
-      get() {},
-      set(value) {
-        this.store.userInput['user-origin-country'] = value;
-      },
-    },
-    userCurrentCountry: {
-      get() {},
-      set(value) {
-        this.store.userInput['user-current-country'] = value;
       },
     },
     userAge: {
@@ -256,10 +231,10 @@ export default {
         this.store.userInput['user-native-language'] = value;
       },
     },
-    userReligion: {
+    userEnglishProficiency: {
       get() {},
       set(value) {
-        this.store.userInput['user-religion'] = value;
+        this.store.userInput['user-english-proficiency'] = value;
       },
     },
     userEducation: {
@@ -272,6 +247,12 @@ export default {
       get() {},
       set(value) {
         this.store.userInput['user-gender'] = value;
+      },
+    },
+    userMLKnowledge: {
+      get() {},
+      set(value) {
+        this.store.userInput['user-ml-knowledge'] = value;
       },
     },
     userCookieConsent: {
@@ -304,15 +285,14 @@ export default {
     },
     isValidInputs: function () {
       if (this.store.getUserTakenTestBefore !== null &&
-          this.store.getUserOriginCountry !== null &&
-          this.store.getUserCurrentCountry !== null &&
           this.store.getUserAge !== null &&
           this.store.getUserAge >= this.minAge &&
           this.store.getUserAge <= this.maxAge &&
           this.store.getUserNativeLanguage !== null &&
-          this.store.getUserReligion !== null &&
+          this.store.getUserEnglishProficiency !== null &&
           this.store.getUserEducation !== null &&
           this.store.getUserGender !== null &&
+          this.store.getUserMLKnowledge !== null &&
           this.store.getUserCookieConsent !== null
       ) {
         this.showFormError = false
@@ -331,19 +311,21 @@ export default {
     setCookies: function (key, value) {
       this.cookies.set("LITW-"+key, value, "365d", '/', window.location.hostname);
     },
-
     // if form is valid, go to next step
     validateForm: function () {
       if (this.isValidInputs()) {
-        this.setCookies("user-taken-test-before", this.store.getUserTakenTestBefore);
-        this.setCookies("user-origin-country", this.store.getUserOriginCountry);
-        this.setCookies("user-current-country", this.store.getUserCurrentCountry);
-        this.setCookies("user-age", this.store.getUserAge);
-        this.setCookies("user-native-language", this.store.getUserNativeLanguage);
-        this.setCookies("user-religion", this.store.getUserReligion);
-        this.setCookies("user-education", this.store.getUserEducation);
-        this.setCookies("user-gender", this.store.getUserGender);
-        this.setCookies("user-cookie-consent", this.store.getUserCookieConsent);
+        console.log(this.store.getUserCookieConsent === true)
+        if (this.store.getUserCookieConsent === true) // why the fuck false?????
+        {
+          this.setCookies("user-taken-test-before", this.store.getUserTakenTestBefore);
+          this.setCookies("user-age", this.store.getUserAge);
+          this.setCookies("user-native-language", this.store.getUserNativeLanguage);
+          this.setCookies("user-english-proficiency", this.store.getUserEnglishProficiency);
+          this.setCookies("user-education", this.store.getUserEducation);
+          this.setCookies("user-gender", this.store.getUserGender);
+          this.setCookies("user-ml-knowledge", this.store.getUserMLKnowledge);
+          this.setCookies("user-cookie-consent", this.store.getUserCookieConsent);
+        }
         this.store.nextStep(this.store, 1);
       }
     }
