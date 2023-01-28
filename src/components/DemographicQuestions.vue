@@ -126,14 +126,14 @@
             <b-form-radio
                 v-model="userCookieConsent"
                 name="userCookieConsent"
-                value="true"
+                value=true
                 button
             >Yes
             </b-form-radio>
             <b-form-radio
                 v-model="userCookieConsent"
                 name="userCookieConsent"
-                value="false"
+                value=false
                 button
             >No
             </b-form-radio>
@@ -314,9 +314,7 @@ export default {
     // if form is valid, go to next step
     validateForm: function () {
       if (this.isValidInputs()) {
-        console.log(this.store.getUserCookieConsent === true)
-        if (this.store.getUserCookieConsent === true) // why the fuck false?????
-        {
+        if (this.store.getUserCookieConsent === "true") {
           this.setCookies("user-taken-test-before", this.store.getUserTakenTestBefore);
           this.setCookies("user-age", this.store.getUserAge);
           this.setCookies("user-native-language", this.store.getUserNativeLanguage);
