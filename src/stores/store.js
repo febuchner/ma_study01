@@ -20,15 +20,13 @@ export const useStore = defineStore('store', {
                 userID: null,
                 "created-on": null,
                 "consent-accepted": null,
-
                 "user-taken-test-before": null,
-                "user-origin-country": null,
-                "user-current-country": null,
                 "user-age": null,
                 "user-native-language": null,
-                "user-religion": null,
                 "user-education": null,
                 "user-gender": null,
+                "user-english-proficiency": null,
+                "user-ml-knowledge": null,
                 "user-cookie-consent": null,
             },
             aiInsights: {
@@ -57,26 +55,23 @@ export const useStore = defineStore('store', {
         getUserTakenTestBefore(state) {
             return state.userInput['user-taken-test-before'];
         },
-        getUserOriginCountry(state) {
-            return state.userInput['user-origin-country'];
-        },
-        getUserCurrentCountry(state) {
-            return state.userInput['user-current-country'];
-        },
         getUserAge(state) {
             return state.userInput['user-age'];
         },
         getUserNativeLanguage(state) {
             return state.userInput['user-native-language'];
         },
-        getUserReligion(state) {
-            return state.userInput['user-religion'];
-        },
         getUserEducation(state) {
             return state.userInput['user-education'];
         },
         getUserGender(state) {
             return state.userInput['user-gender'];
+        },
+        getUserEnglishProficiency(state) {
+            return state.userInput['user-english-proficiency'];
+        },
+        getUserMLKnowledge(state) {
+            return state.userInput['user-ml-knowledge'];
         },
         getUserCookieConsent(state) {
             return state.userInput['user-cookie-consent'];
