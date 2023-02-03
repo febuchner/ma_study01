@@ -3,19 +3,19 @@
     <div v-if="this.store.getCurrentStep === 'labelling-instruction'">
       <div class="px-3">
         <div class="mb-5">
-          <h1>Labelling instruction! </h1>
+          <h1>Instructions for the first part! </h1>
         </div>
 
         <div>
-          <p>During the study you will be shown X different sentences. For each, rate whether you think X.
-            <span class="text-danger">Then, you will see how an AI and other study participants responded to that scenario.</span>
+          <p>During this part you will be shown 10 different sentences.
+            For each, decide which of the five given professions the person to whom the resume belongs is most likely to have.
             <br><br>
-            <span class="text-danger">We'll compare your answers to those of an AI and other participants overall after you finished the study. </span><br><br>
+            <span>Based on your given answers from the first and second part, we will present you your gender bias compared to that of our AI at the end of the study.</span><br><br>
           </p>
         </div>
 
         <div class="mb-3">
-          <p>Below you will find a picture that shows you what the study looks like.</p>
+          <p>Below you will find a picture that shows you what the first part looks like.</p>
         </div>
 
         <img src="https://toxicity-litw.apps.allenai.org/93a19e44bf64e2fd43b0e6d31a6c25e3.png"

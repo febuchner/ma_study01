@@ -4,15 +4,16 @@
       <div class="px-3">
         <div class="mb-5">
           <h1>
-            Study Instructions
+            Instructions for the second part!
           </h1>
         </div>
 
         <div>
-          <p>During the study you will be shown X different sentences. For each, rate whether you think X.
-            <span class="text-danger">Then, you will see how an AI and other study participants responded to that scenario.</span>
+          <p>During this part you will be shown 20 different sentences.
+            For each, again decide which of the five given professions the person to whom the resume belongs is most likely to have.
+            But this time, our AI will tell you their opinion about the profession, which you can consider or not.
             <br><br>
-            <span class="text-danger">We'll compare your answers to those of an AI and other participants overall after you finished the study. </span><br><br>
+            <span>Based on your given answers from the first and second part, we will present you your gender bias compared to that of our AI at the end of the study.</span><br><br>
           </p>
         </div>
 
