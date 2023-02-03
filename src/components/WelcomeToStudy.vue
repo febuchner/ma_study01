@@ -12,7 +12,7 @@
                 Welcome and thank you for your interest in our LabInTheWild test.
               </p>
               <p class="h3 mt-5">
-                What you have to do and what we'll show you compared to our AI and others.
+                Tell us what you think the person whose biography you are looking at does for a living and we'll show you how gender biased you are compared to our AI.
               </p>
               <p class="h3 mt-5">
                 <b> Normally, it takes X minutes to finish the test. </b>

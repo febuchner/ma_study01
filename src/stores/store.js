@@ -22,7 +22,6 @@ export const useStore = defineStore('store', {
                 "consent-accepted": null,
                 "user-taken-test-before": null,
                 "user-age": null,
-                "user-native-language": null,
                 "user-education": null,
                 "user-gender": null,
                 "user-english-proficiency": null,
@@ -57,9 +56,6 @@ export const useStore = defineStore('store', {
         },
         getUserAge(state) {
             return state.userInput['user-age'];
-        },
-        getUserNativeLanguage(state) {
-            return state.userInput['user-native-language'];
         },
         getUserEducation(state) {
             return state.userInput['user-education'];

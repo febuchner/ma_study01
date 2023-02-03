@@ -52,20 +52,6 @@
             label-class="font-weight-bold"
         >
           <template v-slot:label>
-            What is your native language? (if multiple, pick the one you speak in most often) <span
-              class="text-danger fw-bolder">*</span>
-          </template>
-          <b-form-select
-              v-model="userNativeLanguage"
-              :options="languages">
-          </b-form-select>
-        </b-form-group>
-
-        <b-form-group
-            class="mb-4"
-            label-class="font-weight-bold"
-        >
-          <template v-slot:label>
             What English skills do you have? <span class="text-danger fw-bolder">*</span>
           </template>
           <b-form-select
@@ -148,13 +134,11 @@
 
         <div>State:
           <strong>{{ this.store.userInput["user-taken-test-before"] }} </strong>
-          <strong>{{ this.store.userInput["user-origin-country"] }} </strong>
-          <strong>{{ this.store.userInput["user-current-country"] }} </strong>
           <strong>{{ this.store.userInput["user-age"] }} </strong>
-          <strong>{{ this.store.userInput["user-native-language"] }} </strong>
-          <strong>{{ this.store.userInput["user-religion"] }} </strong>
+          <strong>{{ this.store.userInput["user-english-proficiency"] }} </strong>
           <strong>{{ this.store.userInput["user-education"] }} </strong>
           <strong>{{ this.store.userInput["user-gender"] }} </strong>
+          <strong>{{ this.store.userInput["user-ml-knowledge"] }} </strong>
           <strong>{{ this.store.userInput["user-cookie-consent"] }} </strong>
         </div>
 
@@ -182,7 +166,6 @@ export default {
       showAgeError: false,
       minAge: 1,
       maxAge: 100,
-      languages: languages,
       englishProficiency: [
         {text: 'Basic', value: 'basic'},
         {text: 'Upper-Intermediate', value: 'upper-intermediate'},
@@ -191,13 +174,13 @@ export default {
         {text: 'Mother tongue', value: 'motherTongue'},
       ],
       educationLevels: [
-        {text: "pre-high school", value: "pre-high school"},
-        {text: "high school", value: "high school"},
-        {text: "college", value: "college"},
-        {text: "graduate school", value: "graduate school"},
-        {text: "professional school", value: "professional school"},
+        {text: "Pre-High School", value: "pre-high_school"},
+        {text: "High School", value: "high_school"},
+        {text: "College", value: "college"},
+        {text: "Graduate School", value: "graduate_school"},
+        {text: "Professional School", value: "professional_school"},
         {text: "PhD", value: "PhD"},
-        {text: "postdoctoral", value: "postdoctoral"}
+        {text: "Postdoctoral", value: "postdoctoral"}
       ],
       genders: [
         {text: "Male", value: "male"},
@@ -206,9 +189,9 @@ export default {
         {text: "Other", value: "other"},
       ],
       mlKnowledge: [
-        {text: "No experience", value: "no-experience"},
-        {text: "Some experience", value: "some-experience"},
-        {text: "A lot of experience", value: "a lot of experience"},
+        {text: "No experience", value: "no_experience"},
+        {text: "Some experience", value: "some_experience"},
+        {text: "A lot of experience", value: "a_lot_of_experience"},
       ],
     }
   },
@@ -223,12 +206,6 @@ export default {
       get() {},
       set(value) {
         this.store.userInput['user-age'] = value;
-      },
-    },
-    userNativeLanguage: {
-      get() {},
-      set(value) {
-        this.store.userInput['user-native-language'] = value;
       },
     },
     userEnglishProficiency: {
@@ -288,7 +265,6 @@ export default {
           this.store.getUserAge !== null &&
           this.store.getUserAge >= this.minAge &&
           this.store.getUserAge <= this.maxAge &&
-          this.store.getUserNativeLanguage !== null &&
           this.store.getUserEnglishProficiency !== null &&
           this.store.getUserEducation !== null &&
           this.store.getUserGender !== null &&
@@ -317,7 +293,6 @@ export default {
         if (this.store.getUserCookieConsent === "true") {
           this.setCookies("user-taken-test-before", this.store.getUserTakenTestBefore);
           this.setCookies("user-age", this.store.getUserAge);
-          this.setCookies("user-native-language", this.store.getUserNativeLanguage);
           this.setCookies("user-english-proficiency", this.store.getUserEnglishProficiency);
           this.setCookies("user-education", this.store.getUserEducation);
           this.setCookies("user-gender", this.store.getUserGender);
