@@ -28,6 +28,20 @@ export const useStore = defineStore('store', {
                 "user-ml-knowledge": null,
                 "user-cookie-consent": null,
             },
+            AI_error_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
+            AI_truth_ids: [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,27, 28, 29, 30],
+            labelling_ids: [],
+            study_ids: [],
+            labelling_answer0: null,
+            labelling_answer1: null,
+            labelling_answer2: null,
+            labelling_answer3: null,
+            labelling_answer4: null,
+            labelling_answer5: null,
+            labelling_answer6: null,
+            labelling_answer7: null,
+            labelling_answer8: null,
+            labelling_answer9: null,
             aiInsights: {
                 "ai-included-decision": null,
                 "ai-use-prediction": null,
@@ -93,6 +107,18 @@ export const useStore = defineStore('store', {
         getUserCheatDescription(state) {
             return state.debrief['user-cheat-description'];
         },
+        getAiErrorIds(state) {
+            return state['AI_error_ids'];
+        },
+        getAiTruthIds(state) {
+            return state['AI_truth_ids'];
+        },
+        getLabellingIds(state) {
+            return state['labelling_ids'];
+        },
+        getStudyIds(state) {
+            return state['study_ids'];
+        },
     },
     actions: {
         // Restarts the study
@@ -124,6 +150,29 @@ export const useStore = defineStore('store', {
             //     .then( () => {
             //       // console.log("Updated")
             //     })
+        },
+        distributeIds(state) {
+            this.shuffle(state.AI_error_ids);
+            state.labelling_ids = state.AI_error_ids.slice(0, 10);
+            state.study_ids = state.AI_error_ids.slice(10, state.AI_error_ids.length);
+            state.AI_truth_ids.forEach(function(id) {
+                console.log("entered");
+                state.study_ids.push(id);
+            });
+            this.shuffle(state.study_ids);
+        },
+        /**
+         * Shuffles array in place.
+         */
+        shuffle(arr) {
+            let j, x, index;
+            for (index = arr.length - 1; index > 0; index--) {
+                j = Math.floor(Math.random() * (index + 1));
+                x = arr[index];
+                arr[index] = arr[j];
+                arr[j] = x;
+            }
+             return arr;
         },
 
         // Saves answers to answer object

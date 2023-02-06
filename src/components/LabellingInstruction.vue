@@ -40,6 +40,7 @@ export default {
   name: "LabellingInstruction",
   methods: {
     validateForm: function () {
+      this.store.distributeIds(this.store)
       this.store.nextStep(this.store, 1);
     }
   }
