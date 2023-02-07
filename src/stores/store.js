@@ -31,7 +31,9 @@ export const useStore = defineStore('store', {
             AI_error_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
             AI_truth_ids: [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,27, 28, 29, 30],
             labelling_ids: [],
+            labelling_items: [],
             study_ids: [],
+            study_items: [],
             labelling_answer0: null,
             labelling_answer1: null,
             labelling_answer2: null,
@@ -116,6 +118,9 @@ export const useStore = defineStore('store', {
         getLabellingIds(state) {
             return state['labelling_ids'];
         },
+        getLabellingItems(state) {
+            return state['labelling_items'];
+        },
         getStudyIds(state) {
             return state['study_ids'];
         },
@@ -156,7 +161,6 @@ export const useStore = defineStore('store', {
             state.labelling_ids = state.AI_error_ids.slice(0, 10);
             state.study_ids = state.AI_error_ids.slice(10, state.AI_error_ids.length);
             state.AI_truth_ids.forEach(function(id) {
-                console.log("entered");
                 state.study_ids.push(id);
             });
             this.shuffle(state.study_ids);

@@ -31,6 +31,7 @@
 
 <script>
 import {useStore} from "@/stores/store";
+import JSONDATA from '@/components/json/test_data_five_professions_gender.json'
 
 export default {
   setup() {
@@ -38,9 +39,36 @@ export default {
     return {store};
   },
   name: "LabellingInstruction",
+  data() {
+    return {
+      JSON: JSONDATA,
+      items: [],
+    }
+  },
+  computed: {
+    labellingIds: {
+      get() {
+        return this.store['labelling_ids'];
+      },
+      set(value) {},
+    },
+    labellingItems: {
+      get() {
+        return this.store['labelling_items'];
+      },
+      set(value) {},
+    },
+  },
   methods: {
+    // Load items from JSON by passed indices
+    loadItemsByIndices() {
+      this.labellingIds.forEach(function (id) {
+        this.labellingItems.push(this.JSON[id]);
+      }, this);
+    },
     validateForm: function () {
-      this.store.distributeIds(this.store)
+      this.store.distributeIds(this.store);
+      this.loadItemsByIndices();
       this.store.nextStep(this.store, 1);
     }
   }
