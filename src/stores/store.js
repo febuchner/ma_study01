@@ -4,6 +4,7 @@ export const useStore = defineStore('store', {
     state: () => {
         return {
             stepIndex: 0,
+            trial_index: 0,
             steps: [
                 'welcome-to-study',
                 'informed-consent',
@@ -63,6 +64,9 @@ export const useStore = defineStore('store', {
     getters: {
         getCurrentStep(state) {
             return state.steps[state.stepIndex];
+        },
+        getCurrentTrialStep(state) {
+            return state.steps[state.trial_index];
         },
         getConsentAccepted(state) {
             return state.userInput['consent-accepted'];
@@ -130,7 +134,12 @@ export const useStore = defineStore('store', {
         restartStudy(state) {
             state.stepIndex = 0;
         },
-
+        nextTrialStep(state) {
+            state.trial_index ++;
+        },
+        resetTrialStep(state) {
+            state.trial_index = 0;
+        },
         // Goes to next component
         nextStep(state, stepsToGo) {
             // Scroll to top

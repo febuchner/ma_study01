@@ -48,15 +48,18 @@
           </b-form-radio-group>
         </b-form-group>
 
-        <b-form-group
-            class="mb-4"
-            label-class="font-weight-bold"
-        >
-          <template v-slot:label>
-            Please describe how you faced technical difficulties during the test, if you encountered any.
-          </template>
-          <b-form-textarea v-model="userDifficultiesDescription" placeholder="Enter your technical difficulties." rows="3"></b-form-textarea>
-        </b-form-group>
+        <div v-if="this.userDifficulties === 'true'">
+          <b-form-group
+              class="mb-4"
+              label-class="font-weight-bold"
+          >
+            <template v-slot:label>
+              Please describe how you faced technical difficulties during the test, if you encountered any.
+            </template>
+            <b-form-textarea v-model="userDifficultiesDescription" placeholder="Enter your technical difficulties."
+                             rows="3"></b-form-textarea>
+          </b-form-group>
+        </div>
 
         <b-form-group
             class="mb-4"
@@ -82,21 +85,25 @@
           </b-form-radio-group>
         </b-form-group>
 
-        <b-form-group
-            class="mb-4"
-            label-class="font-weight-bold"
-        >
-          <template v-slot:label>
-            Please describe how you provided false information, if you did.
-          </template>
-          <b-form-textarea v-model="userCheatDescription" placeholder="Enter how you provided false information." rows="3"></b-form-textarea>
-        </b-form-group>
+        <div v-if="this.userCheat === 'true'">
+          <b-form-group
+              class="mb-4"
+              label-class="font-weight-bold"
+          >
+            <template v-slot:label>
+              Please describe how you provided false information, if you did.
+            </template>
+            <b-form-textarea v-model="userCheatDescription" placeholder="Enter how you provided false information."
+                             rows="3"></b-form-textarea>
+          </b-form-group>
+        </div>
 
         <div class="mx-3 text-danger" v-if="this.showFormError">Please answer all required fields of the form first.
         </div>
 
         <button @click="validateForm" type="submit" class="btn btn-primary my-5">
-          Next <font-awesome-icon icon="fa-solid fa-arrow-right" />
+          Next
+          <font-awesome-icon icon="fa-solid fa-arrow-right"/>
         </button>
 
         <div>State:
@@ -151,6 +158,7 @@ export default {
     },
     userCheat: {
       get() {
+        return this.store.debrief['user-cheat'];
       },
       set(value) {
         this.store.debrief['user-cheat'] = value;
