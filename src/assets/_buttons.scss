@@ -21,3 +21,8 @@
   border-style: solid;
   border-color: $primary;
 }
+
+button:disabled {
+  cursor: not-allowed;
+  pointer-events: all !important;
+}

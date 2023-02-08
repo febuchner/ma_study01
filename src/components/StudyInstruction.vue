@@ -45,6 +45,7 @@ export default {
   name: "StudyIntroduction",
   methods: {
     validateForm: function () {
+      this.store.resetTrialStep(this.store);
       this.store.nextStep(this.store, 1);
     }
   }
