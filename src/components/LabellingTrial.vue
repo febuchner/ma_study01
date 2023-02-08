@@ -22,7 +22,7 @@
               <h1>Round {{ this.trial_index + 1 }} / 10</h1>
             </div>
 
-            <div class="col-12 bg-light text-center px-3 py-4">
+            <div class="col-12 bg-profession text-center px-3 py-4">
               <h2>"{{ this.labellingItems[this.trial_index]['raw'] }}"</h2>
             </div>
 

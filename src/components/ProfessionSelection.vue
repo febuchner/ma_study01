@@ -1,6 +1,4 @@
 <template>
-  {{ this.item }}
-
   <b-form-group
       class="mb-4"
       label-class="font-weight-bold">
@@ -50,7 +48,7 @@
     </b-form-radio-group>
   </b-form-group>
 
-  <button @click="validateForm" :disabled="this.profession_value === null" type="submit" class="btn btn-primary my-5">
+  <button @click="validateForm" :disabled="this.profession_value === null" type="submit" class="btn btn-primary mt-4 mb-5">
     Submit
   </button>
 </template>
