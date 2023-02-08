@@ -79,9 +79,6 @@ export default {
   name: "LabellingTrial",
   data() {
     return {
-      trialRound: 0,
-      test_1: null,
-      test_2: null,
     }
   },
   computed: {
