@@ -19,7 +19,7 @@
 
           <div v-if="this.trial_index === index">
             <div class="mb-5 text-center">
-              <h1>Round {{ this.trial_index + 1 }} / 10</h1>
+              <h1>Round {{ this.trial_index + 1 }} / {{this.labellingItems.length}}</h1>
             </div>
 
             <div class="col-12 bg-profession text-center px-3 py-4">
