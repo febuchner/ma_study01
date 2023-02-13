@@ -23,7 +23,7 @@
             </div>
 
             <div class="col-12 bg-profession text-center px-3 py-4">
-              <h2>"{{ this.labellingItems[this.trial_index]['raw'] }}"</h2>
+              <h2 class="quotation">{{ this.labellingItems[this.trial_index]['raw'] }}</h2>
             </div>
 
             <div class="mt-5">

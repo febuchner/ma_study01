@@ -29,11 +29,25 @@
 
           <div v-if="this.trial_index === index">
             <div class="mb-5 text-center">
-              <h1>Round {{ this.trial_index + 1 }} / {{this.studyItems.length}}</h1>
+              <h1>Round {{ this.trial_index + 1 }} / {{ this.studyItems.length }}</h1>
             </div>
 
             <div class="col-12 bg-profession text-center px-3 py-4">
-              <h2>"{{ this.studyItems[this.trial_index]['raw'] }}"</h2>
+              <div v-if="this.studyCondition === 'with_explanation_highlights'">
+                <h2><div v-html="this.studyItems[this.trial_index]['explanations_html']" class="quotation"></div></h2>
+              </div>
+              <div v-else>
+                <h2 class="quotation">{{ this.studyItems[this.trial_index]['raw'] }}</h2>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <img src="../assets/images/my_robot.png" class="img-fluid robot">
+              </div>
+              <div class="col-6">
+                <div class="box sb2">I'm speeeeeeeeech bubble</div>
+              </div>
             </div>
 
             <div class="mt-5">
@@ -128,6 +142,13 @@ export default {
     studyItems: {
       get() {
         return this.store['study_items'];
+      },
+      set(value) {
+      },
+    },
+    studyCondition: {
+      get() {
+        return this.store['study_condition'];
       },
       set(value) {
       },
