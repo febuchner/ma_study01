@@ -10,35 +10,35 @@
     </template>
 
     <b-form-radio-group class="pt-3">
-      <b-form-radio
+      <b-form-radio class="my-1"
           v-model="profession_value"
           name="inputname"
           value=0
           button
       >Professor
       </b-form-radio>
-      <b-form-radio
+      <b-form-radio class="my-1"
           v-model="profession_value"
           name="inputname"
           value=1
           button
       >Physician
       </b-form-radio>
-      <b-form-radio
+      <b-form-radio class="my-1"
           v-model="profession_value"
           name="inputname"
           value=2
           button
       >Psychologist
       </b-form-radio>
-      <b-form-radio
+      <b-form-radio class="my-1"
           v-model="profession_value"
           name="inputname"
           value=3
           button
       >Teacher
       </b-form-radio>
-      <b-form-radio
+      <b-form-radio class="my-1"
           v-model="profession_value"
           name="inputname"
           value=4

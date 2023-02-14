@@ -35,6 +35,7 @@ export const useStore = defineStore('store', {
             labelling_items: [],
             study_ids: [],
             study_items: [],
+            study_condition: null,
             labelling_answer0: null,
             labelling_answer1: null,
             labelling_answer2: null,
@@ -45,6 +46,26 @@ export const useStore = defineStore('store', {
             labelling_answer7: null,
             labelling_answer8: null,
             labelling_answer9: null,
+            study_answer0: null,
+            study_answer1: null,
+            study_answer2: null,
+            study_answer3: null,
+            study_answer4: null,
+            study_answer5: null,
+            study_answer6: null,
+            study_answer7: null,
+            study_answer8: null,
+            study_answer9: null,
+            study_answer10: null,
+            study_answer11: null,
+            study_answer12: null,
+            study_answer13: null,
+            study_answer14: null,
+            study_answer15: null,
+            study_answer16: null,
+            study_answer17: null,
+            study_answer18: null,
+            study_answer19: null,
             aiInsights: {
                 "ai-included-decision": null,
                 "ai-use-prediction": null,
@@ -128,6 +149,9 @@ export const useStore = defineStore('store', {
         getStudyIds(state) {
             return state['study_ids'];
         },
+        getStudyCondition(state) {
+            return state['study_condition'];
+        }
     },
     actions: {
         // Restarts the study
@@ -173,6 +197,9 @@ export const useStore = defineStore('store', {
                 state.study_ids.push(id);
             });
             this.shuffle(state.study_ids);
+        },
+        decideStudyCondition(state) {
+            state.study_condition = Math.random() < 0.5 ? 'with_explanation_highlights' : 'without_explanation_highlights';
         },
         /**
          * Shuffles array in place.

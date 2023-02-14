@@ -1,3 +1,48 @@
 .bg-profession {
   background-color: #dfe0e1;
 }
+
+//quotation marks at resume
+.quotation::before {
+  content: open-quote;
+}
+
+.quotation::after {
+  content: close-quote;
+}
+
+// speech bubble
+.box {
+  width: fit-content;
+  height: fit-content;
+  background: #dfe0e1;
+  padding: 20px;
+  text-align: center;
+  color: $gray;
+  position: relative;
+}
+
+.sb2:before {
+  content: "";
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  border-left: 10px solid transparent;
+  border-right: 10px solid #dfe0e1;
+  border-top: 10px solid #dfe0e1;
+  border-bottom: 10px solid transparent;
+  left: -19px;
+  top: 6px;
+}
+
+// robot image
+.robot {
+  max-height: 150px;
+  @include md {
+    max-height: 200px;
+  }
+}
+
+.border-primary {
+  border: 2px solid $primary;
+}

@@ -58,17 +58,30 @@ export default {
       },
       set(value) {},
     },
+    studyIds: {
+      get() {
+        return this.store['study_ids'];
+      },
+      set(value) {},
+    },
+    studyItems: {
+      get() {
+        return this.store['study_items'];
+      },
+      set(value) {},
+    },
   },
   methods: {
     // Load items from JSON by passed indices
-    loadItemsByIndices() {
-      this.labellingIds.forEach(function (id) {
-        this.labellingItems.push(this.JSON[id]);
+    loadItemsByIndices(ids, items) {
+      ids.forEach(function (id) {
+        items.push(this.JSON[id]);
       }, this);
     },
     validateForm: function () {
       this.store.distributeIds(this.store);
-      this.loadItemsByIndices();
+      this.loadItemsByIndices(this.labellingIds, this.labellingItems);
+      this.loadItemsByIndices(this.studyIds, this.studyItems);
       this.store.nextStep(this.store, 1);
     }
   }
