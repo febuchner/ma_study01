@@ -77,6 +77,7 @@ export const useStore = defineStore('store', {
                 "user-cheat": null,
                 "user-cheat-description": null,
             },
+            timestamps: {},
             street: "Baker Street",
             housenumber: "221b",
             city: "London",
@@ -159,6 +160,12 @@ export const useStore = defineStore('store', {
             state.stepIndex = 0;
         },
         nextTrialStep(state) {
+            // Log Timestamp
+            let step = state.stepIndex + '-' + state.trial_index + '-' + state.steps[state.stepIndex];
+            console.log(step);
+            let timestamp = state.timestamps;
+            timestamp[step] = new Date(Date.now()).toLocaleString("de-DE");
+
             state.trial_index ++;
         },
         resetTrialStep(state) {
@@ -169,13 +176,13 @@ export const useStore = defineStore('store', {
             // Scroll to top
             window.scrollTo(0, 0)
 
+            // Log Timestamp
+            let step = state.stepIndex + '-' + state.steps[state.stepIndex];
+            let timestamp = state.timestamps;
+            timestamp[step] = new Date(Date.now()).toLocaleString("de-DE");
+
             // Update screen
             state.stepIndex += stepsToGo
-
-            // Log Timestamp
-            // var step = state.stepIndex + '-' + state.steps[state.stepIndex]
-            // var timestamp = state.answers.timestamps
-            // timestamp[step] = new Date(Date.now()).toLocaleString("de-DE")
 
             // Update
             // var id = state.answers["participantId"]
@@ -213,12 +220,6 @@ export const useStore = defineStore('store', {
                 arr[j] = x;
             }
              return arr;
-        },
-
-        // Saves answers to answer object
-        setUserInput(state, payload) {
-            // console.log(payload)
-            state.userInput[payload.key] = payload.value
         },
     },
 })
