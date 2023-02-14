@@ -3,28 +3,6 @@
     <div v-if="this.store.getCurrentStep === 'study-trial'">
       <div class="px-3">
 
-        {{ "trial-index: " + this.trial_index }} <br>
-        {{ "study_answer0: " + this.store['study_answer0'] }} <br>
-        {{ "study_answer1: " + this.store['study_answer1'] }} <br>
-        {{ "study_answer2: " + this.store['study_answer2'] }} <br>
-        {{ "study_answer3: " + this.store['study_answer3'] }} <br>
-        {{ "study_answer4: " + this.store['study_answer4'] }} <br>
-        {{ "study_answer5: " + this.store['study_answer5'] }} <br>
-        {{ "study_answer6: " + this.store['study_answer6'] }} <br>
-        {{ "study_answer7: " + this.store['study_answer7'] }} <br>
-        {{ "study_answer8: " + this.store['study_answer8'] }} <br>
-        {{ "study_answer9: " + this.store['study_answer9'] }} <br>
-        {{ "study_answer10: " + this.store['study_answer10'] }} <br>
-        {{ "study_answer11: " + this.store['study_answer11'] }} <br>
-        {{ "study_answer12: " + this.store['study_answer12'] }} <br>
-        {{ "study_answer13: " + this.store['study_answer13'] }} <br>
-        {{ "study_answer14: " + this.store['study_answer14'] }} <br>
-        {{ "study_answer15: " + this.store['study_answer15'] }} <br>
-        {{ "study_answer16: " + this.store['study_answer16'] }} <br>
-        {{ "study_answer17: " + this.store['study_answer17'] }} <br>
-        {{ "study_answer18: " + this.store['study_answer18'] }} <br>
-        {{ "study_answer19: " + this.store['study_answer19'] }} <br>
-
         <div v-for="(n,index) in this.studyItems">
 
           <div v-if="this.trial_index === index">
