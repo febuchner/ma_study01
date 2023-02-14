@@ -36,6 +36,10 @@
 }
 
 // robot image
+.logo-robot{
+  max-width: 275px !important;
+}
+
 .robot {
   max-height: 150px;
   @include md {

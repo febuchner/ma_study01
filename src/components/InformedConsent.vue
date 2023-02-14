@@ -64,7 +64,7 @@
         participate in the study.
       </div>
 
-      <button @click="validateForm" type="submit" class="btn btn-primary mt-5">
+      <button @click="validateForm" :disabled="!this.consentAccepted === true" type="submit" class="btn btn-primary mt-5">
         Next <font-awesome-icon icon="fa-solid fa-arrow-right" />
       </button>
 
@@ -92,6 +92,7 @@ export default {
   computed: {
     consentAccepted: {
       get() {
+        return this.store.userInput['consent-accepted'];
       },
       set(value) {
         this.store.userInput['consent-accepted'] = value
