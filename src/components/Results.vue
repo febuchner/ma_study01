@@ -7,7 +7,7 @@
         </div>
 
         <div class="results">
-          <p>Results: X</p>
+          <ResultBarChart />
         </div>
 
         <hr class="my-5"/>
@@ -88,6 +88,7 @@
 <script>
 import {useStore} from "@/stores/store";
 import SocialMediaShare from "@/components/SocialMediaShare.vue";
+import ResultBarChart from "@/components/ResultBarChart.vue";
 
 export default {
   setup() {
@@ -96,7 +97,8 @@ export default {
   },
   name: "Results",
   components: {
-    'SocialMediaShare': SocialMediaShare
+    'SocialMediaShare': SocialMediaShare,
+    'ResultBarChart': ResultBarChart,
   },
   data() {
     return {}
