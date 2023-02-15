@@ -94,6 +94,7 @@ export default {
   methods: {
     // Validate Form
     validateForm: function () {
+      this.store.saveLabelsForCM(this.store, this.inputname, this.items[this.trial_index]);
       if (this.trial_index === (this.items.length - 1)) {
         this.store.nextStep(this.store, 1);
       } else {

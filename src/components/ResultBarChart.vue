@@ -23,7 +23,7 @@ export default {
           {
             label: 'AI',
             backgroundColor: '#ced4da',
-            data: [0.4]
+            data: [0.02992037075271492]
           },
           {
             label: 'you',

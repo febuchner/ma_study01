@@ -3,6 +3,18 @@
     <div v-if="this.store.getCurrentStep === 'labelling-trial'">
       <div class="px-3">
 
+        {{ "trial-index: " + this.trial_index }} <br>
+        {{ "labelling_answer0: " + this.store['labelling_answer0'] }} <br>
+        {{ "labelling_answer1: " + this.store['labelling_answer1'] }} <br>
+        {{ "labelling_answer2: " + this.store['labelling_answer2'] }} <br>
+        {{ "labelling_answer3: " + this.store['labelling_answer3'] }} <br>
+        {{ "labelling_answer4: " + this.store['labelling_answer4'] }} <br>
+        {{ "labelling_answer5: " + this.store['labelling_answer5'] }} <br>
+        {{ "labelling_answer6: " + this.store['labelling_answer6'] }} <br>
+        {{ "labelling_answer7: " + this.store['labelling_answer7'] }} <br>
+        {{ "labelling_answer8: " + this.store['labelling_answer8'] }} <br>
+        {{ "labelling_answer9: " + this.store['labelling_answer9'] }} <br>
+
         <div v-for="(n,index) in this.labellingItems">
 
           <div v-if="this.trial_index === index">

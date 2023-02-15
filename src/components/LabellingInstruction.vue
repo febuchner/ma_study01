@@ -8,7 +8,8 @@
 
         <div>
           <p>During this part you will be shown 10 different sentences.
-            For each, decide which of the five given professions the person to whom the resume belongs is most likely to have.
+            For each, decide which of the five given professions the person to whom the resume belongs is most likely to
+            have.
             <br><br>
             <span>Based on your given answers from the first and second part, we will present you your gender bias compared to that of our AI at the end of the study.</span><br><br>
           </p>
@@ -50,25 +51,29 @@ export default {
       get() {
         return this.store['labelling_ids'];
       },
-      set(value) {},
+      set(value) {
+      },
     },
     labellingItems: {
       get() {
         return this.store['labelling_items'];
       },
-      set(value) {},
+      set(value) {
+      },
     },
     studyIds: {
       get() {
         return this.store['study_ids'];
       },
-      set(value) {},
+      set(value) {
+      },
     },
     studyItems: {
       get() {
         return this.store['study_items'];
       },
-      set(value) {},
+      set(value) {
+      },
     },
   },
   methods: {

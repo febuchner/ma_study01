@@ -30,7 +30,7 @@ export const useStore = defineStore('store', {
                 "user-cookie-consent": null,
             },
             AI_error_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-            AI_truth_ids: [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,27, 28, 29, 30],
+            AI_truth_ids: [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30],
             labelling_ids: [],
             labelling_items: [],
             study_ids: [],
@@ -78,6 +78,13 @@ export const useStore = defineStore('store', {
                 "user-cheat-description": null,
             },
             timestamps: {},
+            bias: {
+                f_true_labels: [],
+                m_true_labels: [],
+                f_pred_labels: [],
+                m_pred_labels: [],
+                gap: [],
+            },
             street: "Baker Street",
             housenumber: "221b",
             city: "London",
@@ -162,11 +169,10 @@ export const useStore = defineStore('store', {
         nextTrialStep(state) {
             // Log Timestamp
             let step = state.stepIndex + '-' + state.trial_index + '-' + state.steps[state.stepIndex];
-            console.log(step);
             let timestamp = state.timestamps;
             timestamp[step] = new Date(Date.now()).toLocaleString("de-DE");
 
-            state.trial_index ++;
+            state.trial_index++;
         },
         resetTrialStep(state) {
             state.trial_index = 0;
@@ -200,7 +206,7 @@ export const useStore = defineStore('store', {
             this.shuffle(state.AI_error_ids);
             state.labelling_ids = state.AI_error_ids.slice(0, 10);
             state.study_ids = state.AI_error_ids.slice(10, state.AI_error_ids.length);
-            state.AI_truth_ids.forEach(function(id) {
+            state.AI_truth_ids.forEach(function (id) {
                 state.study_ids.push(id);
             });
             this.shuffle(state.study_ids);
@@ -219,7 +225,25 @@ export const useStore = defineStore('store', {
                 arr[index] = arr[j];
                 arr[j] = x;
             }
-             return arr;
+            return arr;
+        },
+        saveLabelsForCM(state, name, item) {
+            if (item['gender'] === 'F') {
+                state.bias['f_true_labels'].push(item['title'])
+                state.bias['f_pred_labels'].push(state[name])
+                console.log(item);
+                console.log("F true labels: "+state.bias['f_true_labels']);
+                console.log("F pred labels: "+state.bias['f_pred_labels']);
+            } else {
+                state.bias['m_true_labels'].push(item['title']);
+                state.bias['m_pred_labels'].push(state[name]);
+                console.log("Gender M");
+                console.log("M true labels: "+state.bias['m_true_labels']);
+                console.log("M pred labels: "+state.bias['m_pred_labels']);
+            }
+
+            console.log(item);
+
         },
     },
 })
