@@ -45,9 +45,9 @@ export default {
   name: "StudyIntroduction",
   methods: {
     validateForm: function () {
-      // this.store.decideStudyCondition(this.store);
-      this.store['study_condition'] = 'with_explanation_highlights'
-      // this.store['study_condition'] = 'without_explanation_highlights'
+      this.store.decideStudyCondition(this.store);
+      // this.store['study_condition'] = 'with_explanation_highlights'
+      // // this.store['study_condition'] = 'without_explanation_highlights'
       this.store.resetTrialStep(this.store);
       this.store.nextStep(this.store, 1);
     }

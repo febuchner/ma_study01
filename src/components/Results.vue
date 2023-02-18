@@ -7,11 +7,10 @@
         </div>
 
         <div class="results">
-          <ResultBarChart />
+          <ResultBarChart chartlabel="Female male gap overall" data_AI="0.04003457333379701" gaps_position="gaps.length-1"/>
         </div>
 
         <hr class="my-5"/>
-
         <div class="text-center">
           <div class="mb-5">
             <h2>Thank you for participating in our study! We hope you had fun.</h2>

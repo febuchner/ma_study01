@@ -16,11 +16,13 @@
         </div>
 
         <div class="mb-3">
-          <p>Below you will find a picture that shows you what the first part looks like.</p>
+          <p>Below you will find a picture that shows you what the first part looks like with some instructions on how to do it:</p>
         </div>
 
-        <img src="https://toxicity-litw.apps.allenai.org/93a19e44bf64e2fd43b0e6d31a6c25e3.png"
-             alt="Example of the experiment page" class="img-fluid">
+        <div class="px-0 px-sm-3 px-md-5">
+          <img src="../assets/images/trialinstruction_visualisation.png"
+               alt="Example of the first part of the study" class="img-fluid">
+        </div>
 
         <button @click="validateForm" type="submit" class="btn btn-primary my-5">
           Let's start!

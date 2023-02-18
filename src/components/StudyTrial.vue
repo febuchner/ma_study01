@@ -35,19 +35,19 @@
             {{this.studyItems[this.trial_index]['profession']}} <br>
             {{this.studyItems[this.trial_index]['pred_profession']}}
 
-            <div class="col-12 bg-profession text-center px-3 py-4">
+            <div class="col-12 d-flex border-primary">
+              <div class="col d-flex justify-content-center">
+                <img src="../assets/images/my_robot.png" class="img-fluid robot">
+                <div class="h4 box sb2 ms-sm-3 my-3 my-md-5">My prediction is <strong>{{ this.studyItems[this.trial_index]['pred_profession']}}</strong>.</div>
+              </div>
+            </div>
+
+            <div class="col-12 bg-profession text-center mt-3 px-3 py-4">
               <div v-if="this.studyCondition === 'with_explanation_highlights'">
                 <h2><div v-html="this.studyItems[this.trial_index]['explanations_html']" class="quotation"></div></h2>
               </div>
               <div v-else>
                 <h2 class="quotation">{{ this.studyItems[this.trial_index]['raw'] }}</h2>
-              </div>
-            </div>
-
-            <div class="col-12 d-flex border-primary mt-3">
-              <div class="col d-flex justify-content-center">
-                <img src="../assets/images/my_robot.png" class="img-fluid robot">
-                <div class="h5 box sb2 ms-sm-3 my-3 my-md-5">I think that this resume belongs to a <strong>{{ this.studyItems[this.trial_index]['pred_profession']}}</strong>.</div>
               </div>
             </div>
 
