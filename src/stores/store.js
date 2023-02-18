@@ -230,17 +230,11 @@ export const useStore = defineStore('store', {
         },
         saveLabelsForCM(state, name, item) {
             if (item['gender'] === 'F') {
-                state.bias['f_true_labels'].push(item['title'])
-                state.bias['f_pred_labels'].push(state[name])
-                console.log(item);
-                console.log("F true labels: "+state.bias['f_true_labels']);
-                console.log("F pred labels: "+state.bias['f_pred_labels']);
+                state.bias['f_true_labels'].push(item['title']);
+                state.bias['f_pred_labels'].push(state[name]);
             } else {
                 state.bias['m_true_labels'].push(item['title']);
                 state.bias['m_pred_labels'].push(state[name]);
-                console.log("Gender M");
-                console.log("M true labels: "+state.bias['m_true_labels']);
-                console.log("M pred labels: "+state.bias['m_pred_labels']);
             }
 
             console.log(item);
