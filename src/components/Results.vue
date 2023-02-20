@@ -113,7 +113,26 @@
           <div class="mb-5">
             <h2>Thank you for participating in our study! We hope you had fun.</h2>
             <p>
-              Your results will help us <span class="text-danger">X</span>.
+              Your results will help us gaining insights in two main areas. <br>
+              First, we will be able to rate the difficulty of the different resumes based on the percentage of users
+              who decided for the correct profession.
+              Prior work suggested that reliance on AI-suggested assistance increases as the task's complexity rises [2].
+              As shown in former studies, the existence of explanations can result in overreliance on AI
+              [3, 4].
+              Because of this, in the second part of the study, you were randomly assigned to one of two conditions
+              regarding the level of AI explanations: only AI predictions or AI explanations with highlighted words.
+              With this information, we will further explore what effect do task difficulty and AI explanations have on
+              the overreliance effect when a user and an AI collaborate.
+            </p>
+            <p class="text-start pt-3">
+              [2] Parkes, A. (2017). The effect of individual and task characteristics on decision aid reliance.
+              Behaviour & Information Technology, 36(2), 165-177. <br>
+              [3] Zhang, Y., Liao, Q. V., & Bellamy, R. K. (2020, January). Effect of confidence and explanation on
+              accuracy and trust calibration in AI-assisted decision making. In Proceedings of the 2020 conference on
+              fairness, accountability, and transparency (pp. 295-305) <br>
+              [4] Lai, V., Liu, H., & Tan, C. (2020, April). " Why is' Chicago'deceptive?" Towards Building Model-Driven
+              Tutorials for Humans. In Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (pp.
+              1-13).
             </p>
           </div>
           <div class="mt-5">
