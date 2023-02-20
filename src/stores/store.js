@@ -245,6 +245,7 @@ export const useStore = defineStore('store', {
             state.bias['m_true_labels'] = [0,0,1,1,4,1,1,1,0,0,0,1,4,0,0,0,1,3,0];
             state.bias['f_pred_labels'] = [2,0,3,4,1,2,4,1,1,4,0];
             state.bias['m_pred_labels'] = [0,1,3,4,1,2,0,3,0,2,3,4,0,2,3,1,2,3,4];
+
             // The order of the arguments has to be (trueLabels, predictedLabels) !!!
             let f_confmatrix = ConfusionMatrix.fromLabels(state.bias['f_true_labels'], state.bias['f_pred_labels']);
             let m_confmatrix = ConfusionMatrix.fromLabels(state.bias['m_true_labels'], state.bias['m_pred_labels']);

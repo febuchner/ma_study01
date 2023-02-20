@@ -5,22 +5,26 @@
       :data="chartData"
   />
 
-  {{gaps_position}}
 </template>
 
 <script>
+import {useStore} from "@/stores/store";
 import {Bar} from 'vue-chartjs'
 import {Chart as ChartJS, Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale} from 'chart.js'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
 export default {
+  setup() {
+    const store = useStore();
+    return {store};
+  },
   name: "ResultBarChart",
   components: {Bar},
   props: [
     'chartlabel',
     'data_AI',
-    'gaps_position',
+    'data_you',
   ],
   data() {
     return {
@@ -33,14 +37,14 @@ export default {
             data: [this.data_AI]
           },
           {
-            label: 'you',
+            label: 'You',
             backgroundColor: '#0d6efd',
-            data: [this.data_you]
+            data: [this.data_you],
           },
           {
-            label: 'labinthewild users',
+            label: 'Average LabintheWild users',
             backgroundColor: '#99BA6A',
-            data: [1.0]
+            data: [this.data_you]
           },
         ]
       },
@@ -48,16 +52,6 @@ export default {
         responsive: true
       }
     }
-  },
-  computed: {
-    data_you: {
-      get() {
-        // TODO: fix this to be able to get gap by position in array
-        return this.store.bias.gap[this.gaps_position];
-      },
-      set(value) {
-      },
-    },
   },
 }
 </script>
