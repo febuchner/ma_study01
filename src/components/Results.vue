@@ -9,39 +9,39 @@
         <div class="results">
           <h2 class="my-5">This graph shows you your personal gender bias compared to our AI and the average of all
             other LabintheWild users who have taken this test.</h2>
-          <ResultBarChart chartlabel="General gender bias" :data_AI="this.data_AI_general"
-                          :data_you="this.data_you_general"/>
+          <ResultBarChart chartlabel="Average gender bias" :data_AI="this.data_AI_average"
+                          :data_you="this.data_you_average"/>
           <div class="mt-3">
-            <p>Your personal general gender bias score is <strong>{{this.data_you_general}}</strong>.</p>
-            <p v-if="this.data_you_general > this.data_AI_general">
-              Your personal general gender bias is greater than the general gender bias of our AI. This means that you
+            <p>Your personal average gender bias score is <strong>{{this.data_you_average}}</strong>.</p>
+            <p v-if="this.data_you_average > this.data_AI_average">
+              Your personal average gender bias is greater than the average gender bias of our AI. This means that you
               can predict a <strong>woman's true profession better and/or a man's true profession worse</strong> than
               our AI.
 
             </p>
-            <p v-else-if="this.data_you_general === this.data_AI_general">
-              Your personal general gender bias is equal to the general gender bias of our AI. This means that you are
+            <p v-else-if="this.data_you_average === this.data_AI_average">
+              Your personal average gender bias is equal to the average gender bias of our AI. This means that you are
               proportionally <strong>as good as our AI in predicting the true profession of a woman and a man</strong>.
 
             </p>
             <p v-else>
-              Your personal general gender bias is less than the general gender bias of our AI. This means that you can
+              Your personal average gender bias is less than the average gender bias of our AI. This means that you can
               predict a <strong>woman's true profession worse and/or a man's true profession better</strong> than our
               AI.
 
             </p>
 
-            <p v-if="this.data_you_general > 0.0">
-              Because your personal general gender bias is greater than 0, this means that you are <strong>better at
+            <p v-if="this.data_you_average > 0.0">
+              Because your personal average gender bias is greater than 0, this means that you are <strong>better at
               predicting
               a woman's profession than a man's</strong>.
             </p>
-            <p v-else-if="this.data_you_general === 0.0">
-              Because your personal general gender bias is equal to 0, this means that <strong>you can predict a woman's
+            <p v-else-if="this.data_you_average === 0.0">
+              Because your personal average gender bias is equal to 0, this means that <strong>you can predict a woman's
               profession just as well as a man's</strong>.
             </p>
             <p v-else>
-              Because your personal general gender bias is less than 0, this means that you are <strong>better at
+              Because your personal average gender bias is less than 0, this means that you are <strong>better at
               predicting a
               man's profession than a woman's</strong>.
             </p>
@@ -53,7 +53,7 @@
               This quantification of gender bias was derived from De-Arteaga et al.'s study about semantic
               representation bias [1].
               <br>
-              In the graph above you can see your average of the five TPR gender gaps as <strong>general gender
+              In the graph above you can see your average of the five TPR gender gaps as <strong>average gender
                 bias</strong>.
             </p>
           </div>
@@ -220,7 +220,7 @@ export default {
   },
   data() {
     return {
-      data_AI_general: 0.04003457333379701,
+      data_AI_average: 0.04003457333379701,
       data_AI_professor: -0.0028828069265192102,
       data_AI_physician: 0.1206277309053605,
       data_AI_psychologist: 0.08625232589048382,
@@ -264,7 +264,7 @@ export default {
       set(value) {
       },
     },
-    data_you_general: {
+    data_you_average: {
       get() {
         return (this.store.bias.gap['5']);
       },
