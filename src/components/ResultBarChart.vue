@@ -4,7 +4,6 @@
       :options="chartOptions"
       :data="chartData"
   />
-
 </template>
 
 <script>

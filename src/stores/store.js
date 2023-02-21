@@ -1,5 +1,5 @@
 import {defineStore} from 'pinia'
-import { ConfusionMatrix } from 'ml-confusion-matrix';
+import {ConfusionMatrix} from 'ml-confusion-matrix';
 
 export const useStore = defineStore('store', {
     state: () => {
@@ -84,7 +84,7 @@ export const useStore = defineStore('store', {
                 m_true_labels: [],
                 f_pred_labels: [],
                 m_pred_labels: [],
-                gap: [],
+                gap: [NaN, NaN, NaN, NaN, NaN, NaN],
             },
             street: "Baker Street",
             housenumber: "221b",
@@ -236,55 +236,116 @@ export const useStore = defineStore('store', {
                 state.bias['m_true_labels'].push(item['title']);
                 state.bias['m_pred_labels'].push(state[name]);
             }
-
-            console.log(item);
-
         },
         calculateBias(state) {
-            state.bias['f_true_labels'] = [0,0,0,2,0,0,0,0,1,3,0];
-            state.bias['m_true_labels'] = [0,0,1,1,4,1,1,1,0,0,0,1,4,0,0,0,1,3,0];
-            state.bias['f_pred_labels'] = [2,0,3,4,1,2,4,1,1,4,0];
-            state.bias['m_pred_labels'] = [0,1,3,4,1,2,0,3,0,2,3,4,0,2,3,1,2,3,4];
+            // TODO: Remove dummy labelling
+            // state.bias['f_true_labels'] = [0, 0, 0, 2, 0, 1, 0, 0, 3, 0, 0];
+            // state.bias['m_true_labels'] = [4, 1, 1, 0, 3, 1, 4, 0, 1, 0, 0, 1, 0, 1, 0, 0, 0, 1, 0];
+            // state.bias['f_pred_labels'] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+            // state.bias['m_pred_labels'] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 
             // The order of the arguments has to be (trueLabels, predictedLabels) !!!
             let f_confmatrix = ConfusionMatrix.fromLabels(state.bias['f_true_labels'], state.bias['f_pred_labels']);
             let m_confmatrix = ConfusionMatrix.fromLabels(state.bias['m_true_labels'], state.bias['m_pred_labels']);
 
-            let all_professions = [...state.bias['f_true_labels'], ...state.bias['m_true_labels']];
+            // let all_professions = [...state.bias['f_true_labels'], ...state.bias['m_true_labels']];
+            let all_professions = [...state.bias['f_pred_labels'], ...state.bias['m_pred_labels']];
             let num_professions = [...new Set(all_professions)].sort();
 
-            let f_tpr_pro_profession = [];
-            let m_tpr_pro_profession = [];
+            let f_tpr_0;
+            let m_tpr_0;
+            let f_tpr_1;
+            let m_tpr_1;
+            let f_tpr_2;
+            let m_tpr_2;
+            let f_tpr_3;
+            let m_tpr_3;
+            let f_tpr_4;
+            let m_tpr_4;
 
             // female by profession
             for (let profession in num_professions) {
-                f_tpr_pro_profession.push(f_confmatrix.getTruePositiveRate(num_professions[profession]));
+                switch (profession) {
+                    case "0":
+                        f_tpr_0 = f_confmatrix.getTruePositiveRate(0);
+                        break;
+                    case "1":
+                        f_tpr_1 = f_confmatrix.getTruePositiveRate(1);
+                        break;
+                    case "2":
+                        f_tpr_2 = f_confmatrix.getTruePositiveRate(2);
+                        break;
+                    case "3":
+                        f_tpr_3 = f_confmatrix.getTruePositiveRate(3);
+                        break;
+                    case "4":
+                        f_tpr_4 = f_confmatrix.getTruePositiveRate(4);
+                        break;
+                }
             }
 
             // male by profession
             for (let profession in num_professions) {
-                m_tpr_pro_profession.push(m_confmatrix.getTruePositiveRate(num_professions[profession]));
+                switch (profession) {
+                    case "0":
+                        m_tpr_0 = m_confmatrix.getTruePositiveRate(0);
+                        break;
+                    case "1":
+                        m_tpr_1 = m_confmatrix.getTruePositiveRate(1);
+                        break;
+                    case "2":
+                        m_tpr_2 = m_confmatrix.getTruePositiveRate(2);
+                        break;
+                    case "3":
+                        m_tpr_3 = m_confmatrix.getTruePositiveRate(3);
+                        break;
+                    case "4":
+                        m_tpr_4 = m_confmatrix.getTruePositiveRate(4);
+                        break;
+                }
             }
 
-            // calculate f_m-gaps by profession
+            // calculate f_m_gaps by profession
             for (let profession in num_professions) {
-               state['bias']['gap'].push(f_tpr_pro_profession[profession] - m_tpr_pro_profession[profession]);
+                switch (profession) {
+                    case "0":
+                        state['bias']['gap'][0] = (f_tpr_0 - m_tpr_0);
+                        break;
+                    case "1":
+                        state['bias']['gap'][1] = (f_tpr_1 - m_tpr_1);
+                        break;
+                    case "2":
+                        state['bias']['gap'][2] = (f_tpr_2 - m_tpr_2);
+                        break;
+                    case "3":
+                        state['bias']['gap'][3] = (f_tpr_3 - m_tpr_3);
+                        break;
+                    case "4":
+                        state['bias']['gap'][4] = (f_tpr_4 - m_tpr_4);
+                        break;
+                }
             }
 
             // calculate overall f_m_gap
+            let f_tpr_pro_profession = [];
+            f_tpr_pro_profession.push(f_tpr_0, f_tpr_1, f_tpr_2, f_tpr_3, f_tpr_4)
             let filtered_f_tpr_pro_profession = f_tpr_pro_profession.filter(Boolean)
+            // FIXME: no reduce on empty array
             let sum_f_tpr_pro_profession = filtered_f_tpr_pro_profession.reduce((x, y) => {
                 return x + y;
             });
             let all_f_tpr = sum_f_tpr_pro_profession / filtered_f_tpr_pro_profession.length;
 
+            let m_tpr_pro_profession = [];
+            m_tpr_pro_profession.push(m_tpr_0, m_tpr_1, m_tpr_2, m_tpr_3, m_tpr_4)
             let filtered_m_tpr_pro_profession = m_tpr_pro_profession.filter(Boolean)
+            // FIXME: no reduce on empty array
             let sum_m_tpr_pro_profession = filtered_m_tpr_pro_profession.reduce((x, y) => {
                 return x + y;
             });
             let all_m_tpr = sum_m_tpr_pro_profession / filtered_m_tpr_pro_profession.length;
 
-            state['bias']['gap'].push(all_f_tpr - all_m_tpr);
+            state['bias']['gap'][5] = (all_f_tpr - all_m_tpr);
         },
     },
 })

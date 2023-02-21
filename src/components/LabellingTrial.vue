@@ -2,7 +2,7 @@
   <transition name="fade">
     <div v-if="this.store.getCurrentStep === 'labelling-trial'">
       <div class="px-3">
-
+        <!-- TODO: Remove before golive-->
         {{ "trial-index: " + this.trial_index }} <br>
         {{ "labelling_answer0: " + this.store['labelling_answer0'] }} <br>
         {{ "labelling_answer1: " + this.store['labelling_answer1'] }} <br>
@@ -19,7 +19,7 @@
 
           <div v-if="this.trial_index === index">
             <div class="mb-5 text-center">
-              <h1>Round {{ this.trial_index + 1 }} / {{this.labellingItems.length}}</h1>
+              <h1>Round {{ this.trial_index + 1 }} / {{ this.labellingItems.length }}</h1>
             </div>
 
             <div class="col-12 bg-profession text-center px-3 py-4">
@@ -78,8 +78,7 @@ export default {
   },
   name: "LabellingTrial",
   data() {
-    return {
-    }
+    return {}
   },
   computed: {
     trial_index: {

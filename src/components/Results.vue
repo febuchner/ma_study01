@@ -12,7 +12,7 @@
           <ResultBarChart chartlabel="General gender bias" :data_AI="this.data_AI_general"
                           :data_you="this.data_you_general"/>
           <div class="mt-3">
-            <!--            Explain findings and its implications for daily life-->
+            <p>Your personal general gender bias score is <strong>{{this.data_you_general}}</strong>.</p>
             <p v-if="this.data_you_general > this.data_AI_general">
               Your personal general gender bias is greater than the general gender bias of our AI. This means that you
               can predict a <strong>woman's true profession better and/or a man's true profession worse</strong> than
@@ -231,42 +231,42 @@ export default {
   computed: {
     data_you_professor: {
       get() {
-        return this.store.bias.gap[0];
+        return (this.store.bias.gap['0']);
       },
       set(value) {
       },
     },
     data_you_physician: {
       get() {
-        return this.store.bias.gap[1];
+        return (this.store.bias.gap['1']);
       },
       set(value) {
       },
     },
     data_you_psychologist: {
       get() {
-        return this.store.bias.gap[2];
+        return (this.store.bias.gap['2']);
       },
       set(value) {
       },
     },
     data_you_teacher: {
       get() {
-        return this.store.bias.gap[3];
+        return (this.store.bias.gap['3']);
       },
       set(value) {
       },
     },
     data_you_surgeon: {
       get() {
-        return this.store.bias.gap[4];
+        return (this.store.bias.gap['4']);
       },
       set(value) {
       },
     },
     data_you_general: {
       get() {
-        return this.store.bias.gap[5];
+        return (this.store.bias.gap['5']);
       },
       set(value) {
       },

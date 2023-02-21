@@ -72,7 +72,7 @@ export default {
         return this.store[this.inputname];
       },
       set(value) {
-        this.store[this.inputname] = value;
+        this.store[this.inputname] = parseInt(value);
       }
     },
     trial_index: {
@@ -90,12 +90,24 @@ export default {
         this.store[this.inputitems] = value;
       }
     },
+    study_items_length: {
+      get() {
+        return (this.store['study_items']).length;
+      },
+      set(value) {
+      }
+    },
+
   },
   methods: {
     // Validate Form
     validateForm: function () {
       this.store.saveLabelsForCM(this.store, this.inputname, this.items[this.trial_index]);
+
       if (this.trial_index === (this.items.length - 1)) {
+        if (this.trial_index === (this.study_items_length -1)) {
+          this.store.calculateBias(this.store);
+        }
         this.store.nextStep(this.store, 1);
       } else {
         this.store.nextTrialStep(this.store);

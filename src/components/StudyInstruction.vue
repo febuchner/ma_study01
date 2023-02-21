@@ -46,7 +46,7 @@ export default {
   methods: {
     validateForm: function () {
       this.store.decideStudyCondition(this.store);
-      //TODO: Remove study condition setting by hand
+      // TODO: Remove before golive
       // this.store['study_condition'] = 'with_explanation_highlights'
       // this.store['study_condition'] = 'without_explanation_highlights'
       this.store.resetTrialStep(this.store);
