@@ -9,7 +9,7 @@
           <div class="row">
             <div class="col-12 col-lg-8">
               <p class="h3">
-                Welcome and thank you for your interest in our LabInTheWild test.
+                Welcome and thank you for your interest in our LabintheWild test.
               </p>
               <p class="h3 mt-5">
                 Tell us what you think the person whose biography you are looking at does for a living and we'll show you how gender biased you are compared to our AI.

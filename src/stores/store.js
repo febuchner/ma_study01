@@ -1,4 +1,5 @@
 import {defineStore} from 'pinia'
+import {ConfusionMatrix} from 'ml-confusion-matrix';
 
 export const useStore = defineStore('store', {
     state: () => {
@@ -29,8 +30,8 @@ export const useStore = defineStore('store', {
                 "user-ml-knowledge": null,
                 "user-cookie-consent": null,
             },
-            AI_error_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14],
-            AI_truth_ids: [15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26,27, 28, 29, 30],
+            AI_error_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], // #14
+            AI_truth_ids: [15, 18, 23, 30, 34, 36, 39, 55, 93, 578, 16, 17, 19, 20, 21, 22], //#16
             labelling_ids: [],
             labelling_items: [],
             study_ids: [],
@@ -78,6 +79,13 @@ export const useStore = defineStore('store', {
                 "user-cheat-description": null,
             },
             timestamps: {},
+            bias: {
+                f_true_labels: [],
+                m_true_labels: [],
+                f_pred_labels: [],
+                m_pred_labels: [],
+                gap: [NaN, NaN, NaN, NaN, NaN, NaN],
+            },
             street: "Baker Street",
             housenumber: "221b",
             city: "London",
@@ -162,11 +170,10 @@ export const useStore = defineStore('store', {
         nextTrialStep(state) {
             // Log Timestamp
             let step = state.stepIndex + '-' + state.trial_index + '-' + state.steps[state.stepIndex];
-            console.log(step);
             let timestamp = state.timestamps;
             timestamp[step] = new Date(Date.now()).toLocaleString("de-DE");
 
-            state.trial_index ++;
+            state.trial_index++;
         },
         resetTrialStep(state) {
             state.trial_index = 0;
@@ -200,7 +207,7 @@ export const useStore = defineStore('store', {
             this.shuffle(state.AI_error_ids);
             state.labelling_ids = state.AI_error_ids.slice(0, 10);
             state.study_ids = state.AI_error_ids.slice(10, state.AI_error_ids.length);
-            state.AI_truth_ids.forEach(function(id) {
+            state.AI_truth_ids.forEach(function (id) {
                 state.study_ids.push(id);
             });
             this.shuffle(state.study_ids);
@@ -219,7 +226,112 @@ export const useStore = defineStore('store', {
                 arr[index] = arr[j];
                 arr[j] = x;
             }
-             return arr;
+            return arr;
+        },
+        saveLabelsForCM(state, name, item) {
+            if (item['gender'] === 'F') {
+                state.bias['f_true_labels'].push(item['title']);
+                state.bias['f_pred_labels'].push(state[name]);
+            } else {
+                state.bias['m_true_labels'].push(item['title']);
+                state.bias['m_pred_labels'].push(state[name]);
+            }
+        },
+        calculateBias(state) {
+            // The order of the arguments has to be (trueLabels, predictedLabels) !!!
+            let f_confmatrix = ConfusionMatrix.fromLabels(state.bias['f_true_labels'], state.bias['f_pred_labels']);
+            let m_confmatrix = ConfusionMatrix.fromLabels(state.bias['m_true_labels'], state.bias['m_pred_labels']);
+
+            let all_professions = [...state.bias['f_true_labels'], ...state.bias['m_true_labels']];
+            let num_professions = [...new Set(all_professions)].sort();
+
+            let f_tpr_pro_profession = [NaN, NaN, NaN, NaN, NaN];
+            let m_tpr_pro_profession = [NaN, NaN, NaN, NaN, NaN];
+
+            // female by profession
+            for (let profession in num_professions) {
+                switch (profession) {
+                    case "0":
+                        f_tpr_pro_profession[0] = f_confmatrix.getTruePositiveRate(0);
+                        break;
+                    case "1":
+                        f_tpr_pro_profession[1] = f_confmatrix.getTruePositiveRate(1);
+                        break;
+                    case "2":
+                        f_tpr_pro_profession[2] = f_confmatrix.getTruePositiveRate(2);
+                        break;
+                    case "3":
+                        f_tpr_pro_profession[3] = f_confmatrix.getTruePositiveRate(3);
+                        break;
+                    case "4":
+                        f_tpr_pro_profession[4] = f_confmatrix.getTruePositiveRate(4);
+                        break;
+                }
+            }
+
+            // male by profession
+            for (let profession in num_professions) {
+                switch (profession) {
+                    case "0":
+                        m_tpr_pro_profession[0] = m_confmatrix.getTruePositiveRate(0);
+                        break;
+                    case "1":
+                        m_tpr_pro_profession[1] = m_confmatrix.getTruePositiveRate(1);
+                        break;
+                    case "2":
+                        m_tpr_pro_profession[2] = m_confmatrix.getTruePositiveRate(2);
+                        break;
+                    case "3":
+                        m_tpr_pro_profession[3] = m_confmatrix.getTruePositiveRate(3);
+                        break;
+                    case "4":
+                        m_tpr_pro_profession[4] = m_confmatrix.getTruePositiveRate(4);
+                        break;
+                }
+            }
+
+            // calculate f_m_gaps by profession
+            for (let profession in num_professions) {
+                switch (profession) {
+                    case "0":
+                        state['bias']['gap'][0] = (f_tpr_pro_profession[0] - m_tpr_pro_profession[0]);
+                        break;
+                    case "1":
+                        state['bias']['gap'][1] = (f_tpr_pro_profession[1] -  m_tpr_pro_profession[1]);
+                        break;
+                    case "2":
+                        state['bias']['gap'][2] = (f_tpr_pro_profession[2] - m_tpr_pro_profession[2]);
+                        break;
+                    case "3":
+                        state['bias']['gap'][3] = (f_tpr_pro_profession[3] - m_tpr_pro_profession[3]);
+                        break;
+                    case "4":
+                        state['bias']['gap'][4] = (f_tpr_pro_profession[4] - m_tpr_pro_profession[4]);
+                        break;
+                }
+            }
+
+            // calculate overall f_m_gap
+            let filtered_f_tpr_pro_profession = f_tpr_pro_profession.filter(function (value) {
+                return !Number.isNaN(value);
+            });
+            let filtered_m_tpr_pro_profession = m_tpr_pro_profession.filter(function (value) {
+                return !Number.isNaN(value);
+            });
+
+            if (!(filtered_f_tpr_pro_profession.length === 0) && !(filtered_m_tpr_pro_profession.length === 0)) {
+                let sum_f_tpr_pro_profession = filtered_f_tpr_pro_profession.reduce((x, y) => {
+                    return x + y;
+                });
+                let all_f_tpr = sum_f_tpr_pro_profession / filtered_f_tpr_pro_profession.length;
+
+                let sum_m_tpr_pro_profession = filtered_m_tpr_pro_profession.reduce((x, y) => {
+                    return x + y;
+                });
+                let all_m_tpr = sum_m_tpr_pro_profession / filtered_m_tpr_pro_profession.length;
+
+                state['bias']['gap'][5] = (all_f_tpr - all_m_tpr);
+            }
         },
     },
 })

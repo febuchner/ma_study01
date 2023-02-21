@@ -2,6 +2,28 @@
   <transition name="fade">
     <div v-if="this.store.getCurrentStep === 'study-trial'">
       <div class="px-3">
+        <!-- TODO: Remove before golive-->
+        {{ "trial-index: " + this.trial_index }} <br>
+        {{ "study_answer0: " + this.store['study_answer0'] }} <br>
+        {{ "study_answer1: " + this.store['study_answer1'] }} <br>
+        {{ "study_answer2: " + this.store['study_answer2'] }} <br>
+        {{ "study_answer3: " + this.store['study_answer3'] }} <br>
+        {{ "study_answer4: " + this.store['study_answer4'] }} <br>
+        {{ "study_answer5: " + this.store['study_answer5'] }} <br>
+        {{ "study_answer6: " + this.store['study_answer6'] }} <br>
+        {{ "study_answer7: " + this.store['study_answer7'] }} <br>
+        {{ "study_answer8: " + this.store['study_answer8'] }} <br>
+        {{ "study_answer9: " + this.store['study_answer9'] }} <br>
+        {{ "study_answer10: " + this.store['study_answer10'] }} <br>
+        {{ "study_answer11: " + this.store['study_answer11'] }} <br>
+        {{ "study_answer12: " + this.store['study_answer12'] }} <br>
+        {{ "study_answer13: " + this.store['study_answer13'] }} <br>
+        {{ "study_answer14: " + this.store['study_answer14'] }} <br>
+        {{ "study_answer15: " + this.store['study_answer15'] }} <br>
+        {{ "study_answer16: " + this.store['study_answer16'] }} <br>
+        {{ "study_answer17: " + this.store['study_answer17'] }} <br>
+        {{ "study_answer18: " + this.store['study_answer18'] }} <br>
+        {{ "study_answer19: " + this.store['study_answer19'] }} <br>
 
         <div v-for="(n,index) in this.studyItems">
 
@@ -9,23 +31,27 @@
             <div class="mb-5 text-center">
               <h1>Round {{ this.trial_index + 1 }} / {{ this.studyItems.length }}</h1>
             </div>
+            <!-- TODO: Remove before golive-->
+            {{ this.studyItems[this.trial_index]['profession'] }} <br>
+            {{ this.studyItems[this.trial_index]['pred_profession'] }}
 
-            {{this.studyItems[this.trial_index]['profession']}} <br>
-            {{this.studyItems[this.trial_index]['pred_profession']}}
-
-            <div class="col-12 bg-profession text-center px-3 py-4">
-              <div v-if="this.studyCondition === 'with_explanation_highlights'">
-                <h2><div v-html="this.studyItems[this.trial_index]['explanations_html']" class="quotation"></div></h2>
-              </div>
-              <div v-else>
-                <h2 class="quotation">{{ this.studyItems[this.trial_index]['raw'] }}</h2>
+            <div class="col-12 d-flex border-primary">
+              <div class="col d-flex justify-content-center">
+                <img src="../assets/images/my_robot.png" class="img-fluid robot">
+                <div class="h4 box sb2 ms-sm-3 my-3 my-md-5">My prediction is
+                  <strong>{{ this.studyItems[this.trial_index]['pred_profession'] }}</strong>.
+                </div>
               </div>
             </div>
 
-            <div class="col-12 d-flex border-primary mt-3">
-              <div class="col d-flex justify-content-center">
-                <img src="../assets/images/my_robot.png" class="img-fluid robot">
-                <div class="h5 box sb2 ms-sm-3 my-3 my-md-5">I think that this resume belongs to a <strong>{{ this.studyItems[this.trial_index]['pred_profession']}}</strong>.</div>
+            <div class="col-12 bg-profession text-center mt-3 px-3 py-4">
+              <div v-if="this.studyCondition === 'with_explanation_highlights'">
+                <h2>
+                  <div v-html="this.studyItems[this.trial_index]['explanations_html']" class="quotation"></div>
+                </h2>
+              </div>
+              <div v-else>
+                <h2 class="quotation">{{ this.studyItems[this.trial_index]['raw'] }}</h2>
               </div>
             </div>
 
