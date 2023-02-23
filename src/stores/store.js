@@ -86,9 +86,6 @@ export const useStore = defineStore('store', {
                 m_pred_labels: [],
                 gap: [NaN, NaN, NaN, NaN, NaN, NaN],
             },
-            street: "Baker Street",
-            housenumber: "221b",
-            city: "London",
         };
     },
     getters: {
