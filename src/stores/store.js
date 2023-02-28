@@ -37,36 +37,40 @@ export const useStore = defineStore('store', {
             study_ids: [],
             study_items: [],
             study_condition: null,
-            labelling_answer0: null,
-            labelling_answer1: null,
-            labelling_answer2: null,
-            labelling_answer3: null,
-            labelling_answer4: null,
-            labelling_answer5: null,
-            labelling_answer6: null,
-            labelling_answer7: null,
-            labelling_answer8: null,
-            labelling_answer9: null,
-            study_answer0: null,
-            study_answer1: null,
-            study_answer2: null,
-            study_answer3: null,
-            study_answer4: null,
-            study_answer5: null,
-            study_answer6: null,
-            study_answer7: null,
-            study_answer8: null,
-            study_answer9: null,
-            study_answer10: null,
-            study_answer11: null,
-            study_answer12: null,
-            study_answer13: null,
-            study_answer14: null,
-            study_answer15: null,
-            study_answer16: null,
-            study_answer17: null,
-            study_answer18: null,
-            study_answer19: null,
+            labelling_answers: {
+                labelling_answer0: null,
+                labelling_answer1: null,
+                labelling_answer2: null,
+                labelling_answer3: null,
+                labelling_answer4: null,
+                labelling_answer5: null,
+                labelling_answer6: null,
+                labelling_answer7: null,
+                labelling_answer8: null,
+                labelling_answer9: null,
+            },
+            study_answers: {
+                study_answer00: null,
+                study_answer01: null,
+                study_answer02: null,
+                study_answer03: null,
+                study_answer04: null,
+                study_answer05: null,
+                study_answer06: null,
+                study_answer07: null,
+                study_answer08: null,
+                study_answer09: null,
+                study_answer10: null,
+                study_answer11: null,
+                study_answer12: null,
+                study_answer13: null,
+                study_answer14: null,
+                study_answer15: null,
+                study_answer16: null,
+                study_answer17: null,
+                study_answer18: null,
+                study_answer19: null,
+            },
             aiInsights: {
                 "ai-included-decision": null,
                 "ai-use-prediction": null,
@@ -225,13 +229,13 @@ export const useStore = defineStore('store', {
             }
             return arr;
         },
-        saveLabelsForCM(state, name, item) {
+        saveLabelsForCM(state,answer, name, item) {
             if (item['gender'] === 'F') {
                 state.bias['f_true_labels'].push(item['title']);
-                state.bias['f_pred_labels'].push(state[name]);
+                state.bias['f_pred_labels'].push(state[answer][name]);
             } else {
                 state.bias['m_true_labels'].push(item['title']);
-                state.bias['m_pred_labels'].push(state[name]);
+                state.bias['m_pred_labels'].push(state[answer][name]);
             }
         },
         calculateBias(state) {
@@ -294,7 +298,7 @@ export const useStore = defineStore('store', {
                         state['bias']['gap'][0] = (f_tpr_pro_profession[0] - m_tpr_pro_profession[0]);
                         break;
                     case "1":
-                        state['bias']['gap'][1] = (f_tpr_pro_profession[1] -  m_tpr_pro_profession[1]);
+                        state['bias']['gap'][1] = (f_tpr_pro_profession[1] - m_tpr_pro_profession[1]);
                         break;
                     case "2":
                         state['bias']['gap'][2] = (f_tpr_pro_profession[2] - m_tpr_pro_profession[2]);
