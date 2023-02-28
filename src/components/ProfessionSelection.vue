@@ -63,6 +63,7 @@ export default {
   },
   name: "ProfessionSelection",
   props: [
+    'inputanswer',
     'inputname',
     'inputitems',
   ],
@@ -72,7 +73,7 @@ export default {
         return this.store[this.inputname];
       },
       set(value) {
-        this.store[this.inputname] = parseInt(value);
+        this.store[this.inputanswer][this.inputname] = parseInt(value);
       }
     },
     trial_index: {
@@ -102,7 +103,7 @@ export default {
   methods: {
     // Validate Form
     validateForm: function () {
-      this.store.saveLabelsForCM(this.store, this.inputname, this.items[this.trial_index]);
+      this.store.saveLabelsForCM(this.store, this.inputanswer, this.inputname, this.items[this.trial_index]);
 
       if (this.trial_index === (this.items.length - 1)) {
         if (this.trial_index === (this.study_items_length -1)) {
