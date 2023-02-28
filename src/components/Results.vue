@@ -12,41 +12,58 @@
           <ResultBarChart chartlabel="Average gender bias" :data_AI="this.data_AI_average"
                           :data_you="this.data_you_average"/>
           <div class="mt-3">
-            <p>Your personal average gender bias score is <strong>{{this.data_you_average}}</strong>.</p>
-            <p v-if="this.data_you_average > this.data_AI_average">
+            <div v-if="isNaN(this.data_you_average)">
+              We are sorry that your personal average gender bias could not be calculated.
+            </div>
+            <div v-else>
+              Your personal average gender bias score is <strong>{{ this.data_you_average }}</strong>.
+            </div>
+            <div v-if="isNaN(data_AI_you_avg_closer_to_zero)">
+              So, we can't say whether you are on average more or less gender biased than our AI .
+            </div>
+            <div v-if="data_AI_you_avg_closer_to_zero === null">
+              Since it is as far from zero as our AI's, <strong>you are on average just as gender biased as our AI is</strong>!
+            </div>
+            <div v-else-if="data_AI_you_avg_closer_to_zero">
+              Since it is closer to zero than that of our AI, <strong>you are on average less gender biased than our AI</strong>!
+            </div>
+            <div v-else>
+              Since it is further away from zero than that of our AI, <strong>you are on average more gender biased than our AI</strong>!
+            </div>
+
+            <div v-if="isFinite(this.data_you_average) && this.data_you_average > this.data_AI_average">
               Your personal average gender bias is greater than the average gender bias of our AI. This means that you
               can predict a <strong>woman's true profession better and/or a man's true profession worse</strong> than
               our AI.
 
-            </p>
-            <p v-else-if="this.data_you_average === this.data_AI_average">
+            </div>
+            <div v-else-if="isFinite(this.data_you_average) && this.data_you_average === this.data_AI_average">
               Your personal average gender bias is equal to the average gender bias of our AI. This means that you are
               proportionally <strong>as good as our AI in predicting the true profession of a woman and a man</strong>.
 
-            </p>
-            <p v-else>
+            </div>
+            <div v-else-if="isFinite(this.data_you_average) && this.data_you_average < this.data_AI_average">
               Your personal average gender bias is less than the average gender bias of our AI. This means that you can
               predict a <strong>woman's true profession worse and/or a man's true profession better</strong> than our
               AI.
+            </div>
 
-            </p>
-
-            <p v-if="this.data_you_average > 0.0">
-              Because your personal average gender bias is greater than 0, this means that you are <strong>better at
+            <div v-if="isFinite(this.data_you_average) && this.data_you_average > 0.0">
+              Because your personal average gender bias is greater than zero, this means that you are <strong>better at
               predicting
               a woman's profession than a man's</strong>.
-            </p>
-            <p v-else-if="this.data_you_average === 0.0">
-              Because your personal average gender bias is equal to 0, this means that <strong>you can predict a woman's
+            </div>
+            <div v-else-if="isFinite(this.data_you_average) && this.data_you_average === 0.0">
+              Because your personal average gender bias is equal to zero, this means that <strong>you can predict a woman's
               profession just as well as a man's</strong>.
-            </p>
-            <p v-else>
-              Because your personal average gender bias is less than 0, this means that you are <strong>better at
+            </div>
+            <div v-else-if="isFinite(this.data_you_average) && this.data_you_average < 0.0">
+              Because your personal average gender bias is less than zero, this means that you are <strong>better at
               predicting a
               man's profession than a woman's</strong>.
-            </p>
+            </div>
 
-            <p> We calculate the gender bias by computing the true positive rate (TPR) gender gap, or more precisely,
+            <div class="mt-5"> We calculate the gender bias by computing the true positive rate (TPR) gender gap, or more precisely,
               the difference in TPRs between genders for each of the five professions.
               The TPR here indicates the proportion of people with a specific gender and profession who are correctly
               predicted to have that profession.
@@ -55,7 +72,7 @@
               <br>
               In the graph above you can see your average of the five TPR gender gaps as <strong>average gender
                 bias</strong>.
-            </p>
+            </div>
           </div>
           <div class="mt-5">
             <p>Below you find a breakdown of your gender bias for each of the five professions compared to our AI and
@@ -65,7 +82,9 @@
               <ResultBarChart chartlabel="Gender bias of profession professor" :data_AI="this.data_AI_professor"
                               :data_you="this.data_you_professor"/>
               <ResultExplanation :data_you_profession="this.data_you_professor"
-                                 :data_AI_profession="this.data_AI_professor" profession="professor"/>
+                                 :data_AI_profession="this.data_AI_professor"
+                                 profession="professor"
+                                 :closer_to_zero="this.data_AI_you_professor_closer_to_zero"/>
             </div>
 
             <div class="my-5">
@@ -73,7 +92,9 @@
               <ResultBarChart chartlabel="Gender bias of profession physician" :data_AI="this.data_AI_physician"
                               :data_you="this.data_you_physician"/>
               <ResultExplanation :data_you_profession="this.data_you_physician"
-                                 :data_AI_profession="this.data_AI_physician" profession="physician"/>
+                                 :data_AI_profession="this.data_AI_physician"
+                                 profession="physician"
+                                 :closer_to_zero="this.data_AI_you_physician_closer_to_zero"/>
             </div>
 
             <div class="my-5">
@@ -81,23 +102,29 @@
               <ResultBarChart chartlabel="Gender bias of profession psychologist" :data_AI="this.data_AI_psychologist"
                               :data_you="this.data_you_psychologist"/>
               <ResultExplanation :data_you_profession="this.data_you_psychologist"
-                                 :data_AI_profession="this.data_AI_psychologist" profession="psychologist"/>
+                                 :data_AI_profession="this.data_AI_psychologist"
+                                 profession="psychologist"
+                                 :closer_to_zero="this.data_AI_you_psychologist_closer_to_zero"/>
             </div>
 
             <div class="my-5">
               <h3>Gender bias of profession "teacher"</h3>
               <ResultBarChart chartlabel="Gender bias of profession teacher" :data_AI="this.data_AI_teacher"
                               :data_you="this.data_you_teacher"/>
-              <ResultExplanation :data_you_profession="this.data_you_teacher" :data_AI_profession="this.data_AI_teacher"
-                                 profession="teacher"/>
+              <ResultExplanation :data_you_profession="this.data_you_teacher"
+                                 :data_AI_profession="this.data_AI_teacher"
+                                 profession="teacher"
+                                 :closer_to_zero="this.data_AI_you_teacher_closer_to_zero"/>
             </div>
 
             <div class="my-5">
               <h3>Gender bias of profession "surgeon"</h3>
               <ResultBarChart chartlabel="Gender bias of profession surgeon" :data_AI="this.data_AI_surgeon"
                               :data_you="this.data_you_surgeon"/>
-              <ResultExplanation :data_you_profession="this.data_you_surgeon" :data_AI_profession="this.data_AI_surgeon"
-                                 profession="surgeon"/>
+              <ResultExplanation :data_you_profession="this.data_you_surgeon"
+                                 :data_AI_profession="this.data_AI_surgeon"
+                                 profession="surgeon"
+                                 :closer_to_zero="this.data_AI_you_surgeon_closer_to_zero"/>
             </div>
             <div class="mt-5">
               [1] De-Arteaga, M., Romanov, A., Wallach, H., Chayes, J., Borgs, C., Chouldechova, A., ... & Kalai, A. T.
@@ -116,7 +143,8 @@
               Your results will help us gaining insights in two main areas. <br>
               First, we will be able to rate the difficulty of the different resumes based on the percentage of users
               who decided for the correct profession.
-              Prior work suggested that reliance on AI-suggested assistance increases as the task's complexity rises [2].
+              Prior work suggested that reliance on AI-suggested assistance increases as the task's complexity rises
+              [2].
               As shown in former studies, the existence of explanations can result in overreliance on AI
               [3, 4].
               Because of this, in the second part of the study, you were randomly assigned to one of two conditions
@@ -271,8 +299,60 @@ export default {
       set(value) {
       },
     },
+    data_AI_you_avg_closer_to_zero: {
+      get() {
+        return this.userCloserToZero(this.data_AI_average, this.data_you_average);
+      },
+      set(value) {
+      },
+    },
+    data_AI_you_professor_closer_to_zero: {
+      get() {
+        return this.userCloserToZero(this.data_AI_professor, this.data_you_professor);
+      },
+      set(value) {
+      },
+    },
+    data_AI_you_physician_closer_to_zero: {
+      get() {
+        return this.userCloserToZero(this.data_AI_physician, this.data_you_physician);
+      },
+      set(value) {
+      },
+    },
+    data_AI_you_psychologist_closer_to_zero: {
+      get() {
+        return this.userCloserToZero(this.data_AI_psychologist, this.data_you_psychologist);
+      },
+      set(value) {
+      },
+    },
+    data_AI_you_teacher_closer_to_zero: {
+      get() {
+        return this.userCloserToZero(this.data_AI_teacher, this.data_you_teacher);
+      },
+      set(value) {
+      },
+    },
+    data_AI_you_surgeon_closer_to_zero: {
+      get() {
+        return this.userCloserToZero(this.data_AI_surgeon, this.data_you_surgeon);
+      },
+      set(value) {
+      },
+    }
   },
-  methods: {},
+  methods: {
+    userCloserToZero: function (other, user) {
+      if (isNaN(other) || isNaN(user)) {
+        return NaN;
+      }
+      if (Math.abs(other) === Math.abs(user)) {
+        return null;
+      }
+      return Math.abs(other) > Math.abs(user);
+    }
+  },
 }
 </script>
 

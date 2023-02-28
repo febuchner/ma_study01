@@ -35,14 +35,26 @@
             {{ this.studyItems[this.trial_index]['profession'] }} <br>
             {{ this.studyItems[this.trial_index]['pred_profession'] }}
 
-            <div class="col-12 d-flex border-primary">
-              <div class="col d-flex justify-content-center">
+            <div class="col-12 row ms-0 d-flex border-primary">
+              <div class="col-12 d-flex justify-content-center">
                 <img src="../assets/images/my_robot.png" class="img-fluid robot">
                 <div class="h4 box sb2 ms-sm-3 my-3 my-md-5">My prediction is
                   <strong>{{ this.studyItems[this.trial_index]['pred_profession'] }}</strong>.
                 </div>
               </div>
+              <div v-if="this.studyCondition === 'with_explanation_highlights'" class="col-12 row my-2 mx-0 px-0">
+                <div class="col-12 col-md-4 h4 d-flex justify-content-center justify-content-md-end">
+
+                  not {{ this.studyItems[this.trial_index]['pred_profession'] }}
+                </div>
+                <div class="off-set-2 col-8 offset-2 offset-sm-4 col-sm-4 offset-sm-4 offset-md-0 col-md-4 offset-md-0 bg-legend">
+                </div>
+                <div class="col-12 col-md-4 h4 d-flex justify-content-center justify-content-md-start">
+                  {{ this.studyItems[this.trial_index]['pred_profession'] }}
+                </div>
+              </div>
             </div>
+
 
             <div class="col-12 bg-profession text-center mt-3 px-3 py-4">
               <div v-if="this.studyCondition === 'with_explanation_highlights'">

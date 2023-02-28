@@ -7,6 +7,10 @@
   content: open-quote;
 }
 
+.quotation {
+  line-height: 1.35;
+}
+
 .quotation::after {
   content: close-quote;
 }
@@ -36,7 +40,7 @@
 }
 
 // robot image
-.logo-robot{
+.logo-robot {
   max-width: 275px !important;
 }
 
@@ -49,4 +53,16 @@
 
 .border-primary {
   border: 2px solid $primary;
+}
+
+// explanation highlights
+.bg-legend {
+  background: rgb(95, 158, 160);
+  background: linear-gradient(180deg, rgba(0, 139, 251, 1) 0%, rgba(255, 0, 82, 0) 50%, rgba(255, 0, 82, 1) 100%);
+  height: 10rem;
+  @include md {
+    background: rgb(95, 158, 160);
+    background: linear-gradient(90deg, rgba(0, 139, 251, 1) 0%, rgba(255, 0, 82, 0) 50%, rgba(255, 0, 82, 1) 100%);
+    height: 2rem;
+  }
 }

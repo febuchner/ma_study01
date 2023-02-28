@@ -7,16 +7,34 @@
         </div>
 
         <div>
-          <p>During this part you will be shown 10 different sentences.
+          <div>During this part you will be shown 10 different sentences.
             For each, decide which of the five given professions the person to whom the resume belongs is most likely to
             have.
-            <br><br>
-            <span>Based on your given answers from the first and second part, we will present you your gender bias compared to that of our AI at the end of the study.</span><br><br>
-          </p>
+          </div>
+          <div class="mt-4">
+            These professions are:
+            <ul>
+              <li>professor - a teacher of the highest rank in a department of a British university, or a teacher of
+                high rank in an American university or college
+              </li>
+              <li>physician - a medical doctor, especially one who has general skill and is not a surgeon</li>
+              <li>psychologist - someone who studies the human mind and human emotions and behaviour, and how different
+                situations have an effect on people
+              </li>
+              <li>teacher - someone whose job is to teach in a school or college</li>
+              <li>surgeon - a doctor who is specially trained to perform medical operations</li>
+            </ul>
+          </div>
+
+          <div class="mt-4">
+            Based on your given answers from the first and second part, we will present you your gender bias compared to
+            that of our AI at the end of the study.
+          </div>
         </div>
 
-        <div class="mb-3">
-          <p>Below you will find a picture that shows you what the first part looks like with some instructions on how to do it:</p>
+        <div class="mt-4">
+          Below you will find a picture that shows you what the first part looks like with some instructions on how to
+          do it:
         </div>
 
         <div class="px-0 px-sm-3 px-md-5">
@@ -89,6 +107,12 @@ export default {
       this.store.distributeIds(this.store);
       this.loadItemsByIndices(this.labellingIds, this.labellingItems);
       this.loadItemsByIndices(this.studyIds, this.studyItems);
+
+      // this.store.decideStudyCondition(this.store);
+      // TODO: Remove before golive
+      this.store['study_condition'] = 'with_explanation_highlights'
+      // this.store['study_condition'] = 'without_explanation_highlights'
+
       this.store.nextStep(this.store, 1);
     }
   }
