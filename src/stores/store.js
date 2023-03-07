@@ -1,9 +1,12 @@
-import {defineStore} from 'pinia'
+import {defineStore} from 'pinia';
 import {ConfusionMatrix} from 'ml-confusion-matrix';
+import {collection, addDoc} from 'firebase/firestore';
+import {db} from '@/firebase/firebase';
 
 export const useStore = defineStore('store', {
     state: () => {
         return {
+            isDebug: true,
             stepIndex: 0,
             trial_index: 0,
             steps: [
@@ -164,6 +167,20 @@ export const useStore = defineStore('store', {
         }
     },
     actions: {
+        async initParticipant(state) {
+            // let now = new Date(Date.now()).toLocaleString("de-DE")
+            // state.created_on = now
+
+            // Create
+            const collectionName = state.isDebug ? "debug" : "production";
+
+
+            console.log("db: ", db)
+            const colRef = collection(db, collectionName)
+            const docRef = await addDoc(colRef, this.$state);
+            console.log("Document written with ID: ", docRef.id)
+
+        },
         // Restarts the study
         restartStudy(state) {
             state.stepIndex = 0;
@@ -229,7 +246,7 @@ export const useStore = defineStore('store', {
             }
             return arr;
         },
-        saveLabelsForCM(state,answer, name, item) {
+        saveLabelsForCM(state, answer, name, item) {
             if (item['gender'] === 'F') {
                 state.bias['f_true_labels'].push(item['title']);
                 state.bias['f_pred_labels'].push(state[answer][name]);
