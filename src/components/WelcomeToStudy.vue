@@ -24,7 +24,10 @@
           </div>
         </div>
 
-        <button @click="validateForm" type="submit" class="btn btn-primary mt-5">Let's start!
+        <button @click="validateForm" type="submit" class="btn btn-primary mt-5">
+          Let's start!
+          <font-awesome-icon v-if="!this.loading" icon="fa-solid fa-arrow-right" />
+          <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin />
         </button>
       </div>
     </div>
@@ -40,9 +43,17 @@ export default {
     return {store};
   },
   name: "WelcomeToStudy",
+  data() {
+    return {
+      loading: false,
+    }
+  },
   methods: {
-    validateForm: function () {
+    validateForm: async function () {
+      this.loading = true;
+      await this.store.initParticipant(this.store);
       this.store.nextStep(this.store, 1);
+      this.loading = false;
     }
   }
 }

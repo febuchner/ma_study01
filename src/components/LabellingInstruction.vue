@@ -44,6 +44,8 @@
 
         <button @click="validateForm" type="submit" class="btn btn-primary my-5">
           Let's start!
+          <font-awesome-icon v-if="!this.loading" icon="fa-solid fa-arrow-right" />
+          <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin />
         </button>
       </div>
     </div>
@@ -64,6 +66,7 @@ export default {
     return {
       JSON: JSONDATA,
       items: [],
+      loading: false,
     }
   },
   computed: {
@@ -103,7 +106,8 @@ export default {
         items.push(this.JSON[id]);
       }, this);
     },
-    validateForm: function () {
+    validateForm: async function () {
+      this.loading = true;
       this.store.distributeIds(this.store);
       this.loadItemsByIndices(this.labellingIds, this.labellingItems);
       this.loadItemsByIndices(this.studyIds, this.studyItems);
@@ -112,8 +116,9 @@ export default {
       // TODO: Remove before golive
       this.store['study_condition'] = 'with_explanation_highlights'
       // this.store['study_condition'] = 'without_explanation_highlights'
-
+      await this.store.updateDB(this.store);
       this.store.nextStep(this.store, 1);
+      this.loading = false;
     }
   }
 }

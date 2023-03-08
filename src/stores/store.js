@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia';
 import {ConfusionMatrix} from 'ml-confusion-matrix';
-import {collection, addDoc} from 'firebase/firestore';
+import {collection, addDoc, setDoc, doc} from 'firebase/firestore';
 import {db} from '@/firebase/firebase';
 
 export const useStore = defineStore('store', {
@@ -173,13 +173,17 @@ export const useStore = defineStore('store', {
 
             // Create
             const collectionName = state.isDebug ? "debug" : "production";
-
-
-            console.log("db: ", db)
-            const colRef = collection(db, collectionName)
+            const colRef = collection(db, collectionName);
             const docRef = await addDoc(colRef, this.$state);
-            console.log("Document written with ID: ", docRef.id)
+            console.log("docRef: " + docRef.id);
+            state.userInput.userID = docRef.id;
+        },
+        async updateDB(state) {
+            console.log("entered updateDB");
+            const collectionName = state.isDebug ? "debug" : "production";
 
+            const docRef = doc(db, collectionName, state.userInput.userID);
+            await setDoc(docRef, this.$state);
         },
         // Restarts the study
         restartStudy(state) {

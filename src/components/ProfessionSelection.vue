@@ -48,8 +48,9 @@
     </b-form-radio-group>
   </b-form-group>
 
-  <button @click="validateForm" :disabled="this.profession_value === null" type="submit" class="btn btn-primary mt-4 mb-5">
-    Submit
+  <button @click="validateForm" :disabled="this.profession_value === null" type="submit" class="btn btn-primary submit-sample-btn mt-4 mb-5">
+    <span v-if="!this.loading">Submit</span>
+    <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin />
   </button>
 </template>
 
@@ -62,6 +63,11 @@ export default {
     return {store};
   },
   name: "ProfessionSelection",
+  data() {
+    return {
+      loading: false,
+    }
+  },
   props: [
     'inputanswer',
     'inputname',
@@ -102,14 +108,17 @@ export default {
   },
   methods: {
     // Validate Form
-    validateForm: function () {
+    validateForm: async function () {
       this.store.saveLabelsForCM(this.store, this.inputanswer, this.inputname, this.items[this.trial_index]);
 
       if (this.trial_index === (this.items.length - 1)) {
+        this.loading = true;
         if (this.trial_index === (this.study_items_length -1)) {
           this.store.calculateBias(this.store);
         }
+        await this.store.updateDB(this.store);
         this.store.nextStep(this.store, 1);
+        this.loading = false;
       } else {
         this.store.nextTrialStep(this.store);
       }

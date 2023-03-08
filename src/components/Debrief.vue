@@ -2,6 +2,14 @@
   <transition name="fade">
     <div v-if="this.store.getCurrentStep === 'debrief'">
       <div class="px-3">
+        <!-- TODO: Remove before golive-->
+        {{ this.store.debrief["user-comment"] }}
+        {{ this.store.debrief["user-difficulties"] }}
+        {{ this.store.debrief["user-difficulties-description"] }}
+        {{ this.store.debrief["user-cheat"] }}
+        {{ this.store.debrief["user-cheat-description"] }}
+
+
         <div class="mb-5">
           <h1> Thank you for participating! </h1>
           <p>
@@ -103,16 +111,9 @@
 
         <button @click="validateForm" type="submit" class="btn btn-primary my-5">
           Next
-          <font-awesome-icon icon="fa-solid fa-arrow-right"/>
+          <font-awesome-icon v-if="!this.loading" icon="fa-solid fa-arrow-right" />
+          <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin />
         </button>
-
-        <div>State:
-          <strong>{{ this.store.debrief["user-comment"] }} </strong>
-          <strong>{{ this.store.debrief["user-difficulties"] }} </strong>
-          <strong>{{ this.store.debrief["user-difficulties-description"] }} </strong>
-          <strong>{{ this.store.debrief["user-cheat"] }} </strong>
-          <strong>{{ this.store.debrief["user-cheat-description"] }} </strong>
-        </div>
 
       </div>
     </div>
@@ -131,6 +132,7 @@ export default {
   data() {
     return {
       showFormError: false,
+      loading: false,
     }
   },
   computed: {
@@ -184,9 +186,12 @@ export default {
         return false
       }
     },
-    validateForm: function () {
+    validateForm: async function () {
       if (this.isValidInputs()) {
+        this.loading = true;
+        await this.store.updateDB(this.store);
         this.store.nextStep(this.store, 1);
+        this.loading = false;
       }
     }
   }
