@@ -24,6 +24,7 @@ export default {
     'chartlabel',
     'data_AI',
     'data_you',
+    'data_litw',
   ],
   data() {
     return {
@@ -33,7 +34,7 @@ export default {
           {
             label: 'AI',
             backgroundColor: '#ced4da',
-            data: [this.data_AI]
+            data: [this.data_AI],
           },
           {
             label: 'You',
@@ -43,7 +44,7 @@ export default {
           {
             label: 'Average LabintheWild users',
             backgroundColor: '#99BA6A',
-            data: [this.data_you]
+            data: [this.data_litw],
           },
         ]
       },

@@ -1,6 +1,6 @@
 import {defineStore} from 'pinia';
 import {ConfusionMatrix} from 'ml-confusion-matrix';
-import {collection, addDoc, setDoc, doc} from 'firebase/firestore';
+import {collection, addDoc, updateDoc, doc, getDoc} from 'firebase/firestore';
 import {db} from '@/firebase/firebase';
 
 export const useStore = defineStore('store', {
@@ -23,7 +23,6 @@ export const useStore = defineStore('store', {
             ],
             userInput: {
                 userID: null,
-                "created-on": null,
                 "consent-accepted": null,
                 "user-taken-test-before": null,
                 "user-age": null,
@@ -92,6 +91,7 @@ export const useStore = defineStore('store', {
                 f_pred_labels: [],
                 m_pred_labels: [],
                 gap: [NaN, NaN, NaN, NaN, NaN, NaN],
+                gap_labinthewild: [],
             },
         };
     },
@@ -168,9 +168,6 @@ export const useStore = defineStore('store', {
     },
     actions: {
         async initParticipant(state) {
-            // let now = new Date(Date.now()).toLocaleString("de-DE")
-            // state.created_on = now
-
             // Create
             const collectionName = state.isDebug ? "debug" : "production";
             const colRef = collection(db, collectionName);
@@ -183,7 +180,7 @@ export const useStore = defineStore('store', {
             const collectionName = state.isDebug ? "debug" : "production";
 
             const docRef = doc(db, collectionName, state.userInput.userID);
-            await setDoc(docRef, this.$state);
+            await updateDoc(docRef, this.$state);
         },
         // Restarts the study
         restartStudy(state) {
@@ -212,18 +209,6 @@ export const useStore = defineStore('store', {
 
             // Update screen
             state.stepIndex += stepsToGo
-
-            // Update
-            // var id = state.answers["participantId"]
-            // var collectionName = state.isDebug ? 'debug' : 'prod'
-            // var db = firebase.firestore()
-            // db
-            //     .collection(collectionName)
-            //     .doc(id)
-            //     .set(state.answers)
-            //     .then( () => {
-            //       // console.log("Updated")
-            //     })
         },
         distributeIds(state) {
             this.shuffle(state.AI_error_ids);
@@ -353,6 +338,53 @@ export const useStore = defineStore('store', {
                 let all_m_tpr = sum_m_tpr_pro_profession / filtered_m_tpr_pro_profession.length;
 
                 state['bias']['gap'][5] = (all_f_tpr - all_m_tpr);
+            }
+        },
+        async litwBias(state) {
+            // Get bias from litw_bias document in db
+            const collectionName = state.isDebug ? "debug" : "production";
+            const docRef = doc(db, collectionName, "litw_bias");
+            const docSnap = await getDoc(docRef);
+            let data = docSnap.data()
+            state.bias.gap_labinthewild[0] = data.professor_score / data.professor_usercount;
+            state.bias.gap_labinthewild[1] = data.physician_score / data.physician_usercount;
+            state.bias.gap_labinthewild[2] = data.psychologist_score / data.psychologist_usercount;
+            state.bias.gap_labinthewild[3] = data.teacher_score / data.teacher_usercount;
+            state.bias.gap_labinthewild[4] = data.surgeon_score / data.surgeon_usercount;
+            state.bias.gap_labinthewild[5] = data.average_score / data.average_usercount;
+
+            // Add new bias to litw_bias document in db
+            await updateDoc(docRef, {
+                professor_score: this.generateNewLITWGapScore(state.bias.gap[0], data.professor_score),
+                professor_usercount: this.generateNewLITWGapUserCount(state.bias.gap[0],data.professor_usercount),
+                physician_score: this.generateNewLITWGapScore(state.bias.gap[1], data.physician_score),
+                physician_usercount: this.generateNewLITWGapUserCount(state.bias.gap[1],data.physician_usercount),
+                psychologist_score: this.generateNewLITWGapScore(state.bias.gap[2], data.psychologist_score),
+                psychologist_usercount: this.generateNewLITWGapUserCount(state.bias.gap[2],data.psychologist_usercount),
+                teacher_score: this.generateNewLITWGapScore(state.bias.gap[3], data.teacher_score),
+                teacher_usercount: this.generateNewLITWGapUserCount(state.bias.gap[3],data.teacher_usercount),
+                surgeon_score: this.generateNewLITWGapScore(state.bias.gap[4], data.surgeon_score),
+                surgeon_usercount: this.generateNewLITWGapUserCount(state.bias.gap[4],data.surgeon_usercount),
+                average_score: this.generateNewLITWGapScore(state.bias.gap[5], data.average_score),
+                average_usercount: this.generateNewLITWGapUserCount(state.bias.gap[5],data.average_usercount),
+            });
+
+
+        },
+        generateNewLITWGapScore(user_gap, old_avg_gap_score) {
+            let score;
+            if (isFinite(user_gap)) {
+                return score = old_avg_gap_score + user_gap;
+            } else {
+                return score = old_avg_gap_score;
+            }
+        },
+        generateNewLITWGapUserCount(user_gap, old_avg_gap_usercount) {
+            let usercount;
+            if (isFinite(user_gap)) {
+                return usercount = old_avg_gap_usercount + 1;
+            } else {
+                return usercount = old_avg_gap_usercount;
             }
         },
     },

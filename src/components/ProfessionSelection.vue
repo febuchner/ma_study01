@@ -114,7 +114,8 @@ export default {
       if (this.trial_index === (this.items.length - 1)) {
         this.loading = true;
         if (this.trial_index === (this.study_items_length -1)) {
-          this.store.calculateBias(this.store);
+          await this.store.calculateBias(this.store);
+          await this.store.litwBias(this.store);
         }
         await this.store.updateDB(this.store);
         this.store.nextStep(this.store, 1);
