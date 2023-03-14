@@ -189,8 +189,8 @@ export default {
     validateForm: async function () {
       if (this.isValidInputs()) {
         this.loading = true;
-        await this.store.updateDB(this.store);
         this.store.nextStep(this.store, 1);
+        await this.store.updateDB(this.store);
         this.loading = false;
       }
     }

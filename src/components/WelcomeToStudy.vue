@@ -15,7 +15,7 @@
                 Tell us what you think the person whose biography you are looking at does for a living and we'll show you how gender biased you are compared to our AI.
               </p>
               <p class="h3 mt-5">
-                <b> Normally, it takes X minutes to finish the test. </b>
+                <b> Normally, it takes 10 minutes to finish the test. </b>
               </p>
             </div>
             <div class="col-12 col-lg-4">
