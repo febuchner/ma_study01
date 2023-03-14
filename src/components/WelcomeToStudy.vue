@@ -15,7 +15,7 @@
                 Tell us what you think the person whose biography you are looking at does for a living and we'll show you how gender biased you are compared to our AI.
               </p>
               <p class="h3 mt-5">
-                <b> Normally, it takes X minutes to finish the test. </b>
+                <b> Normally, it takes 10 minutes to finish the test. </b>
               </p>
             </div>
             <div class="col-12 col-lg-4">
@@ -24,7 +24,10 @@
           </div>
         </div>
 
-        <button @click="validateForm" type="submit" class="btn btn-primary mt-5">Let's start!
+        <button @click="validateForm" type="submit" class="btn btn-primary mt-5">
+          Let's start!
+          <font-awesome-icon v-if="!this.loading" icon="fa-solid fa-arrow-right" />
+          <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin />
         </button>
       </div>
     </div>
@@ -40,9 +43,17 @@ export default {
     return {store};
   },
   name: "WelcomeToStudy",
+  data() {
+    return {
+      loading: false,
+    }
+  },
   methods: {
-    validateForm: function () {
+    validateForm: async function () {
+      this.loading = true;
+      await this.store.initParticipant(this.store);
       this.store.nextStep(this.store, 1);
+      this.loading = false;
     }
   }
 }
