@@ -172,11 +172,9 @@ export const useStore = defineStore('store', {
             const collectionName = state.isDebug ? "debug" : "production";
             const colRef = collection(db, collectionName);
             const docRef = await addDoc(colRef, this.$state);
-            console.log("docRef: " + docRef.id);
             state.userInput.userID = docRef.id;
         },
         async updateDB(state) {
-            console.log("entered updateDB");
             const collectionName = state.isDebug ? "debug" : "production";
 
             const docRef = doc(db, collectionName, state.userInput.userID);
