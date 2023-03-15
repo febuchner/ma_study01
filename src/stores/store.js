@@ -173,6 +173,8 @@ export const useStore = defineStore('store', {
             const colRef = collection(db, collectionName);
             const docRef = await addDoc(colRef, this.$state);
             state.userInput.userID = docRef.id;
+            // TODO: Remove before golive
+            console.log("document id: "+ docRef.id)
         },
         async updateDB(state) {
             const collectionName = state.isDebug ? "debug" : "production";

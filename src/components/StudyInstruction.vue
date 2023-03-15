@@ -30,9 +30,15 @@
           </div>
 
           <div class="mt-4">
-            But this time, our AI tells you the profession it predicts for the person of the resume for you to consider.
+            This time, our AI tells you the profession it predicts for the person of the resume to help you with your
+            decision.
             <span v-if="this.store.study_condition === 'with_explanation_highlights'">
-            Also, the AI shows you highlighted words in the resume that led to its prediction.
+              <br>
+              Also, the AI highlights words in the resume that led to its prediction.
+              <br>
+              <span style="background-color: rgb(255, 0, 82);">Red</span> means the highlighted word supports the prediction. The more red the highlighted word is the stronger it supports the prediction of our AI.
+              <br>
+              <span style="background-color: rgb(0, 139, 251);">Blue</span> means the highlighted word is against the prediction. The bluer the highlighted word is the stronger it is against the prediction of our AI.
           </span>
           </div>
 
@@ -47,8 +53,14 @@
           do it:
         </div>
 
-        <img src="https://toxicity-litw.apps.allenai.org/93a19e44bf64e2fd43b0e6d31a6c25e3.png"
-             alt="Example of the experiment page" class="img-fluid">
+        <div class="px-0 px-sm-3 px-md-5 mt-3">
+          <img v-if="this.store.study_condition === 'with_explanation_highlights'"
+               src="../assets/images/studyintroduction_with_explanation_highlights_visualization.png"
+               alt="Example of the second part of the study" class="img-fluid">
+          <img v-if="this.store.study_condition === 'without_explanation_highlights'"
+               src="../assets/images/studyintroduction_without_explanation_highlights_visualization.png"
+               alt="Example of the second part of the study" class="img-fluid">
+        </div>
 
         <button @click="validateForm" type="submit" class="btn btn-primary my-5">
           Let's start!
