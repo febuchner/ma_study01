@@ -34,7 +34,7 @@
             decision.
             <span v-if="this.store.study_condition === 'with_explanation_highlights'">
               <br>
-              Also, the AI highlights words in the resume that led to its prediction.
+               <strong>Also, the AI highlights words in the resume that led to its prediction.</strong>
               <br>
               <span style="background-color: rgb(255, 0, 82);">Red</span> means the highlighted word supports the prediction. The more red the highlighted word is the stronger it supports the prediction of our AI.
               <br>
