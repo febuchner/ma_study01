@@ -24,6 +24,7 @@
         {{ "study_answer17: " + this.store['study_answers']['study_answer17'] }} <br>
         {{ "study_answer18: " + this.store['study_answers']['study_answer18'] }} <br>
         {{ "study_answer19: " + this.store['study_answers']['study_answer19'] }} <br>
+        {{ "id: " + this.studyItems[this.trial_index]['id'] }}
 
         <div v-for="(n,index) in this.studyItems">
 

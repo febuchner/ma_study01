@@ -32,8 +32,8 @@ export const useStore = defineStore('store', {
                 "user-ml-knowledge": null,
                 "user-cookie-consent": null,
             },
-            AI_error_ids: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14], // #14
-            AI_truth_ids: [15, 18, 23, 30, 34, 36, 39, 55, 93, 578, 16, 17, 19, 20, 21, 22], //#16
+            AI_error_ids: [1398, 3588, 750, 3147, 4831, 1034, 4468, 225, 99, 15967, 993, 203, 552, 1458], // #14
+            AI_truth_ids: [27, 70, 306, 325, 2, 682, 3754, 15, 19, 103, 44, 297, 357, 116, 201, 71], //#16
             labelling_ids: [],
             labelling_items: [],
             study_ids: [],

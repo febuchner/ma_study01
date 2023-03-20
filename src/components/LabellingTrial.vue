@@ -14,6 +14,7 @@
         {{ "labelling_answer7: " + this.store['labelling_answers']['labelling_answer7'] }} <br>
         {{ "labelling_answer8: " + this.store['labelling_answers']['labelling_answer8'] }} <br>
         {{ "labelling_answer9: " + this.store['labelling_answers']['labelling_answer9'] }} <br>
+        {{ "id: " + this.labellingItems[this.trial_index]['id'] }}
 
         <div v-for="(n,index) in this.labellingItems">
 
