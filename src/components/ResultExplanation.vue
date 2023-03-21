@@ -39,7 +39,7 @@
   </div>
 
   <div v-if="isFinite(this.data_you_profession) && this.data_you_profession > this.data_AI_profession">
-    You can correctly predict a female {{ this.profession }} better and/or a male {{ this.profession }} worse than our
+    You can predict a female {{ this.profession }} better and/or a male {{ this.profession }} worse than our
     AI.
   </div>
   <div v-else-if="isFinite(this.data_you_profession) && this.data_you_profession === this.data_AI_profession">
@@ -47,7 +47,7 @@
     {{ this.profession }}.
   </div>
   <div v-else-if="isFinite(this.data_you_profession) && this.data_you_profession < this.data_AI_profession">
-    You can correctly predict a female {{ this.profession }} worse and/or a male {{ this.profession }} better than our
+    You can predict a female {{ this.profession }} worse and/or a male {{ this.profession }} better than our
     AI.
   </div>
 

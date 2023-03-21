@@ -2,29 +2,6 @@
   <transition name="fade">
     <div v-if="this.store.getCurrentStep === 'study-trial'">
       <div class="px-3">
-        <!-- TODO: Remove before golive-->
-        {{ "trial-index: " + this.trial_index }} <br>
-        {{ "study_answer00: " + this.store['study_answers']['study_answer00'] }} <br>
-        {{ "study_answer01: " + this.store['study_answers']['study_answer01'] }} <br>
-        {{ "study_answer02: " + this.store['study_answers']['study_answer02'] }} <br>
-        {{ "study_answer03: " + this.store['study_answers']['study_answer03'] }} <br>
-        {{ "study_answer04: " + this.store['study_answers']['study_answer04'] }} <br>
-        {{ "study_answer05: " + this.store['study_answers']['study_answer05'] }} <br>
-        {{ "study_answer06: " + this.store['study_answers']['study_answer06'] }} <br>
-        {{ "study_answer07: " + this.store['study_answers']['study_answer07'] }} <br>
-        {{ "study_answer08: " + this.store['study_answers']['study_answer08'] }} <br>
-        {{ "study_answer09: " + this.store['study_answers']['study_answer09'] }} <br>
-        {{ "study_answer10: " + this.store['study_answers']['study_answer10'] }} <br>
-        {{ "study_answer11: " + this.store['study_answers']['study_answer11'] }} <br>
-        {{ "study_answer12: " + this.store['study_answers']['study_answer12'] }} <br>
-        {{ "study_answer13: " + this.store['study_answers']['study_answer13'] }} <br>
-        {{ "study_answer14: " + this.store['study_answers']['study_answer14'] }} <br>
-        {{ "study_answer15: " + this.store['study_answers']['study_answer15'] }} <br>
-        {{ "study_answer16: " + this.store['study_answers']['study_answer16'] }} <br>
-        {{ "study_answer17: " + this.store['study_answers']['study_answer17'] }} <br>
-        {{ "study_answer18: " + this.store['study_answers']['study_answer18'] }} <br>
-        {{ "study_answer19: " + this.store['study_answers']['study_answer19'] }} <br>
-        {{ "id: " + this.studyItems[this.trial_index]['id'] }}
 
         <div v-for="(n,index) in this.studyItems">
 
@@ -32,9 +9,6 @@
             <div class="mb-5 text-center">
               <h1>Round {{ this.trial_index + 1 }} / {{ this.studyItems.length }}</h1>
             </div>
-            <!-- TODO: Remove before golive-->
-            {{ this.studyItems[this.trial_index]['profession'] }} <br>
-            {{ this.studyItems[this.trial_index]['pred_profession'] }}
 
             <div class="col-12 row ms-0 d-flex border-primary">
               <div class="col-12 d-flex justify-content-center">

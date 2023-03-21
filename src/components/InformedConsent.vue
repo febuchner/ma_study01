@@ -29,7 +29,7 @@
           could be used to establish your identity directly.
           We will store your demographic data securely in your browser only with your consent.
         </p>
-        <p><b> Expected duration: </b> 10 minutes
+        <p><b> Expected duration: </b> 12 minutes
         </p>
         <p><b> Contact information: </b> This study is conducted at the Ludwig-Maximilians-University Munich in
           cooperation
