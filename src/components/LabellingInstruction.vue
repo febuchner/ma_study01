@@ -7,7 +7,7 @@
         </div>
 
         <div>
-          <div>During this part you will be shown 10 different sentences.
+          <div>During this part you will be shown 10 different short resumes.
             For each, decide which of the five given professions the person to whom the resume belongs is most likely to
             have.
           </div>
@@ -21,14 +21,14 @@
               <li>psychologist - someone who studies the human mind and human emotions and behaviour, and how different
                 situations have an effect on people
               </li>
-              <li>teacher - someone whose job is to teach in a school or college</li>
+              <li>teacher - a person who instructs or trains others, esp. in a school</li>
               <li>surgeon - a doctor who is specially trained to perform medical operations</li>
             </ul>
           </div>
 
           <div class="mt-4">
             Based on your given answers from the first and second part, we will present you your gender bias compared to
-            that of our AI at the end of the study.
+            that of our AI and other LabintheWild users at the end of the study.
           </div>
         </div>
 

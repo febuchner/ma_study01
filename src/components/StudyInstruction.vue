@@ -9,7 +9,7 @@
         </div>
 
         <div>
-          <div>During this part you will be shown 20 different sentences.
+          <div>During this part you will be shown 20 different short resumes.
             For each, again decide which of the five given professions the person to whom the resume belongs is most
             likely to have.
           </div>
@@ -24,27 +24,27 @@
               <li>psychologist - someone who studies the human mind and human emotions and behaviour, and how different
                 situations have an effect on people
               </li>
-              <li>teacher - someone whose job is to teach in a school or college</li>
+              <li>teacher - a person who instructs or trains others, esp. in a school</li>
               <li>surgeon - a doctor who is specially trained to perform medical operations</li>
             </ul>
           </div>
 
           <div class="mt-4">
-            This time, our AI tells you the profession it predicts for the person of the resume to help you with your
+            This time, our AI tells you the profession it has calculated for the person of the resume to help you make your
             decision.
             <span v-if="this.store.study_condition === 'with_explanation_highlights'">
               <br>
                <strong>Also, the AI highlights words in the resume that led to its prediction.</strong>
               <br>
-              <span style="background-color: rgb(255, 0, 82);">Red</span> means the highlighted word supports the prediction. The more red the highlighted word is the stronger it supports the prediction of our AI.
+              <span style="background-color: rgb(255, 0, 82);">Red</span> means the highlighted word supports the AI's prediction. The more red the highlighted word is the stronger it supports the prediction of our AI.
               <br>
-              <span style="background-color: rgb(0, 139, 251);">Blue</span> means the highlighted word is against the prediction. The bluer the highlighted word is the stronger it is against the prediction of our AI.
+              <span style="background-color: rgb(0, 139, 251);">Blue</span> means the highlighted word is against the AI's prediction. The bluer the highlighted word is the stronger it is against the prediction of our AI.
           </span>
           </div>
 
           <div class="mt-4">
             Based on your given answers from the first and second part, we will present you your gender bias compared to
-            that of our AI at the end of the study.
+            that of our AI and other LabintheWild users at the end of the study.
           </div>
         </div>
 

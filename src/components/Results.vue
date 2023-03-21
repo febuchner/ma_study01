@@ -3,11 +3,11 @@
     <div v-if="this.store.getCurrentStep === 'results'">
       <div class="px-0 px-sm-3">
         <div class="">
-          <h1>These are your results!</h1>
+          <h1>This is your gender bias!</h1>
         </div>
 
         <div class="results">
-          <h2 class="my-5">This graph shows you your personal gender bias compared to our AI and the average of all
+          <h2 class="my-5">This graph shows you your personal gender bias compared to that of our AI and to the average of all
             other LabintheWild users who have taken this test.</h2>
           <ResultBarChart chartlabel="Average gender bias"
                           :data_AI="this.data_AI_average"
@@ -38,19 +38,19 @@
             </div>
 
             <div v-if="isNaN(data_litw_you_avg_closer_to_zero) || this.data_litw_average === null">
-              We can't say whether you are on average more or less gender biased than other LabintheWild users.
+              We can't say whether you are on average more or less gender biased than the average of other LabintheWild users.
             </div>
             <div v-if="data_litw_you_avg_closer_to_zero === null && this.data_litw_average != null">
               Because your average gender bias score is just as far from zero as the average score of other LabintheWild
               users, <strong>you are on average just as gender biased as other LabintheWild users</strong>!
             </div>
             <div v-else-if="data_litw_you_avg_closer_to_zero === true && this.data_litw_average != null">
-              Because your average gender bias score is closer to zero than that of other LabintheWild users, <strong>you
-              are on average less gender biased than other LabintheWild users</strong>!
+              Because your average gender bias score is closer to zero than the average of other LabintheWild users, <strong>you
+              are on average less gender biased than the average of other LabintheWild users</strong>!
             </div>
             <div v-else-if="data_litw_you_avg_closer_to_zero === false && this.data_litw_average != null">
-              Because your average gender bias score is further away from zero than that of other LabintheWild users,
-              <strong>you are on average more gender biased than other LabintheWild users</strong>!
+              Because your average gender bias score is further away from zero than the average of other LabintheWild users,
+              <strong>you are on average more gender biased than the average of other LabintheWild users</strong>!
             </div>
 
             <div v-if="isFinite(this.data_you_average) && this.data_you_average > this.data_AI_average">
@@ -88,18 +88,18 @@
 
             <div class="mt-5"> We calculate the gender bias by computing the true positive rate (TPR) gender gap, or
               more precisely,
-              the difference in TPRs between genders for each of the five professions.
+              the difference in TPRs between genders for each of the five professions and the average of these.
               The TPR here indicates the proportion of people with a specific gender and profession who are correctly
               predicted to have that profession.
-              This quantification of gender bias was derived from De-Arteaga et al.'s study about semantic
+              We derived this quantification of gender bias from De-Arteaga et al.'s study about semantic
               representation bias [1].
               <br>
-              In the graph above you can see your average of the five TPR gender gaps as <strong>average gender
-                bias</strong>.
             </div>
           </div>
           <div class="mt-5">
-            <p>Below you find a breakdown of your gender bias for each of the five professions compared to our AI and
+            In the graph above you can see your average of the five TPR gender gaps as <strong>average gender
+            bias</strong>.
+            <p>Below you find a breakdown of your gender bias for <strong>each of the five professions</strong> compared to our AI and
               the average of all other LabintheWild users who have taken this test.</p>
             <div class="my-5">
               <h3>Gender bias of profession "professor"</h3>
@@ -183,7 +183,7 @@
         <div class="text-center">
           <div class="mb-5">
             <h2>Thank you for participating in our study! We hope you had fun.</h2>
-            <p>
+            <p class="mt-4">
               Your results will help us gaining insights in two main areas. <br>
               First, we will be able to rate the difficulty of the different resumes based on the percentage of users
               who decided for the correct profession.

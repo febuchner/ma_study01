@@ -14,7 +14,7 @@
           <h1> Thank you for participating! </h1>
           <p>
             <span>
-              Before seeing your results, please let us know what you thought of the test! <br>
+              Before seeing your gender bias, please let us know what you thought of the test! <br>
               <i><span class="text-danger fw-bold">*</span> marks a required field.</i>
             </span>
           </p>
@@ -25,7 +25,7 @@
             label-class="font-weight-bold"
         >
           <template v-slot:label>
-            Do you have any feedback for the researcher? Any questions, suggestions, or concerns?
+            Do you have any feedback for the researchers? Any questions, suggestions, or concerns?
           </template>
           <b-form-textarea v-model="userComment" rows="3"
                            placeholder="Please enter your feedback, if you have any."></b-form-textarea>

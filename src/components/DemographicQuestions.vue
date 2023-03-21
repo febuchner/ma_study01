@@ -168,8 +168,8 @@ export default {
       maxAge: 100,
       englishProficiency: [
         {text: 'Basic', value: 'basic'},
-        {text: 'Upper-Intermediate', value: 'upper-intermediate'},
         {text: 'Intermediate', value: 'intermediate'},
+        {text: 'Upper-Intermediate', value: 'upper-intermediate'},
         {text: 'Proficient', value: 'proficient'},
         {text: 'Mother tongue', value: 'motherTongue'},
       ],
@@ -248,7 +248,7 @@ export default {
   },
   methods: {
     showDemoQuestionsAlert: function () {
-      alert('Based on your data we will show you your personal results and data analysis. All of your answers will be anonymized. We take your privacy very seriously.');
+      alert('Your demographic data will help us gain more insights into our research. But no need to worry, all of your answers will be anonymised. We take your privacy very seriously.');
     },
     isValidAge: function () {
       if (this.store.getUserAge < this.minAge || this.store.getUserAge > this.maxAge) {

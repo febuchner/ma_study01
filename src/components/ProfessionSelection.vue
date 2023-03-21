@@ -76,7 +76,7 @@ export default {
   computed: {
     profession_value: {
       get() {
-        return this.store[this.inputname];
+        return this.store[this.inputanswer][this.inputname];
       },
       set(value) {
         this.store[this.inputanswer][this.inputname] = parseInt(value);
