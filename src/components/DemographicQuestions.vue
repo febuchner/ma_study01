@@ -132,16 +132,6 @@
           Next <font-awesome-icon icon="fa-solid fa-arrow-right" />
         </button>
 
-        <div>State:
-          <strong>{{ this.store.userInput["user-taken-test-before"] }} </strong>
-          <strong>{{ this.store.userInput["user-age"] }} </strong>
-          <strong>{{ this.store.userInput["user-english-proficiency"] }} </strong>
-          <strong>{{ this.store.userInput["user-education"] }} </strong>
-          <strong>{{ this.store.userInput["user-gender"] }} </strong>
-          <strong>{{ this.store.userInput["user-ml-knowledge"] }} </strong>
-          <strong>{{ this.store.userInput["user-cookie-consent"] }} </strong>
-        </div>
-
       </div>
     </div>
   </transition>

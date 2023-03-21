@@ -112,10 +112,7 @@ export default {
       this.loadItemsByIndices(this.labellingIds, this.labellingItems);
       this.loadItemsByIndices(this.studyIds, this.studyItems);
 
-      // this.store.decideStudyCondition(this.store);
-      // TODO: Remove before golive
-      this.store['study_condition'] = 'with_explanation_highlights'
-      // this.store['study_condition'] = 'without_explanation_highlights'
+      this.store.decideStudyCondition(this.store);
       await this.store.updateDB(this.store);
       this.store.nextStep(this.store, 1);
       this.loading = false;

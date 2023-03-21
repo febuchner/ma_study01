@@ -2,13 +2,6 @@
   <transition name="fade">
     <div v-if="this.store.getCurrentStep === 'debrief'">
       <div class="px-3">
-        <!-- TODO: Remove before golive-->
-        {{ this.store.debrief["user-comment"] }}
-        {{ this.store.debrief["user-difficulties"] }}
-        {{ this.store.debrief["user-difficulties-description"] }}
-        {{ this.store.debrief["user-cheat"] }}
-        {{ this.store.debrief["user-cheat-description"] }}
-
 
         <div class="mb-5">
           <h1> Thank you for participating! </h1>

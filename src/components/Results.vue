@@ -65,7 +65,7 @@
 
             </div>
             <div v-else-if="isFinite(this.data_you_average) && this.data_you_average < this.data_AI_average">
-              Your personal average gender bias is less than the average gender bias of our AI. This means that you can
+              Your personal average gender bias score is less than the average gender bias score of our AI. This means that you can
               predict a woman's true profession worse and/or a man's true profession better than our
               AI.
             </div>
@@ -217,7 +217,7 @@
       <hr class="my-5"/>
 
       <h2 class="text-center">These are other fun studies you can try if you liked ours! <br>
-        Or you can return to <a href="https://www.labinthewild.org/">labinthewild.org</a>.</h2>
+        You can also return to <a href="https://www.labinthewild.org/">labinthewild.org</a> or close this browser window.</h2>
 
       <div class="row mt-5">
         <div class="col-sm-4">
