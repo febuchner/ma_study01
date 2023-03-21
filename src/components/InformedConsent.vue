@@ -11,33 +11,33 @@
         </p>
         <p><b> What you will have to do: </b>
           After filling out demographic information, we will provide you instructions on the first part of this study.
-          In this you will decide which of the five given professions the person to whom the resume belongs is most likely to have.
+          In this, you will decide which of the five given professions the person to whom the resume belongs is most likely to have.
           In total, you will be presented with 10 examples.
           After that, you will receive instructions for the second part of the study.
           Here you do the same as in the first part, except that now you are supported in your decision-making by our AI.
           The second part consists of 20 examples.
         </p>
         <p><b> What you will get out of it: </b>
-          You will see how gender biased you are compared to our AI.
+          You will see how gender biased you are compared to our AI and other LabintheWild users.
         </p>
         <p><b> Are there any risks: </b>
           We do not anticipate any risks. You can always choose to leave this study by
           closing the browser.
         </p>
-        <p class="text-danger"><b> Privacy and data collection: </b>
+        <p><b> Privacy and data collection: </b>
           Your responses will be handled privately. We do not keep any data that
           could be used to establish your identity directly.
           We will store your demographic data securely in your browser only with your consent.
-          We do securely store your previous session identifiers on your browser.
         </p>
-        <p class="text-danger"><b> Expected duration: </b> X minutes
+        <p><b> Expected duration: </b> 10 minutes
         </p>
-        <p class="text-danger"><b> Contact information: </b> This study is conducted at the Ludwig-Maximilians-University Munich in
+        <p><b> Contact information: </b> This study is conducted at the Ludwig-Maximilians-University Munich in
           cooperation
           with fortiss GmbH - Research Institute of the Free State of Bavaria for software-intensive systems.
           If you have questions about this research, you may contact
           Felicitas Buchner at Ludwig-Maximilians-University Munich by mailing at <a
-              href="mailto:fe.buchner@campus.lmu.de">fe.buchner@campus.lmu.de</a>.
+              href="mailto:fe.buchner@campus.lmu.de">fe.buchner@campus.lmu.de</a> or Tony Zhang at fortiss GmbH by mailing at <a
+              href="mailto:zhang@fortiss.org">zhang@fortiss.org</a> or by writing to Tony Zhang, fortiss GmbH, Guerickestraße 25, 80805 Munich.
         </p>
       </div>
       <hr class="my-4"/>

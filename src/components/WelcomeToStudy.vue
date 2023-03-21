@@ -12,7 +12,7 @@
                 Welcome and thank you for your interest in our LabintheWild test.
               </p>
               <p class="h3 mt-5">
-                Tell us what you think the person whose biography you are looking at does for a living and we'll show you how gender biased you are compared to our AI.
+                Tell us what you think the persons whose resumes you are shown do for a profession, and we will show you how gender biased you are compared to our AI and other LabintheWild users.
               </p>
               <p class="h3 mt-5">
                 <b> Normally, it takes 10 minutes to finish the test. </b>
