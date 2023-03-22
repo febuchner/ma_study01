@@ -15,7 +15,7 @@
                 Tell us what you think the persons whose resumes you are shown do for a profession, and we will show you how gender biased you are compared to our AI and other LabintheWild users.
               </p>
               <p class="h3 mt-5">
-                <b> Normally, it takes 12 minutes to finish the test. </b>
+                <b> Normally, it takes 15 minutes to finish the test. </b>
               </p>
             </div>
             <div class="col-12 col-lg-4">
