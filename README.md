@@ -23,3 +23,9 @@ npm run dev
 ```sh
 npm run build
 ```
+
+### Setting Firebase settings
+
+1. Go to src/firebase/firebase.js.dist
+2. Rename file from 'firebase.js.dist' to 'firebase.js'
+3. Replace content of file with actual data
