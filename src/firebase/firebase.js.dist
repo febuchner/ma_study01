@@ -1,0 +1,2 @@
+/1. Rename file from 'firebase.js.dist' to 'firebase.js'
+/2. Add given code with private access data of firestore db to document
