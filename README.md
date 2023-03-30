@@ -4,7 +4,6 @@ This document should help to get started with this project.
 
 ## Customize configuration
 
-
 ## Project Setup
 
 ```sh
@@ -26,6 +25,6 @@ npm run build
 
 ### Setting Firebase settings
 
-1. Go to src/firebase/firebase.js.dist
-2. Rename file from 'firebase.js.dist' to 'firebase.js'
-3. Replace content of file with actual data
+1. Copy the content of `src/firebase/firebase.js.example` to `src/firebase/firebase.js`
+2. Update the empty strings of `apiKey`,`authDomain`, `projectId`, `storageBucket`, `messagingSenderId`, `appId` with
+   original data in newly created `src/firebase/firebase.js` file.
