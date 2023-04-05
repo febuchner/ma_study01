@@ -59,7 +59,7 @@
           protection violations: <a href="https://www.lda.bayern.de/de/beschwerde.html" target="_blank">www.lda.bayern.de/de/beschwerde</a>.
           <br>
           <br>
-          Your randomly generated personal studyID is <code>{{ this.userID }}</code>. Please note it down and keep it
+          Your randomly generated personal studyID is <span class="studyID">{{ this.userID }}</span>. Please note it down and keep it
           safe in case you want to contact us about your data. You can revoke your consent to the processing of your data by a short
           statement and naming your studyID at any time in the future.
           The legality of the data processing carried out on the basis of the consent until revocation remains
