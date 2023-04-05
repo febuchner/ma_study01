@@ -6,7 +6,8 @@
       </div>
       <div class="mt-5">
         <p><strong> Why we are doing this research: </strong>
-          The goal of this project is to collect data on the impact of an AI on a human, using profession identification
+          The goal of this project is to collect data on the impact of an AI on human decision-making, using profession
+          identification
           via a short resume written in English.
         </p>
         <p><strong> What you will have to do: </strong>
@@ -20,7 +21,7 @@
           The second part consists of 20 examples.
         </p>
         <p><strong> What you will get out of it: </strong>
-          You will see how gender biased you are compared to our AI and other LabintheWild users.
+          You will see how you perform and gender biased you are compared to our AI and other LabintheWild users.
         </p>
         <p><strong> Are there any risks: </strong>
           We do not anticipate any risks. You can always choose to leave this study by
@@ -51,14 +52,16 @@
           If you have consented to the data processing or to a data-processing contract and the data processing is
           carried out automatically, you may be entitled to data transferability (Act 20 GDPR).
           If you make use of your rights mentioned above, the public office checks whether the legal requirements for
-          these are met. Furthermore, there is a right of appeal to the Bavarian State Commissioner for Data Protection. You
-          can contact by Bavarian State Office for Data Protection Supervision (BayLDA), Promenade 27, 91522 Ansbach,
+          these are met. Furthermore, there is a right of appeal to the Bavarian State Commissioner for Data Protection.
+          You can contact by Bavarian State Office for Data Protection Supervision (BayLDA), Promenade 27, 91522 Ansbach,
           <span class="text-nowrap">+49 (0) 981 53 1300</span>, <a
               href="mailto:poststelle@lda.bayern.de">poststelle@lda.bayern.de</a>, online complaint form for data
           protection violations: <a href="https://www.lda.bayern.de/de/beschwerde.html" target="_blank">www.lda.bayern.de/de/beschwerde</a>.
           <br>
           <br>
-          You can revoke your consent to the processing of your data by a statement at any time in the future.
+          Your randomly generated personal studyID is <code>{{ this.userID }}</code>. Please note it down and keep it
+          safe in case you want to contact us about your data. You can revoke your consent to the processing of your data by a short
+          statement and naming your studyID at any time in the future.
           The legality of the data processing carried out on the basis of the consent until revocation remains
           unaffected by this.
 
@@ -144,6 +147,13 @@ export default {
     }
   },
   computed: {
+    userID: {
+      get() {
+        return this.store.userInput['userID'];
+      },
+      set(value) {
+      },
+    },
     consentAccepted: {
       get() {
         return this.store.userInput['consent-accepted'];
