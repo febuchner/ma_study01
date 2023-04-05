@@ -21,7 +21,7 @@
           The second part consists of 20 examples.
         </p>
         <p><strong> What you will get out of it: </strong>
-          You will see how you perform and gender biased you are compared to our AI and other LabintheWild users.
+          You will see how you perform and how gender biased you are compared to our AI and other LabintheWild users.
         </p>
         <p><strong> Are there any risks: </strong>
           We do not anticipate any risks. You can always choose to leave this study by
