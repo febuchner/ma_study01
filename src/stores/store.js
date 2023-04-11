@@ -92,6 +92,8 @@ export const useStore = defineStore('store', {
                 m_pred_labels: [],
                 gap: [NaN, NaN, NaN, NaN, NaN, NaN],
                 gap_labinthewild: [],
+                acc: [NaN, NaN, NaN],
+                acc_labinthewild: [],
             },
         };
     },
@@ -247,6 +249,18 @@ export const useStore = defineStore('store', {
             let f_confmatrix = ConfusionMatrix.fromLabels(state.bias['f_true_labels'], state.bias['f_pred_labels']);
             let m_confmatrix = ConfusionMatrix.fromLabels(state.bias['m_true_labels'], state.bias['m_pred_labels']);
 
+            let total_true_labels = state.bias['f_true_labels'].concat(state.bias['m_true_labels']);
+            let total_pred_labels = state.bias['f_pred_labels'].concat(state.bias['m_pred_labels']);
+            let total_confmatrix = ConfusionMatrix.fromLabels(total_true_labels, total_pred_labels);
+
+            let f_acc = f_confmatrix.getAccuracy();
+            let m_acc = m_confmatrix.getAccuracy();
+            let total_acc = total_confmatrix.getAccuracy();
+
+            state['bias']['acc'][0] = total_acc * 100;
+            state['bias']['acc'][1] = f_acc * 100;
+            state['bias']['acc'][2] = m_acc * 100;
+            
             let all_professions = [...state.bias['f_true_labels'], ...state.bias['m_true_labels']];
             let num_professions = [...new Set(all_professions)].sort();
 
@@ -351,38 +365,49 @@ export const useStore = defineStore('store', {
             state.bias.gap_labinthewild[4] = data.surgeon_score / data.surgeon_usercount;
             state.bias.gap_labinthewild[5] = data.average_score / data.average_usercount;
 
+            state.bias.acc_labinthewild[0] = data.total_acc / data.total_acc_usercount;
+            state.bias.acc_labinthewild[1] = data.female_acc / data.female_acc_usercount;
+            state.bias.acc_labinthewild[2] = data.male_acc / data.male_acc_usercount;
+
             // Add new bias to litw_bias document in db
             await updateDoc(docRef, {
-                professor_score: this.generateNewLITWGapScore(state.bias.gap[0], data.professor_score),
-                professor_usercount: this.generateNewLITWGapUserCount(state.bias.gap[0],data.professor_usercount),
-                physician_score: this.generateNewLITWGapScore(state.bias.gap[1], data.physician_score),
-                physician_usercount: this.generateNewLITWGapUserCount(state.bias.gap[1],data.physician_usercount),
-                psychologist_score: this.generateNewLITWGapScore(state.bias.gap[2], data.psychologist_score),
-                psychologist_usercount: this.generateNewLITWGapUserCount(state.bias.gap[2],data.psychologist_usercount),
-                teacher_score: this.generateNewLITWGapScore(state.bias.gap[3], data.teacher_score),
-                teacher_usercount: this.generateNewLITWGapUserCount(state.bias.gap[3],data.teacher_usercount),
-                surgeon_score: this.generateNewLITWGapScore(state.bias.gap[4], data.surgeon_score),
-                surgeon_usercount: this.generateNewLITWGapUserCount(state.bias.gap[4],data.surgeon_usercount),
-                average_score: this.generateNewLITWGapScore(state.bias.gap[5], data.average_score),
-                average_usercount: this.generateNewLITWGapUserCount(state.bias.gap[5],data.average_usercount),
+                professor_score: this.updateLitwResult(state.bias.gap[0], data.professor_score),
+                professor_usercount: this.updateLitwUsercount(state.bias.gap[0],data.professor_usercount),
+                physician_score: this.updateLitwResult(state.bias.gap[1], data.physician_score),
+                physician_usercount: this.updateLitwUsercount(state.bias.gap[1],data.physician_usercount),
+                psychologist_score: this.updateLitwResult(state.bias.gap[2], data.psychologist_score),
+                psychologist_usercount: this.updateLitwUsercount(state.bias.gap[2],data.psychologist_usercount),
+                teacher_score: this.updateLitwResult(state.bias.gap[3], data.teacher_score),
+                teacher_usercount: this.updateLitwUsercount(state.bias.gap[3],data.teacher_usercount),
+                surgeon_score: this.updateLitwResult(state.bias.gap[4], data.surgeon_score),
+                surgeon_usercount: this.updateLitwUsercount(state.bias.gap[4],data.surgeon_usercount),
+                average_score: this.updateLitwResult(state.bias.gap[5], data.average_score),
+                average_usercount: this.updateLitwUsercount(state.bias.gap[5],data.average_usercount),
+
+                total_acc: this.updateLitwResult(state.bias.acc[0], data.total_acc),
+                total_acc_usercount: this.updateLitwUsercount(state.bias.acc[0],data.total_acc_usercount),
+                female_acc:this.updateLitwResult(state.bias.acc[1], data.female_acc),
+                female_acc_usercount: this.updateLitwUsercount(state.bias.acc[1],data.female_acc_usercount),
+                male_acc:this.updateLitwResult(state.bias.acc[2], data.male_acc),
+                male_acc_usercount: this.updateLitwUsercount(state.bias.acc[2],data.male_acc_usercount),
             });
 
 
         },
-        generateNewLITWGapScore(user_gap, old_avg_gap_score) {
-            let score;
-            if (isFinite(user_gap)) {
-                return score = old_avg_gap_score + user_gap;
+        updateLitwResult(value, old_result) {
+            let result;
+            if (isFinite(value)) {
+                return result = old_result + value;
             } else {
-                return score = old_avg_gap_score;
+                return result = old_result;
             }
         },
-        generateNewLITWGapUserCount(user_gap, old_avg_gap_usercount) {
+        updateLitwUsercount(value, old_usercount) {
             let usercount;
-            if (isFinite(user_gap)) {
-                return usercount = old_avg_gap_usercount + 1;
+            if (isFinite(value)) {
+                return usercount = old_usercount + 1;
             } else {
-                return usercount = old_avg_gap_usercount;
+                return usercount = old_usercount;
             }
         },
     },
