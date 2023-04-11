@@ -7,8 +7,8 @@
         </div>
 
         <div class="results">
-          <h2 class="my-5">This graph shows you your personal gender bias compared to that of our AI and to the average of all
-            other LabintheWild users who have taken this test.</h2>
+          <h2 class="my-5">This graph shows you your personal gender bias compared to that of our AI and to the average
+            of all other LabintheWild users who have taken this test.</h2>
           <ResultBarChart chartlabel="Average gender bias"
                           :data_AI="this.data_AI_average"
                           :data_you="this.data_you_average"
@@ -38,18 +38,21 @@
             </div>
 
             <div v-if="isNaN(data_litw_you_avg_closer_to_zero) || this.data_litw_average === null">
-              We can't say whether you are on average more or less gender biased than the average of other LabintheWild users.
+              We can't say whether you are on average more or less gender biased than the average of other LabintheWild
+              users.
             </div>
             <div v-if="data_litw_you_avg_closer_to_zero === null && this.data_litw_average != null">
               Because your average gender bias score is just as far from zero as the average score of other LabintheWild
               users, <strong>you are on average just as gender biased as other LabintheWild users</strong>!
             </div>
             <div v-else-if="data_litw_you_avg_closer_to_zero === true && this.data_litw_average != null">
-              Because your average gender bias score is closer to zero than the average of other LabintheWild users, <strong>you
-              are on average less gender biased than the average of other LabintheWild users</strong>!
+              Because your average gender bias score is closer to zero than the average of other LabintheWild users,
+              <strong>you
+                are on average less gender biased than the average of other LabintheWild users</strong>!
             </div>
             <div v-else-if="data_litw_you_avg_closer_to_zero === false && this.data_litw_average != null">
-              Because your average gender bias score is further away from zero than the average of other LabintheWild users,
+              Because your average gender bias score is further away from zero than the average of other LabintheWild
+              users,
               <strong>you are on average more gender biased than the average of other LabintheWild users</strong>!
             </div>
 
@@ -65,7 +68,8 @@
 
             </div>
             <div v-else-if="isFinite(this.data_you_average) && this.data_you_average < this.data_AI_average">
-              Your personal average gender bias score is less than the average gender bias score of our AI. This means that you can
+              Your personal average gender bias score is less than the average gender bias score of our AI. This means
+              that you can
               predict a woman's true profession worse and/or a man's true profession better than our
               AI.
             </div>
@@ -99,14 +103,31 @@
           <div class="mt-5">
             In the graph above you can see your average of the five TPR gender gaps as <strong>average gender
             bias</strong>.
-            <p>Below you find a breakdown of your gender bias for <strong>each of the five professions</strong> compared to our AI and
+            <p>Below you find your <strong>personal accuracy</strong> on this test and a breakdown of your gender bias for <strong>each of the five professions</strong> compared
+              to our AI and
               the average of all other LabintheWild users who have taken this test.</p>
+            <div class="my-5">
+              <h2>Personal accuracy</h2>
+              <AccuracyBarChart chartlabel="Accuracy"
+                                :acc_you="this.acc_you"
+                                :acc_litw="this.acc_litw"
+                                class="mb-3"/>
+              <div v-if="isNaN(this.acc_you[0])">We are sorry that we can't calculate your personal accuracy.</div>
+              <div v-if="isFinite(this.acc_you[0])">You assigned the right profession to {{this.acc_you[0]}}% of all resumes!</div>
+              <div v-if="isFinite(this.acc_you[0]) && this.acc_you[0] > 89.03">This means that you worked <strong>more accurately</strong> than our AI, which has an accuracy of 89.03%.</div>
+              <div v-if="isFinite(this.acc_you[0]) && this.acc_you[0] === 89.03">This means that you worked <strong>just as accurately</strong> as our AI, which has an accuracy of 89.03%.</div>
+              <div v-if="isFinite(this.acc_you[0]) && this.acc_you[0] < 89.03">This means that you worked <strong>less accurately</strong> than our AI, which has an accuracy of 89.03%.</div>
+              <div v-if="isFinite(this.acc_litw[0])">In comparison, the average LabintheWild user has an accuracy of {{this.acc_litw[0]}}% on this test.</div>
+              <div>The graphs in the middle and to the right show you how your accuracy is distributed between the two genders "female and "male" and also gives direct comparative values of our AI and the average LabintheWild user.</div>
+
+            </div>
             <div class="my-5">
               <h3>Gender bias of profession "professor"</h3>
               <ResultBarChart chartlabel="Gender bias of profession professor"
                               :data_AI="this.data_AI_professor"
                               :data_you="this.data_you_professor"
-                              :data_litw="this.data_litw_professor"/>
+                              :data_litw="this.data_litw_professor"
+                              class="mb-3"/>
               <ResultExplanation :data_you_profession="this.data_you_professor"
                                  :data_AI_profession="this.data_AI_professor"
                                  :data_litw_profession="this.data_litw_professor"
@@ -120,7 +141,8 @@
               <ResultBarChart chartlabel="Gender bias of profession physician"
                               :data_AI="this.data_AI_physician"
                               :data_you="this.data_you_physician"
-                              :data_litw="this.data_litw_physician"/>
+                              :data_litw="this.data_litw_physician"
+                              class="mb-3"/>
               <ResultExplanation :data_you_profession="this.data_you_physician"
                                  :data_AI_profession="this.data_AI_physician"
                                  :data_litw_profession="this.data_litw_physician"
@@ -134,7 +156,8 @@
               <ResultBarChart chartlabel="Gender bias of profession psychologist"
                               :data_AI="this.data_AI_psychologist"
                               :data_you="this.data_you_psychologist"
-                              :data_litw="this.data_litw_psychologist"/>
+                              :data_litw="this.data_litw_psychologist"
+                              class="mb-3"/>
               <ResultExplanation :data_you_profession="this.data_you_psychologist"
                                  :data_AI_profession="this.data_AI_psychologist"
                                  :data_litw_profession="this.data_litw_psychologist"
@@ -148,7 +171,8 @@
               <ResultBarChart chartlabel="Gender bias of profession teacher"
                               :data_AI="this.data_AI_teacher"
                               :data_you="this.data_you_teacher"
-                              :data_litw="this.data_litw_teacher"/>
+                              :data_litw="this.data_litw_teacher"
+                              class="mb-3"/>
               <ResultExplanation :data_you_profession="this.data_you_teacher"
                                  :data_AI_profession="this.data_AI_teacher"
                                  :data_litw_profession="this.data_litw_teacher"
@@ -162,7 +186,8 @@
               <ResultBarChart chartlabel="Gender bias of profession surgeon"
                               :data_AI="this.data_AI_surgeon"
                               :data_you="this.data_you_surgeon"
-                              :data_litw="this.data_litw_surgeon"/>
+                              :data_litw="this.data_litw_surgeon"
+                              class="mb-3"/>
               <ResultExplanation :data_you_profession="this.data_you_surgeon"
                                  :data_AI_profession="this.data_AI_surgeon"
                                  :data_litw_profession="this.data_litw_surgeon"
@@ -217,7 +242,8 @@
       <hr class="my-5"/>
 
       <h2 class="text-center">These are other fun studies you can try if you liked ours! <br>
-        You can also return to <a href="https://www.labinthewild.org/">labinthewild.org</a> or close this browser window.</h2>
+        You can also return to <a href="https://www.labinthewild.org/">labinthewild.org</a> or close this browser
+        window.</h2>
 
       <div class="row mt-5">
         <div class="col-sm-4">
@@ -278,6 +304,7 @@ import {useStore} from "@/stores/store";
 import SocialMediaShare from "@/components/SocialMediaShare.vue";
 import ResultBarChart from "@/components/ResultBarChart.vue";
 import ResultExplanation from "@/components/ResultExplanation.vue";
+import AccuracyBarChart from "@/components/AccuracyBarChart.vue";
 
 export default {
   setup() {
@@ -286,6 +313,7 @@ export default {
   },
   name: "Results",
   components: {
+    'AccuracyBarChart': AccuracyBarChart,
     'SocialMediaShare': SocialMediaShare,
     'ResultBarChart': ResultBarChart,
     'ResultExplanation': ResultExplanation,
@@ -465,6 +493,20 @@ export default {
     data_litw_you_surgeon_closer_to_zero: {
       get() {
         return this.userCloserToZero(this.data_litw_surgeon, this.data_you_surgeon);
+      },
+      set(value) {
+      },
+    },
+    acc_you: {
+      get() {
+        return this.store.bias.acc;
+      },
+      set(value) {
+      },
+    },
+    acc_litw: {
+      get() {
+        return this.store.bias.acc_labinthewild;
       },
       set(value) {
       },
