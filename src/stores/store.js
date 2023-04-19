@@ -30,6 +30,7 @@ export const useStore = defineStore('store', {
                 "user-gender": null,
                 "user-english-proficiency": null,
                 "user-ml-knowledge": null,
+                "user-ai-attitude": null,
                 "user-cookie-consent": null,
             },
             AI_error_ids: [1398, 3588, 750, 3147, 4831, 1034, 4468, 225, 99, 15967, 993, 203, 552, 1458], // #14
@@ -124,6 +125,9 @@ export const useStore = defineStore('store', {
         },
         getUserMLKnowledge(state) {
             return state.userInput['user-ml-knowledge'];
+        },
+        getUserAIAttitude(state) {
+            return state.userInput['user-ai-attitude'];
         },
         getUserCookieConsent(state) {
             return state.userInput['user-cookie-consent'];
