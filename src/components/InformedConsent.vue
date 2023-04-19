@@ -182,7 +182,7 @@ export default {
       });
 
       if (this.stateConsentAccepted) {
-        if (litwCookies.length === 7) {
+        if (litwCookies.length === 8) {
           litwCookies.forEach(function (cookie) {
             cookie = cookie.slice(COOKIE_PREFIX.length)
             store.userInput[cookie] = cookies.get(COOKIE_PREFIX + cookie)

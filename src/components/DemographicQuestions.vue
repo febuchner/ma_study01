@@ -102,6 +102,19 @@
 
         <b-form-group
             class="mb-4"
+            label-class="font-weight-bold"
+        >
+          <template v-slot:label>
+            What attitude towards AI do you have? <span class="text-danger fw-bolder">*</span>
+          </template>
+          <b-form-select
+              v-model="userAIAttitude"
+              :options="aiAttitude">
+          </b-form-select>
+        </b-form-group>
+
+        <b-form-group
+            class="mb-4"
             label-class="font-weight-bold">
           <template v-slot:label>
             Can we store your demographics on your computer? <span class="text-danger fw-bolder">*</span>
@@ -183,6 +196,13 @@ export default {
         {text: "Some experience", value: "some_experience"},
         {text: "A lot of experience", value: "a_lot_of_experience"},
       ],
+      aiAttitude: [
+        {text: "Rejecting", value: "rejecting"},
+        {text: "Rather rejecting", value: "rather_rejecting"},
+        {text: "Neutral", value: "neutral"},
+        {text: "Rather affirming ", value: "rather_affirming"},
+        {text: "Affirming", value: "affirming"},
+      ],
     }
   },
   computed: {
@@ -222,6 +242,12 @@ export default {
         this.store.userInput['user-ml-knowledge'] = value;
       },
     },
+    userAIAttitude: {
+      get() {},
+      set(value) {
+        this.store.userInput['user-ai-attitude'] = value;
+      },
+    },
     userCookieConsent: {
       get() {},
       set(value) {
@@ -232,7 +258,7 @@ export default {
   },
   watch: {
     userAge(value) {
-      console.log('watcher of userAge');
+      // console.log('watcher of userAge');
       // this.isValidAge(value);
     },
   },
@@ -259,6 +285,7 @@ export default {
           this.store.getUserEducation !== null &&
           this.store.getUserGender !== null &&
           this.store.getUserMLKnowledge !== null &&
+          this.store.getUserAIAttitude !== null &&
           this.store.getUserCookieConsent !== null
       ) {
         this.showFormError = false
@@ -287,6 +314,7 @@ export default {
           this.setCookies("user-education", this.store.getUserEducation);
           this.setCookies("user-gender", this.store.getUserGender);
           this.setCookies("user-ml-knowledge", this.store.getUserMLKnowledge);
+          this.setCookies("user-ai-attitude", this.store.getUserAIAttitude);
           this.setCookies("user-cookie-consent", this.store.getUserCookieConsent);
         }
         this.store.nextStep(this.store, 1);
