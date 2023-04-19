@@ -48,6 +48,7 @@
 
 <script>
 import {useStore} from "@/stores/store";
+import LikertScale from "@/components/LikertScale.vue";
 
 export default {
   setup() {
@@ -55,6 +56,9 @@ export default {
     return {store};
   },
   name: "AiInsights",
+  components: {
+    'LikertScale': LikertScale,
+  },
   data() {
     return {
       showFormError: false,
