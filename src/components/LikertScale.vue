@@ -1,22 +1,47 @@
-<template>
-  <div>
+<template xmlns="http://www.w3.org/1999/html">
+  <div class="px-3">
+    <p class="mb-0">{{ this.question }}<span class="text-danger fw-bolder">*</span></p>
 
-    <ul class='five-likert'>
-      <li v-for="l in levels" :key="l">
-        <input style="color: red;" :id="getId(l)" type="radio" :name="inputname" :value="formatValue(l)" v-model="lvalue">
-        <label :for="getId(l)">{{ l }}</label>
-      </li>
-    </ul>
-
-    <!-- {{ $store.state.answers[this.inputname] }} -->
-
+        <b-form-group>
+          <b-form-radio-group class="five-likert">
+            <b-form-radio class="my-1"
+                          v-model="lvalue"
+                          :name="likert_name"
+                          :value=formatValue(this.levels[0])
+            >{{ this.levels[0] }}
+            </b-form-radio>
+            <b-form-radio class="my-1"
+                          v-model="lvalue"
+                          :name="likert_name"
+                          :value=formatValue(this.levels[1])
+            >{{ this.levels[1] }}
+            </b-form-radio>
+            <b-form-radio class="my-1"
+                          v-model="lvalue"
+                          :name="likert_name"
+                          :value=formatValue(this.levels[2])
+            >{{ this.levels[2] }}
+            </b-form-radio>
+            <b-form-radio class="my-1"
+                          v-model="lvalue"
+                          :name="likert_name"
+                          :value=formatValue(this.levels[3])
+            >{{ this.levels[3] }}
+            </b-form-radio>
+            <b-form-radio class="my-1"
+                          v-model="lvalue"
+                          :name="likert_name"
+                          :value=formatValue(this.levels[4])
+            >{{ this.levels[4] }}
+            </b-form-radio>
+          </b-form-radio-group>
+        </b-form-group>
   </div>
 </template>
 
 <script>
 import {useStore} from '@/stores/store.js'
 import {inject} from "vue";
-
 
 export default {
   setup() {
@@ -25,29 +50,37 @@ export default {
   },
   name: 'LikertScale',
   props: [
-    'inputname',
-    'levels'
+    'question',
+    'likert_name',
+    'levels',
+    'ai_error_sample',
+    'likert_level',
   ],
+  data() {
+    return {
+      question: this.question,
+    }
+  },
   computed: {
     lvalue: {
-      // TODO: adapt to my store
-      get() { return this.store.state.answers[this.inputname] },
-      set(value) { this.store.commit('setAnswer', { 'key': this.inputname, 'value': value }) }
+      get() {
+        return this.store.aiInsights[this.ai_error_sample][this.likert_level];
+      },
+      set(value) {
+        this.store.aiInsights[this.ai_error_sample][this.likert_level] = value;
+      }
     }
   },
   methods: {
     formatValue(value) {
       return value.toLowerCase().replace(' ', '-')
     },
-    getId(value) {
-      return this.inputname + '-' + this.formatValue(value)
-    }
   }
 }
 </script>
 
 <style>
-.likert, .five-likert {
+.five-likert {
   list-style: none;
   width: 100%;
   margin-bottom: 10px;
@@ -56,48 +89,29 @@ export default {
   border-bottom: 2px solid #efefef;
 }
 
-.likert:last-of-type, .five-likert:last-of-type {
+.five-likert:last-of-type {
   border-bottom: 0;
-}
-
-.likert:before {
-  content: '';
-  position: relative;
-  top: 9px;
-  left: 7.0%;
-  display: block;
-  background-color: #ced4da;
-  height: 4px;
-  width: 84%;
 }
 
 .five-likert:before {
   content: '';
   position: relative;
-  top: 9px;
+  top: 18px;
   left: 9.5%;
   display: block;
-  background-color: #ced4da;
+  background-color: #dfe0e1;
   height: 4px;
-  width: 76%;
+  width: 79%;
 }
 
-.likert li {
+.five-likert .form-check.form-check-inline {
   display: inline-block;
-  width: 14%;
+  width: 18%;
   text-align: center;
   vertical-align: top;
 }
 
-.five-likert li {
-  display: inline-block;
-  width: 19%;
-  text-align: center;
-  vertical-align: top;
-}
-
-.likert li input[type=radio],
-.five-likert li input[type=radio] {
+.five-likert .form-check.form-check-inline input[type=radio] {
   display: block;
   position: relative;
   top: 0;
@@ -105,10 +119,8 @@ export default {
   margin-left: -6px;
 }
 
-.likert li label,
-.five-likert li label {
+.five-likert .form-check.form-check-inline label {
   width: 100%;
-  font-size: 80%;
   /* UX Hack to enlarge the click area around the inputs */
   padding-top: 15px;
   position: relative;

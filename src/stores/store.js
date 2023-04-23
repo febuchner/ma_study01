@@ -77,6 +77,27 @@ export const useStore = defineStore('store', {
             aiInsights: {
                 "ai-included-decision": null,
                 "ai-use-prediction": null,
+                ai_error_sample_00: {
+                    ai_error_id: null,
+                    user_answer_same_as_ai: null,
+                    likert_level: null,
+                },
+                ai_error_sample_01: {
+                    ai_error_id: null,
+                    user_answer_same_as_ai: null,
+                    likert_level: null,
+                },
+                ai_error_sample_02: {
+                    ai_error_id: null,
+                    user_answer_same_as_ai: null,
+                    likert_level: null,
+                },
+                ai_error_sample_03: {
+                    ai_error_id: null,
+                    user_answer_same_as_ai: null,
+                    likert_level: null,
+                },
+
             },
             debrief: {
                 "user-comment": null,
@@ -264,7 +285,7 @@ export const useStore = defineStore('store', {
             state['bias']['acc'][0] = total_acc * 100;
             state['bias']['acc'][1] = f_acc * 100;
             state['bias']['acc'][2] = m_acc * 100;
-            
+
             let all_professions = [...state.bias['f_true_labels'], ...state.bias['m_true_labels']];
             let num_professions = [...new Set(all_professions)].sort();
 
@@ -376,24 +397,24 @@ export const useStore = defineStore('store', {
             // Add new bias to litw_bias document in db
             await updateDoc(docRef, {
                 professor_score: this.updateLitwResult(state.bias.gap[0], data.professor_score),
-                professor_usercount: this.updateLitwUsercount(state.bias.gap[0],data.professor_usercount),
+                professor_usercount: this.updateLitwUsercount(state.bias.gap[0], data.professor_usercount),
                 physician_score: this.updateLitwResult(state.bias.gap[1], data.physician_score),
-                physician_usercount: this.updateLitwUsercount(state.bias.gap[1],data.physician_usercount),
+                physician_usercount: this.updateLitwUsercount(state.bias.gap[1], data.physician_usercount),
                 psychologist_score: this.updateLitwResult(state.bias.gap[2], data.psychologist_score),
-                psychologist_usercount: this.updateLitwUsercount(state.bias.gap[2],data.psychologist_usercount),
+                psychologist_usercount: this.updateLitwUsercount(state.bias.gap[2], data.psychologist_usercount),
                 teacher_score: this.updateLitwResult(state.bias.gap[3], data.teacher_score),
-                teacher_usercount: this.updateLitwUsercount(state.bias.gap[3],data.teacher_usercount),
+                teacher_usercount: this.updateLitwUsercount(state.bias.gap[3], data.teacher_usercount),
                 surgeon_score: this.updateLitwResult(state.bias.gap[4], data.surgeon_score),
-                surgeon_usercount: this.updateLitwUsercount(state.bias.gap[4],data.surgeon_usercount),
+                surgeon_usercount: this.updateLitwUsercount(state.bias.gap[4], data.surgeon_usercount),
                 average_score: this.updateLitwResult(state.bias.gap[5], data.average_score),
-                average_usercount: this.updateLitwUsercount(state.bias.gap[5],data.average_usercount),
+                average_usercount: this.updateLitwUsercount(state.bias.gap[5], data.average_usercount),
 
                 total_acc: this.updateLitwResult(state.bias.acc[0], data.total_acc),
-                total_acc_usercount: this.updateLitwUsercount(state.bias.acc[0],data.total_acc_usercount),
-                female_acc:this.updateLitwResult(state.bias.acc[1], data.female_acc),
-                female_acc_usercount: this.updateLitwUsercount(state.bias.acc[1],data.female_acc_usercount),
-                male_acc:this.updateLitwResult(state.bias.acc[2], data.male_acc),
-                male_acc_usercount: this.updateLitwUsercount(state.bias.acc[2],data.male_acc_usercount),
+                total_acc_usercount: this.updateLitwUsercount(state.bias.acc[0], data.total_acc_usercount),
+                female_acc: this.updateLitwResult(state.bias.acc[1], data.female_acc),
+                female_acc_usercount: this.updateLitwUsercount(state.bias.acc[1], data.female_acc_usercount),
+                male_acc: this.updateLitwResult(state.bias.acc[2], data.male_acc),
+                male_acc_usercount: this.updateLitwUsercount(state.bias.acc[2], data.male_acc_usercount),
             });
 
 
@@ -413,6 +434,35 @@ export const useStore = defineStore('store', {
             } else {
                 return usercount = old_usercount;
             }
+        },
+        getAIErrorSamplesIndicesOfStudyTrial(state) {
+            let aiErrorSamplesIndices = [];
+            let aiErrorSamplesIdsInStudy = [];
+            state.AI_error_ids.forEach(function (element) {
+                    if (state.study_ids.includes(element)) {
+                        aiErrorSamplesIdsInStudy.push(element);
+                        aiErrorSamplesIndices.push(state.study_ids.indexOf(element));
+                    }
+                }
+            );
+            aiErrorSamplesIndices.sort(function (a, b) {
+                return a - b;
+            });
+            state.aiInsights.ai_error_sample_00.ai_error_id = aiErrorSamplesIdsInStudy[0];
+            state.aiInsights.ai_error_sample_01.ai_error_id = aiErrorSamplesIdsInStudy[1];
+            state.aiInsights.ai_error_sample_02.ai_error_id = aiErrorSamplesIdsInStudy[2];
+            state.aiInsights.ai_error_sample_03.ai_error_id = aiErrorSamplesIdsInStudy[3];
+
+            this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[0], 'ai_error_sample_00');
+            this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[1], 'ai_error_sample_01');
+            this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[2], 'ai_error_sample_02');
+            this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[3], 'ai_error_sample_03');
+
+            return aiErrorSamplesIndices;
+        },
+
+        userSameAnswerAsPrediction(state, index, storeposition) {
+            state.aiInsights[storeposition]['user_answer_same_as_ai'] = state.study_items[index]['prediction'] === Object.values(state.study_answers)[index];
         },
     },
 })
