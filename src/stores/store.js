@@ -75,27 +75,30 @@ export const useStore = defineStore('store', {
                 study_answer19: null,
             },
             aiInsights: {
-                "ai-included-decision": null,
                 "ai-use-prediction": null,
                 ai_error_sample_00: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
-                    likert_level: null,
+                    ai_prediction_consideration: null,
+                    other_answer_consideration:null,
                 },
                 ai_error_sample_01: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
-                    likert_level: null,
+                    ai_prediction_consideration: null,
+                    other_answer_consideration:null,
                 },
                 ai_error_sample_02: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
-                    likert_level: null,
+                    ai_prediction_consideration: null,
+                    other_answer_consideration:null,
                 },
                 ai_error_sample_03: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
-                    likert_level: null,
+                    ai_prediction_consideration: null,
+                    other_answer_consideration:null,
                 },
 
             },
@@ -153,11 +156,44 @@ export const useStore = defineStore('store', {
         getUserCookieConsent(state) {
             return state.userInput['user-cookie-consent'];
         },
-        getAiIncludedDecision(state) {
-            return state.aiInsights['ai-included-decision'];
-        },
         getAiUsePrediction(state) {
             return state.aiInsights['ai-use-prediction'];
+        },
+        getUseConsiderationAIErrorSample00(state) {
+            return state.aiInsights.ai_error_sample_00['ai_prediction_consideration'];
+        },
+        getUserAnswerSameAsAIAtAIErrorSample00(state) {
+            return state.aiInsights.ai_error_sample_00['user_answer_same_as_ai'];
+        },
+        getOtherAnswerConsiderationAtAIErrorSample00(state) {
+            return state.aiInsights.ai_error_sample_00['other_answer_consideration'];
+        },
+        getUseConsiderationAIErrorSample01(state) {
+            return state.aiInsights.ai_error_sample_01['ai_prediction_consideration'];
+        },
+        getUserAnswerSameAsAIAtAIErrorSample01(state) {
+            return state.aiInsights.ai_error_sample_01['user_answer_same_as_ai'];
+        },
+        getOtherAnswerConsiderationAtAIErrorSample01(state) {
+            return state.aiInsights.ai_error_sample_01['other_answer_consideration'];
+        },
+        getUseConsiderationAIErrorSample02(state) {
+            return state.aiInsights.ai_error_sample_02['ai_prediction_consideration'];
+        },
+        getUserAnswerSameAsAIAtAIErrorSample02(state) {
+            return state.aiInsights.ai_error_sample_02['user_answer_same_as_ai'];
+        },
+        getOtherAnswerConsiderationAtAIErrorSample02(state) {
+            return state.aiInsights.ai_error_sample_02['other_answer_consideration'];
+        },
+        getUseConsiderationAIErrorSample03(state) {
+            return state.aiInsights.ai_error_sample_03['ai_prediction_consideration'];
+        },
+        getUserAnswerSameAsAIAtAIErrorSample03(state) {
+            return state.aiInsights.ai_error_sample_03['user_answer_same_as_ai'];
+        },
+        getOtherAnswerConsiderationAtAIErrorSample03(state) {
+            return state.aiInsights.ai_error_sample_03['other_answer_consideration'];
         },
         getUserComment(state) {
             return state.debrief['user-comment'];

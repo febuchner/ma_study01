@@ -17,18 +17,7 @@
             label-class="font-weight-bold"
         >
           <template v-slot:label>
-            Describe how you included the AI support into your decisions! <span class="text-danger fw-bolder">*</span>
-          </template>
-          <b-form-textarea v-model="aiIncludedDecision" rows="3"
-                           placeholder="Please enter your thoughts."></b-form-textarea>
-        </b-form-group>
-
-        <b-form-group
-            class="mb-4"
-            label-class="font-weight-bold"
-        >
-          <template v-slot:label>
-            How did you make use of the provided AI-generated answers? <span class="text-danger fw-bolder">*</span>
+            Describe how you used the support of our AI in your decision making!<span class="text-danger fw-bolder">*</span>
           </template>
           <b-form-textarea v-model="aiUsePrediction" rows="3"
                            placeholder="Please enter your thoughts."></b-form-textarea>
@@ -174,32 +163,92 @@
             </div>
 
             <div v-if="index === 0">
-              <LikertScale question="First question."
-                           likert_name="first"
-                           :levels="['Weakly', 'Rather weakly', 'Neutral', 'Rather strongly', 'Strongly']"
+              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+                           likert_name="null_likert_AI_prediction"
+                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_00"
-                           likert_level="likert_level"/>
+                           likert_level="ai_prediction_consideration"/>
+
+              <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample00">
+                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                             likert_name="null_likert_other_answer"
+                             :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                             ai_error_sample="ai_error_sample_00"
+                             likert_level="other_answer_consideration"/>
+              </div>
+              <div v-else>
+                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                             likert_name="null_likert_other_answer"
+                             :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                             ai_error_sample="ai_error_sample_00"
+                             likert_level="other_answer_consideration"/>
+              </div>
             </div>
             <div v-if="index === 1">
-              <LikertScale question="Second Question."
-                           likert_name="second"
-                           :levels="['Weakly', 'Rather weakly', 'Neutral', 'Rather strongly', 'Strongly']"
+              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+                           likert_name="first_likert_AI_prediction"
+                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_01"
-                           likert_level="likert_level"/>
+                           likert_level="ai_prediction_consideration"/>
+
+              <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample01">
+                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                             likert_name="first_likert_other_answer"
+                             :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                             ai_error_sample="ai_error_sample_01"
+                             likert_level="other_answer_consideration"/>
+              </div>
+              <div v-else>
+                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                             likert_name="first_likert_other_answer"
+                             :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                             ai_error_sample="ai_error_sample_01"
+                             likert_level="other_answer_consideration"/>
+              </div>
             </div>
             <div v-if="index === 2">
-              <LikertScale question="Third question."
-                           likert_name="third"
-                           :levels="['Weakly', 'Rather weakly', 'Neutral', 'Rather strongly', 'Strongly']"
+              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+                           likert_name="second_likert_AI_prediction"
+                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_02"
-                           likert_level="likert_level"/>
+                           likert_level="ai_prediction_consideration"/>
+
+              <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample02">
+                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                             likert_name="second_likert_other_answer"
+                             :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                             ai_error_sample="ai_error_sample_02"
+                             likert_level="other_answer_consideration"/>
+              </div>
+              <div v-else>
+                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                             likert_name="second_likert_other_answer"
+                             :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                             ai_error_sample="ai_error_sample_02"
+                             likert_level="other_answer_consideration"/>
+              </div>
             </div>
             <div v-if="index === 3">
-              <LikertScale question="Fourth question."
-                           likert_name="fourth"
-                           :levels="['Weakly', 'Rather weakly', 'Neutral', 'Rather strongly', 'Strongly']"
+              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+                           likert_name="third_likert_AI_prediction"
+                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_03"
-                           likert_level="likert_level"/>
+                           likert_level="ai_prediction_consideration"/>
+
+              <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample03">
+                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                             likert_name="third_likert_other_answer"
+                             :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                             ai_error_sample="ai_error_sample_03"
+                             likert_level="other_answer_consideration"/>
+              </div>
+              <div v-else>
+                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                             likert_name="third_likert_other_answer"
+                             :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                             ai_error_sample="ai_error_sample_03"
+                             likert_level="other_answer_consideration"/>
+              </div>
             </div>
 
           </div>
@@ -237,13 +286,6 @@ export default {
     }
   },
   computed: {
-    aiIncludedDecision: {
-      get() {
-      },
-      set(value) {
-        this.store.aiInsights['ai-included-decision'] = value;
-      },
-    },
     aiUsePrediction: {
       get() {
       },
@@ -268,8 +310,15 @@ export default {
   },
   methods: {
     isValidInputs: function () {
-      if (this.store.getAiIncludedDecision !== null &&
-          this.store.getAiUsePrediction !== null
+      if (this.store.getAiUsePrediction !== null &&
+          this.store.getUseConsiderationAIErrorSample00 !== null &&
+          this.store.getOtherAnswerConsiderationAtAIErrorSample00 !== null &&
+          this.store.getUseConsiderationAIErrorSample01 !== null &&
+          this.store.getOtherAnswerConsiderationAtAIErrorSample01 !== null &&
+          this.store.getUseConsiderationAIErrorSample02 !== null &&
+          this.store.getOtherAnswerConsiderationAtAIErrorSample02 !== null &&
+          this.store.getUseConsiderationAIErrorSample03 !== null &&
+          this.store.getOtherAnswerConsiderationAtAIErrorSample03 !== null
       ) {
         this.showFormError = false
         return true
