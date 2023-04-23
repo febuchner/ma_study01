@@ -473,10 +473,8 @@ export const useStore = defineStore('store', {
         },
         getAIErrorSamplesIndicesOfStudyTrial(state) {
             let aiErrorSamplesIndices = [];
-            let aiErrorSamplesIdsInStudy = [];
             state.AI_error_ids.forEach(function (element) {
                     if (state.study_ids.includes(element)) {
-                        aiErrorSamplesIdsInStudy.push(element);
                         aiErrorSamplesIndices.push(state.study_ids.indexOf(element));
                     }
                 }
@@ -484,10 +482,10 @@ export const useStore = defineStore('store', {
             aiErrorSamplesIndices.sort(function (a, b) {
                 return a - b;
             });
-            state.aiInsights.ai_error_sample_00.ai_error_id = aiErrorSamplesIdsInStudy[0];
-            state.aiInsights.ai_error_sample_01.ai_error_id = aiErrorSamplesIdsInStudy[1];
-            state.aiInsights.ai_error_sample_02.ai_error_id = aiErrorSamplesIdsInStudy[2];
-            state.aiInsights.ai_error_sample_03.ai_error_id = aiErrorSamplesIdsInStudy[3];
+            state.aiInsights.ai_error_sample_00.ai_error_id = state.study_ids[aiErrorSamplesIndices[0]];
+            state.aiInsights.ai_error_sample_01.ai_error_id = state.study_ids[aiErrorSamplesIndices[1]];
+            state.aiInsights.ai_error_sample_02.ai_error_id = state.study_ids[aiErrorSamplesIndices[2]];
+            state.aiInsights.ai_error_sample_03.ai_error_id = state.study_ids[aiErrorSamplesIndices[3]];
 
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[0], 'ai_error_sample_00');
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[1], 'ai_error_sample_01');

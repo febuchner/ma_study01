@@ -24,7 +24,7 @@
         </b-form-group>
 
         <div v-for="(n,index) in this.AIErrorSampleIds" class="pb-2">
-          <p class="mb-2">Please read the following short resume from the previous part again and answer the question.</p>
+          <p class="mb-2">Please read the following short resume from the previous study part again and answer the questions.</p>
           <div class="card mb-4">
             <div class="col-12 bg-profession text-center mb-3 px-4 py-4">
               <div v-if="this.store.study_condition === 'with_explanation_highlights'">
