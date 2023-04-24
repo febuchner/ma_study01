@@ -77,3 +77,12 @@
   color: #000 !important;
   font-weight: bold;
 }
+
+fieldset.no-mb {
+  margin-bottom: 0 !important;
+
+  legend {
+    padding-right: 1rem;
+    padding-left: 1rem;
+  }
+}

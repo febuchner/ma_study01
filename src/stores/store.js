@@ -81,24 +81,28 @@ export const useStore = defineStore('store', {
                     user_answer_same_as_ai: null,
                     ai_prediction_consideration: null,
                     other_answer_consideration:null,
+                    why_choose_answer:null,
                 },
                 ai_error_sample_01: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
                     ai_prediction_consideration: null,
                     other_answer_consideration:null,
+                    why_choose_answer:null,
                 },
                 ai_error_sample_02: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
                     ai_prediction_consideration: null,
                     other_answer_consideration:null,
+                    why_choose_answer:null,
                 },
                 ai_error_sample_03: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
                     ai_prediction_consideration: null,
                     other_answer_consideration:null,
+                    why_choose_answer:null,
                 },
 
             },
@@ -168,6 +172,9 @@ export const useStore = defineStore('store', {
         getOtherAnswerConsiderationAtAIErrorSample00(state) {
             return state.aiInsights.ai_error_sample_00['other_answer_consideration'];
         },
+        getWhyChooseAnswerAtAIErrorSample00(state) {
+            return state.aiInsights.ai_error_sample_00['why_choose_answer'];
+        },
         getUseConsiderationAIErrorSample01(state) {
             return state.aiInsights.ai_error_sample_01['ai_prediction_consideration'];
         },
@@ -176,6 +183,9 @@ export const useStore = defineStore('store', {
         },
         getOtherAnswerConsiderationAtAIErrorSample01(state) {
             return state.aiInsights.ai_error_sample_01['other_answer_consideration'];
+        },
+        getWhyChooseAnswerAtAIErrorSample01(state) {
+            return state.aiInsights.ai_error_sample_01['why_choose_answer'];
         },
         getUseConsiderationAIErrorSample02(state) {
             return state.aiInsights.ai_error_sample_02['ai_prediction_consideration'];
@@ -186,6 +196,9 @@ export const useStore = defineStore('store', {
         getOtherAnswerConsiderationAtAIErrorSample02(state) {
             return state.aiInsights.ai_error_sample_02['other_answer_consideration'];
         },
+        getWhyChooseAnswerAtAIErrorSample02(state) {
+            return state.aiInsights.ai_error_sample_02['why_choose_answer'];
+        },
         getUseConsiderationAIErrorSample03(state) {
             return state.aiInsights.ai_error_sample_03['ai_prediction_consideration'];
         },
@@ -194,6 +207,9 @@ export const useStore = defineStore('store', {
         },
         getOtherAnswerConsiderationAtAIErrorSample03(state) {
             return state.aiInsights.ai_error_sample_03['other_answer_consideration'];
+        },
+        getWhyChooseAnswerAtAIErrorSample03(state) {
+            return state.aiInsights.ai_error_sample_03['why_choose_answer'];
         },
         getUserComment(state) {
             return state.debrief['user-comment'];

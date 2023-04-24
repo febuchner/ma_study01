@@ -183,6 +183,18 @@
                              ai_error_sample="ai_error_sample_00"
                              likert_level="other_answer_consideration"/>
               </div>
+              <b-form-group
+                  class="no-mb"
+                  label-class="font-weight-bold"
+              >
+                <template v-slot:label>
+                  Describe with only a few words what made you finally choose your answer!<span class="text-danger fw-bolder">*</span>
+                </template>
+                <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample00" rows="2"
+                                 placeholder="Please enter your thoughts.">
+
+                </b-form-textarea>
+              </b-form-group>
             </div>
             <div v-if="index === 1">
               <LikertScale question="How much did you consider this AI prediction in your decision making?"
@@ -205,6 +217,18 @@
                              ai_error_sample="ai_error_sample_01"
                              likert_level="other_answer_consideration"/>
               </div>
+              <b-form-group
+                  class="no-mb"
+                  label-class="font-weight-bold"
+              >
+                <template v-slot:label>
+                  Describe with only a few words what made you finally choose your answer!<span class="text-danger fw-bolder">*</span>
+                </template>
+                <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample01" rows="2"
+                                 placeholder="Please enter your thoughts.">
+
+                </b-form-textarea>
+              </b-form-group>
             </div>
             <div v-if="index === 2">
               <LikertScale question="How much did you consider this AI prediction in your decision making?"
@@ -227,6 +251,18 @@
                              ai_error_sample="ai_error_sample_02"
                              likert_level="other_answer_consideration"/>
               </div>
+              <b-form-group
+                  class="no-mb"
+                  label-class="font-weight-bold"
+              >
+                <template v-slot:label>
+                  Describe with only a few words what made you finally choose your answer!<span class="text-danger fw-bolder">*</span>
+                </template>
+                <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample02" rows="2"
+                                 placeholder="Please enter your thoughts.">
+
+                </b-form-textarea>
+              </b-form-group>
             </div>
             <div v-if="index === 3">
               <LikertScale question="How much did you consider this AI prediction in your decision making?"
@@ -249,6 +285,18 @@
                              ai_error_sample="ai_error_sample_03"
                              likert_level="other_answer_consideration"/>
               </div>
+              <b-form-group
+                  class="no-mb"
+                  label-class="font-weight-bold"
+              >
+                <template v-slot:label>
+                  Describe with only a few words what made you finally choose your answer!<span class="text-danger fw-bolder">*</span>
+                </template>
+                <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample03" rows="2"
+                                 placeholder="Please enter your thoughts.">
+
+                </b-form-textarea>
+              </b-form-group>
             </div>
 
           </div>
@@ -307,18 +355,50 @@ export default {
       set(value) {
       },
     },
+    whyChooseAnswerAtAIErrorSample00 : {
+      get() {
+      },
+      set(value) {
+        this.store.aiInsights.ai_error_sample_00['why_choose_answer'] = value;
+      },
+    },
+    whyChooseAnswerAtAIErrorSample01 : {
+      get() {
+      },
+      set(value) {
+        this.store.aiInsights.ai_error_sample_01['why_choose_answer'] = value;
+      },
+    },
+    whyChooseAnswerAtAIErrorSample02 : {
+      get() {
+      },
+      set(value) {
+        this.store.aiInsights.ai_error_sample_02['why_choose_answer'] = value;
+      },
+    },
+    whyChooseAnswerAtAIErrorSample03: {
+      get() {
+      },
+      set(value) {
+        this.store.aiInsights.ai_error_sample_03['why_choose_answer'] = value;
+      },
+    },
   },
   methods: {
     isValidInputs: function () {
       if (this.store.getAiUsePrediction !== null &&
           this.store.getUseConsiderationAIErrorSample00 !== null &&
           this.store.getOtherAnswerConsiderationAtAIErrorSample00 !== null &&
+          this.store.getWhyChooseAnswerAtAIErrorSample00 !== null &&
           this.store.getUseConsiderationAIErrorSample01 !== null &&
           this.store.getOtherAnswerConsiderationAtAIErrorSample01 !== null &&
+          this.store.getWhyChooseAnswerAtAIErrorSample01 !== null &&
           this.store.getUseConsiderationAIErrorSample02 !== null &&
           this.store.getOtherAnswerConsiderationAtAIErrorSample02 !== null &&
+          this.store.getWhyChooseAnswerAtAIErrorSample02 !== null &&
           this.store.getUseConsiderationAIErrorSample03 !== null &&
-          this.store.getOtherAnswerConsiderationAtAIErrorSample03 !== null
+          this.store.getOtherAnswerConsiderationAtAIErrorSample03 !== null &&
+          this.store.getWhyChooseAnswerAtAIErrorSample03 !== null
       ) {
         this.showFormError = false
         return true
