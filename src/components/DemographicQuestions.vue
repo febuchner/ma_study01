@@ -18,22 +18,20 @@
             Have you taken this test before? <span class="text-danger fw-bolder">*</span>
           </template>
 
-          <b-form-radio-group id="user-taken-test-before">
-            <b-form-radio
-                v-model="userTakenTestBefore"
-                name="userTakenTestBefore"
-                value="true"
-                button
-            >Yes
-            </b-form-radio>
-            <b-form-radio
-                v-model="userTakenTestBefore"
-                name="userTakenTestBefore"
-                value="false"
-                button
-            >No
-            </b-form-radio>
-          </b-form-radio-group>
+          <b-form-radio class="my-1 me-2 d-inline-flex"
+              v-model="userTakenTestBefore"
+              name="userTakenTestBefore"
+              value="true"
+              button
+          >Yes
+          </b-form-radio>
+          <b-form-radio class="my-1 mx-2 d-inline-flex"
+              v-model="userTakenTestBefore"
+              name="userTakenTestBefore"
+              value="false"
+              button
+          >No
+          </b-form-radio>
         </b-form-group>
 
         <b-form-group
@@ -121,28 +119,27 @@
             <br>
             <a href="#" @click="showCookieAlert"> Why are we asking?</a>
           </template>
-          <b-form-radio-group>
-            <b-form-radio
+            <b-form-radio class="my-1 me-2 d-inline-flex"
                 v-model="userCookieConsent"
                 name="userCookieConsent"
                 value=true
                 button
             >Yes
             </b-form-radio>
-            <b-form-radio
+            <b-form-radio class="my-1 mx-2 d-inline-flex"
                 v-model="userCookieConsent"
                 name="userCookieConsent"
                 value=false
                 button
             >No
             </b-form-radio>
-          </b-form-radio-group>
         </b-form-group>
 
         <div class="mx-3 text-danger" v-if="this.showFormError">Please fill in all fields of the form first.</div>
 
         <button @click="validateForm" type="submit" class="btn btn-primary mt-5">
-          Next <font-awesome-icon icon="fa-solid fa-arrow-right" />
+          Next
+          <font-awesome-icon icon="fa-solid fa-arrow-right"/>
         </button>
 
       </div>
@@ -207,49 +204,57 @@ export default {
   },
   computed: {
     userTakenTestBefore: {
-      get() {},
+      get() {
+      },
       set(value) {
         this.store.userInput['user-taken-test-before'] = value;
       },
     },
     userAge: {
-      get() {},
+      get() {
+      },
       set(value) {
         this.store.userInput['user-age'] = value;
       },
     },
     userEnglishProficiency: {
-      get() {},
+      get() {
+      },
       set(value) {
         this.store.userInput['user-english-proficiency'] = value;
       },
     },
     userEducation: {
-      get() {},
+      get() {
+      },
       set(value) {
         this.store.userInput['user-education'] = value;
       },
     },
     userGender: {
-      get() {},
+      get() {
+      },
       set(value) {
         this.store.userInput['user-gender'] = value;
       },
     },
     userMLKnowledge: {
-      get() {},
+      get() {
+      },
       set(value) {
         this.store.userInput['user-ml-knowledge'] = value;
       },
     },
     userAIAttitude: {
-      get() {},
+      get() {
+      },
       set(value) {
         this.store.userInput['user-ai-attitude'] = value;
       },
     },
     userCookieConsent: {
-      get() {},
+      get() {
+      },
       set(value) {
         this.store.userInput['user-cookie-consent'] = value;
       },
@@ -302,7 +307,7 @@ export default {
       }
     },
     setCookies: function (key, value) {
-      this.cookies.set("LITW-"+key, value, "365d", '/', window.location.hostname);
+      this.cookies.set("LITW-" + key, value, "365d", '/', window.location.hostname);
     },
     // if form is valid, go to next step
     validateForm: function () {

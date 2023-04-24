@@ -31,22 +31,20 @@
             Did you encounter any technical difficulties during the study? <span class="text-danger fw-bolder">*</span>
           </template>
 
-          <b-form-radio-group id="user-difficulties">
-            <b-form-radio
+            <b-form-radio class="my-1 me-2 d-inline-flex"
                 v-model="userDifficulties"
                 name="userDifficulties"
                 value="true"
                 button
             >Yes
             </b-form-radio>
-            <b-form-radio
+            <b-form-radio class="my-1 mx-2 d-inline-flex"
                 v-model="userDifficulties"
                 name="userDifficulties"
                 value="false"
                 button
             >No
             </b-form-radio>
-          </b-form-radio-group>
         </b-form-group>
 
         <div v-if="this.userDifficulties === 'true'">
@@ -68,22 +66,20 @@
           <template v-slot:label>
             Did you in any way provide false information? <span class="text-danger fw-bolder">*</span>
           </template>
-          <b-form-radio-group id="user-cheat">
-            <b-form-radio
+            <b-form-radio class="my-1 me-2 d-inline-flex"
                 v-model="userCheat"
                 name="userCheat"
                 value="true"
                 button
             >Yes
             </b-form-radio>
-            <b-form-radio
+            <b-form-radio class="my-1 mx-2 d-inline-flex"
                 v-model="userCheat"
                 name="userCheat"
                 value="false"
                 button
             >No
             </b-form-radio>
-          </b-form-radio-group>
         </b-form-group>
 
         <div v-if="this.userCheat === 'true'">

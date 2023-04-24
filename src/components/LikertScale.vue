@@ -2,40 +2,38 @@
   <div class="px-3">
     <p class="mb-0">{{ this.question }}<span class="text-danger fw-bolder">*</span></p>
 
-        <b-form-group>
-          <b-form-radio-group class="five-likert">
-            <b-form-radio class="my-1"
-                          v-model="lvalue"
-                          :name="likert_name"
-                          :value=formatValue(this.levels[0])
-            >{{ this.levels[0] }}
-            </b-form-radio>
-            <b-form-radio class="my-1"
-                          v-model="lvalue"
-                          :name="likert_name"
-                          :value=formatValue(this.levels[1])
-            >{{ this.levels[1] }}
-            </b-form-radio>
-            <b-form-radio class="my-1"
-                          v-model="lvalue"
-                          :name="likert_name"
-                          :value=formatValue(this.levels[2])
-            >{{ this.levels[2] }}
-            </b-form-radio>
-            <b-form-radio class="my-1"
-                          v-model="lvalue"
-                          :name="likert_name"
-                          :value=formatValue(this.levels[3])
-            >{{ this.levels[3] }}
-            </b-form-radio>
-            <b-form-radio class="my-1"
-                          v-model="lvalue"
-                          :name="likert_name"
-                          :value=formatValue(this.levels[4])
-            >{{ this.levels[4] }}
-            </b-form-radio>
-          </b-form-radio-group>
-        </b-form-group>
+    <b-form-group class="five-likert">
+      <b-form-radio class="my-1 d-inline-flex"
+                    v-model="lvalue"
+                    :name="likert_name"
+                    :value=formatValue(this.levels[0])
+      >{{ this.levels[0] }}
+      </b-form-radio>
+      <b-form-radio class="my-1 d-inline-flex"
+                    v-model="lvalue"
+                    :name="likert_name"
+                    :value=formatValue(this.levels[1])
+      >{{ this.levels[1] }}
+      </b-form-radio>
+      <b-form-radio class="my-1 d-inline-flex"
+                    v-model="lvalue"
+                    :name="likert_name"
+                    :value=formatValue(this.levels[2])
+      >{{ this.levels[2] }}
+      </b-form-radio>
+      <b-form-radio class="my-1 d-inline-flex"
+                    v-model="lvalue"
+                    :name="likert_name"
+                    :value=formatValue(this.levels[3])
+      >{{ this.levels[3] }}
+      </b-form-radio>
+      <b-form-radio class="my-1 d-inline-flex"
+                    v-model="lvalue"
+                    :name="likert_name"
+                    :value=formatValue(this.levels[4])
+      >{{ this.levels[4] }}
+      </b-form-radio>
+    </b-form-group>
   </div>
 </template>
 
@@ -101,17 +99,17 @@ export default {
   display: block;
   background-color: #dfe0e1;
   height: 4px;
-  width: 79%;
+  width: 73%;
 }
 
-.five-likert .form-check.form-check-inline {
+.five-likert .form-check {
   display: inline-block;
   width: 18%;
   text-align: center;
   vertical-align: top;
 }
 
-.five-likert .form-check.form-check-inline input[type=radio] {
+.five-likert .form-check input[type=radio] {
   display: block;
   position: relative;
   top: 0;
@@ -119,10 +117,10 @@ export default {
   margin-left: -6px;
 }
 
-.five-likert .form-check.form-check-inline label {
+.five-likert .form-check label {
   width: 100%;
   /* UX Hack to enlarge the click area around the inputs */
-  padding-top: 15px;
+  padding-top: 30px;
   position: relative;
   top: -10px;
 }
