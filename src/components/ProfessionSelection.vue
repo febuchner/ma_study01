@@ -9,48 +9,49 @@
       <i><span class="text-danger fw-bold">*</span> marks a required field.</i>
     </template>
 
-    <b-form-radio-group class="pt-3">
-      <b-form-radio class="my-1"
-          v-model="profession_value"
-          name="inputname"
-          value=0
-          button
+    <div class="pt-3">
+      <b-form-radio class="my-1 me-2 d-inline-flex"
+                    v-model="profession_value"
+                    name="inputname"
+                    value=0
+                    button
       >Professor
       </b-form-radio>
-      <b-form-radio class="my-1"
-          v-model="profession_value"
-          name="inputname"
-          value=1
-          button
+      <b-form-radio class="my-1 mx-2 d-inline-flex"
+                    v-model="profession_value"
+                    name="inputname"
+                    value=1
+                    button
       >Physician
       </b-form-radio>
-      <b-form-radio class="my-1"
-          v-model="profession_value"
-          name="inputname"
-          value=2
-          button
+      <b-form-radio class="my-1 mx-2 d-inline-flex"
+                    v-model="profession_value"
+                    name="inputname"
+                    value=2
+                    button
       >Psychologist
       </b-form-radio>
-      <b-form-radio class="my-1"
-          v-model="profession_value"
-          name="inputname"
-          value=3
-          button
+      <b-form-radio class="my-1 mx-2 d-inline-flex"
+                    v-model="profession_value"
+                    name="inputname"
+                    value=3
+                    button
       >Teacher
       </b-form-radio>
-      <b-form-radio class="my-1"
-          v-model="profession_value"
-          name="inputname"
-          value=4
-          button
+      <b-form-radio class="my-1 mx-2 d-inline-flex"
+                    v-model="profession_value"
+                    name="inputname"
+                    value=4
+                    button
       >Surgeon
       </b-form-radio>
-    </b-form-radio-group>
+    </div>
   </b-form-group>
 
-  <button @click="validateForm" :disabled="this.profession_value === null" type="submit" class="btn btn-primary submit-sample-btn mt-4 mb-5">
+  <button @click="validateForm" :disabled="this.profession_value === null" type="submit"
+          class="btn btn-primary submit-sample-btn mt-4 mb-5">
     <span v-if="!this.loading">Submit</span>
-    <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin />
+    <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin/>
   </button>
 </template>
 
@@ -113,7 +114,7 @@ export default {
 
       if (this.trial_index === (this.items.length - 1)) {
         this.loading = true;
-        if (this.trial_index === (this.study_items_length -1)) {
+        if (this.trial_index === (this.study_items_length - 1)) {
           await this.store.calculateBias(this.store);
           await this.store.litwBias(this.store);
         }
