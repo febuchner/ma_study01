@@ -176,11 +176,11 @@ export default {
       educationLevels: [
         {text: "Pre-High School", value: "pre-high_school"},
         {text: "High School", value: "high_school"},
-        {text: "College", value: "college"},
-        {text: "Graduate School", value: "graduate_school"},
-        {text: "Professional School", value: "professional_school"},
+        {text: "Bachelor’s or equivalent level", value: "bachelor"},
+        {text: "Master’s or equivalent level", value: "master"},
         {text: "PhD", value: "PhD"},
-        {text: "Postdoctoral", value: "postdoctoral"}
+        {text: "Postdoctoral", value: "postdoctoral"},
+        {text: "Other", value: "other"},
       ],
       genders: [
         {text: "Male", value: "male"},
