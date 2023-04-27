@@ -1,6 +1,6 @@
 <template xmlns="http://www.w3.org/1999/html">
   <div class="px-3">
-    <p class="mb-0">{{ this.question }}<span class="text-danger fw-bolder">*</span></p>
+    <p class="mb-0">{{ this.question }}</p>
 
     <b-form-group class="five-likert">
       <b-form-radio class="my-1 d-inline-flex"
