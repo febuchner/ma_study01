@@ -190,8 +190,7 @@
                   label-class="font-weight-bold"
               >
                 <template v-slot:label>
-                  Describe with only a few words what made you finally choose your answer!<span
-                    class="text-danger fw-bolder">*</span>
+                  Describe with only a few words what made you finally choose your answer!
                 </template>
                 <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample00" rows="2"
                                  placeholder="Please enter your thoughts.">
@@ -367,8 +366,7 @@
                   label-class="font-weight-bold"
               >
                 <template v-slot:label>
-                  Describe with only a few words what made you finally choose your answer!<span
-                    class="text-danger fw-bolder">*</span>
+                  Describe with only a few words what made you finally choose your answer!
                 </template>
                 <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample01" rows="2"
                                  placeholder="Please enter your thoughts.">
@@ -544,8 +542,7 @@
                   label-class="font-weight-bold"
               >
                 <template v-slot:label>
-                  Describe with only a few words what made you finally choose your answer!<span
-                    class="text-danger fw-bolder">*</span>
+                  Describe with only a few words what made you finally choose your answer!
                 </template>
                 <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample02" rows="2"
                                  placeholder="Please enter your thoughts.">
@@ -721,8 +718,7 @@
                   label-class="font-weight-bold"
               >
                 <template v-slot:label>
-                  Describe with only a few words what made you finally choose your answer!<span
-                    class="text-danger fw-bolder">*</span>
+                  Describe with only a few words what made you finally choose your answer!
                 </template>
                 <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample03" rows="2"
                                  placeholder="Please enter your thoughts.">
