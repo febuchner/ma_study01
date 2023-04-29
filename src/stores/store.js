@@ -34,7 +34,7 @@ export const useStore = defineStore('store', {
                 "user-cookie-consent": null,
             },
             AI_error_ids: [1398, 3588, 750, 3147, 4831, 1034, 4468, 225, 99, 15967, 993, 203, 552, 1458], // #14
-            AI_truth_ids: [27, 70, 306, 325, 2, 682, 3754, 15, 19, 103, 44, 297, 357, 116, 201, 71], //#16
+            AI_truth_ids: [70, 306, 2, 682, 3754, 15, 103, 357, 116, 201, 71], //#11
             labelling_ids: [],
             labelling_items: [],
             study_ids: [],
