@@ -8,7 +8,7 @@
 
         <div class="results">
           <h2 class="my-5">This graph shows you your personal gender bias compared to that of our AI and to the average
-            of all other LabintheWild users who have taken this test.</h2>
+            of all other LabintheWild users who have taken this experiment.</h2>
           <ResultBarChart chartlabel="Average gender bias"
                           :data_AI="this.data_AI_average"
                           :data_you="this.data_you_average"
@@ -103,10 +103,10 @@
           <div class="mt-5">
             In the graph above you can see your average of the five TPR gender gaps as <strong>average gender
             bias</strong>.
-            <p>Below you find your <strong>personal accuracy</strong> on this test and a breakdown of your gender bias
+            <p>Below you find your <strong>personal accuracy</strong> on this experiment and a breakdown of your gender bias
               for <strong>each of the five professions</strong> compared
               to our AI and
-              the average of all other LabintheWild users who have taken this test.</p>
+              the average of all other LabintheWild users who have taken this experiment.</p>
             <div class="my-5">
               <h2>Personal accuracy</h2>
               <AccuracyBarChart chartlabel="Accuracy"
@@ -127,7 +127,7 @@
                 accurately</strong> than our AI, which has an accuracy of 89.03%.
               </div>
               <div v-if="isFinite(this.acc_litw[0])">In comparison, the average LabintheWild user has an accuracy of
-                {{ this.acc_litw[0] }}% on this test.
+                {{ this.acc_litw[0] }}% on this experiment.
               </div>
               <div>The graphs in the middle and to the right show you how your accuracy is distributed between the two
                 genders "female and "male" and also gives direct comparative values of our AI and the average

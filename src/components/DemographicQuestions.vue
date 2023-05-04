@@ -15,7 +15,7 @@
             class="mb-4"
             label-class="font-weight-bold">
           <template v-slot:label>
-            Have you taken this test before? <span class="text-danger fw-bolder">*</span>
+            Have you taken this experiment before? <span class="text-danger fw-bolder">*</span>
           </template>
 
           <b-form-radio class="my-1 me-2 d-inline-flex"
@@ -279,7 +279,7 @@ export default {
       }
     },
     showCookieAlert: function () {
-      alert('We can store your personal demographics information if you are on a personal computer you use on your own. This will allow you to skip this form if you take this test again. If you\'d prefer not to have a saved copy, or if others are using this computer, press "No".');
+      alert('We can store your personal demographics information if you are on a personal computer you use on your own. This will allow you to skip this form if you take this experiment again, e.g. if you had to abort the study but want to start it again. If you\'d prefer not to have a saved copy, or if others are using this computer, press "No".');
     },
     isValidInputs: function () {
       if (this.store.getUserTakenTestBefore !== null &&

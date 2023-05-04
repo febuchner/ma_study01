@@ -7,7 +7,7 @@
           <h1> Thank you for participating! </h1>
           <p>
             <span>
-              Before seeing your gender bias, please let us know what you thought of the test! <br>
+              Before seeing your gender bias, please let us know what you thought of the experiment! <br>
               <i><span class="text-danger fw-bold">*</span> marks a required field.</i>
             </span>
           </p>
@@ -53,7 +53,7 @@
               label-class="font-weight-bold"
           >
             <template v-slot:label>
-              Please describe how you faced technical difficulties during the test, if you encountered any.
+              Please describe how you faced technical difficulties during the experiment, if you encountered any.
             </template>
             <b-form-textarea v-model="userDifficultiesDescription" placeholder="Enter your technical difficulties."
                              rows="3"></b-form-textarea>
