@@ -7,8 +7,9 @@
         </div>
 
         <div>
-          <div>During this part you will be shown 10 different short resumes.
-            For each, decide which of the five given professions the person to whom the resume belongs is most likely to
+          <div>During this part you will be shown 10 different short biographies.
+<!--            TODO: change sentence-->
+            For each, decide which of the five given professions the person in the short biography is most likely to
             have.
           </div>
           <div class="mt-4">

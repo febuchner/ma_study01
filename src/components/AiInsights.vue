@@ -26,7 +26,7 @@
 
         <div v-for="(n,index) in this.AIErrorSampleIds" class="pb-2">
           <div v-if="index === 0 && this.store.getUserAnswerSameAsAIAtAIErrorSample00">
-            <p class="mb-2">Please read the following short resume from the previous study part again and answer the
+            <p class="mb-2">Please read the following short biography from the previous study part again and answer the
               questions.</p>
             <div class="card mb-4">
               <div class="col-12 bg-profession text-center mb-3 px-4 py-4">
@@ -203,7 +203,7 @@
           </div>
 
           <div v-if="index === 1 && this.store.getUserAnswerSameAsAIAtAIErrorSample01">
-            <p class="mb-2">Please read the following short resume from the previous study part again and answer the
+            <p class="mb-2">Please read the following short biography from the previous study part again and answer the
               questions.</p>
             <div class="card mb-4">
               <div class="col-12 bg-profession text-center mb-3 px-4 py-4">
@@ -380,7 +380,7 @@
           </div>
 
           <div v-if="index === 2 && this.store.getUserAnswerSameAsAIAtAIErrorSample02">
-            <p class="mb-2">Please read the following short resume from the previous study part again and answer the
+            <p class="mb-2">Please read the following short biography from the previous study part again and answer the
               questions.</p>
             <div class="card mb-4">
               <div class="col-12 bg-profession text-center mb-3 px-4 py-4">
@@ -557,7 +557,7 @@
           </div>
 
           <div v-if="index === 3 && this.store.getUserAnswerSameAsAIAtAIErrorSample03">
-            <p class="mb-2">Please read the following short resume from the previous study part again and answer the
+            <p class="mb-2">Please read the following short biography from the previous study part again and answer the
               questions.</p>
             <div class="card mb-4">
               <div class="col-12 bg-profession text-center mb-3 px-4 py-4">
