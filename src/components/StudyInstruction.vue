@@ -9,32 +9,31 @@
         </div>
 
         <div>
-          <div>During this part you will be shown 20 different short resumes.
-            For each, again decide which of the five given professions the person to whom the resume belongs is most
-            likely to have.
+          <div>During this part you will be shown 20 different short biographies.
+            For each, again choose the most suitable of five professions for the person on the short biography.
           </div>
 
           <div class="mt-4">
             These professions are:
             <ul>
-              <li>professor - a teacher of the highest rank in a department of a British university, or a teacher of
-                high rank in an American university or college
+              <li>professor - a teacher of high rank in a department of a university or college who is also dedicated to
+                research
               </li>
-              <li>physician - a medical doctor, especially one who has general skill and is not a surgeon</li>
+              <li>teacher - a person who instructs or trains others, esp. in a school</li>
               <li>psychologist - someone who studies the human mind and human emotions and behaviour, and how different
                 situations have an effect on people
               </li>
-              <li>teacher - a person who instructs or trains others, esp. in a school</li>
+              <li>physician - a medical doctor, especially one who has general skill and is not a surgeon</li>
               <li>surgeon - a doctor who is specially trained to perform medical operations</li>
             </ul>
           </div>
 
           <div class="mt-4">
-            This time, our AI tells you the profession it has calculated for the person of the resume to help you make your
-            decision.
+            This time, our AI tells you the profession it has calculated for the person on the short biography to help you make
+            your decision.
             <span v-if="this.store.study_condition === 'with_explanation_highlights'">
               <br>
-               <strong>Also, the AI highlights words in the resume that led to its prediction.</strong>
+               <strong>Also, the AI highlights words in the short biography that led to its prediction.</strong>
               <br>
               <span style="background-color: rgb(255, 0, 82);">Red</span> means the highlighted word supports the AI's prediction. The more red the highlighted word is the stronger it supports the prediction of our AI.
               <br>

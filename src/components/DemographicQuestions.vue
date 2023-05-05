@@ -63,7 +63,7 @@
             label-class="font-weight-bold"
         >
           <template v-slot:label>
-            What is the highest level of education that you have received or are pursuing? <span
+            What is the highest level of education that you have received? <span
               class="text-danger fw-bolder">*</span>
           </template>
           <b-form-select
@@ -186,19 +186,21 @@ export default {
         {text: "Male", value: "male"},
         {text: "Female", value: "female"},
         {text: "Divers", value: "divers"},
-        {text: "Other", value: "other"},
+        {text: "Prefer not to say", value: "prefer_not_to_say"},
       ],
       mlKnowledge: [
-        {text: "No experience", value: "no_experience"},
-        {text: "Some experience", value: "some_experience"},
-        {text: "A lot of experience", value: "a_lot_of_experience"},
+        {text: "No experience (e.g. you have never studied machine learning)", value: "no_experience"},
+        {text: "Basic experience (e.g. you have taken a course on machine learning)", value: "basic_experience"},
+        {text: "Intermediate experience (e.g. you have implemented 1-2 small projects)", value: "intermediate_experience"},
+        {text: "Advanced experience (e.g. you have implemented some more complex projects)", value: "advanced_experience"},
+        {text: "Expert experience (e.g. you have several years of experience in machine learning)", value: "expert_experience"},
       ],
       aiAttitude: [
-        {text: "Rejecting", value: "rejecting"},
-        {text: "Rather rejecting", value: "rather_rejecting"},
+        {text: "Negative", value: "negative"},
+        {text: "Rather negative", value: "rather_negative"},
         {text: "Neutral", value: "neutral"},
-        {text: "Rather affirming ", value: "rather_affirming"},
-        {text: "Affirming", value: "affirming"},
+        {text: "Rather positive ", value: "rather_positive"},
+        {text: "Positive", value: "positive"},
       ],
     }
   },

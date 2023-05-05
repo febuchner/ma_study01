@@ -3,7 +3,7 @@
       class="mb-4"
       label-class="font-weight-bold">
     <template v-slot:label>
-      What do you think is the <b>profession</b> of the person on the resume? <span
+      What do you think is the <b>profession</b> of the person on the short biography? <span
         class="text-danger fw-bolder">*</span>
       <br>
       <i><span class="text-danger fw-bold">*</span> marks a required field.</i>

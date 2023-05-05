@@ -115,7 +115,7 @@
                                 class="mb-3"/>
               <div v-if="isNaN(this.acc_you[0])">We are sorry that we can't calculate your personal accuracy.</div>
               <div v-if="isFinite(this.acc_you[0])">You assigned the right profession to {{ this.acc_you[0] }}% of all
-                resumes!
+                short biographies!
               </div>
               <div v-if="isFinite(this.acc_you[0]) && this.acc_you[0] > 89.03">This means that you worked <strong>more
                 accurately</strong> than our AI, which has an accuracy of 89.03%.
@@ -224,7 +224,7 @@
             <h2>Thank you for participating in our study! We hope you had fun.</h2>
             <p class="mt-4">
               Your results will help us gaining insights in two main areas. <br>
-              First, we will be able to rate the difficulty of the different resumes based on the percentage of the most
+              First, we will be able to rate the difficulty of the different short biographies based on the percentage of the most
               common profession chosen by the users.
               Prior work suggested that reliance on AI-suggested assistance increases as the task's complexity rises
               [2].
