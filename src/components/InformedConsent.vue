@@ -12,7 +12,7 @@
         </p>
         <p><strong> What you will have to do: </strong>
           After filling out demographic information, we will provide you instructions on the first part of this study.
-          In this, decide which of the five listed professions the person in the biography most likely has.
+          In this, decide which of the five listed professions the person on the short biography most likely has.
           In total, you will be presented with 10 examples.
           After that, you will receive instructions for the second part of the study.
           Here you do the same as in the first part, except that now you are supported in your decision-making by our
