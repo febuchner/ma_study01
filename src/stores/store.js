@@ -288,12 +288,28 @@ export const useStore = defineStore('store', {
             state.stepIndex += stepsToGo
         },
         distributeIds(state) {
+            state.study_ids = [];
+            state.labelling_ids = [];
+
             this.shuffle(state.AI_error_ids);
-            state.labelling_ids = state.AI_error_ids.slice(0, 10);
-            state.study_ids = state.AI_error_ids.slice(10, state.AI_error_ids.length);
-            state.AI_truth_ids.forEach(function (id) {
-                state.study_ids.push(id);
-            });
+            this.shuffle(state.AI_truth_ids);
+            let n = 0;
+            while (n <= 9) {
+                state.labelling_ids.push(state.AI_error_ids[n]);
+                n++;
+            }
+
+            let m = 10;
+            while (m <= 13) {
+                state.study_ids.push(state.AI_error_ids[m]);
+                m++;
+            }
+
+            let p = 0;
+            while (p <= 15) {
+                state.study_ids.push(state.AI_truth_ids[p]);
+                p++;
+            }
             this.shuffle(state.study_ids);
         },
         decideStudyCondition(state) {
@@ -303,13 +319,7 @@ export const useStore = defineStore('store', {
          * Shuffles array in place.
          */
         shuffle(arr) {
-            let j, x, index;
-            for (index = arr.length - 1; index > 0; index--) {
-                j = Math.floor(Math.random() * (index + 1));
-                x = arr[index];
-                arr[index] = arr[j];
-                arr[j] = x;
-            }
+            arr.sort(() => Math.random() - 0.5);
             return arr;
         },
         saveLabelsForCM(state, answer, name, item) {

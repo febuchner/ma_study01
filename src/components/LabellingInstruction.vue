@@ -7,21 +7,20 @@
         </div>
 
         <div>
-          <div>During this part you will be shown 10 different short resumes.
-            For each, decide which of the five given professions the person to whom the resume belongs is most likely to
-            have.
+          <div>During this part you will be shown 10 different short biographies.
+            For each, choose the most suitable of five professions for the person on the short biography.
           </div>
           <div class="mt-4">
             These professions are:
             <ul>
-              <li>professor - a teacher of the highest rank in a department of a British university, or a teacher of
-                high rank in an American university or college
+              <li>professor - a teacher of high rank in a department of a university or college who is also dedicated to
+                research
               </li>
-              <li>physician - a medical doctor, especially one who has general skill and is not a surgeon</li>
+              <li>teacher - a person who instructs or trains others, esp. in a school</li>
               <li>psychologist - someone who studies the human mind and human emotions and behaviour, and how different
                 situations have an effect on people
               </li>
-              <li>teacher - a person who instructs or trains others, esp. in a school</li>
+              <li>physician - a medical doctor, especially one who has general skill and is not a surgeon</li>
               <li>surgeon - a doctor who is specially trained to perform medical operations</li>
             </ul>
           </div>
@@ -44,8 +43,8 @@
 
         <button @click="validateForm" type="submit" class="btn btn-primary my-5">
           Let's start!
-          <font-awesome-icon v-if="!this.loading" icon="fa-solid fa-arrow-right" />
-          <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin />
+          <font-awesome-icon v-if="!this.loading" icon="fa-solid fa-arrow-right"/>
+          <font-awesome-icon v-if="this.loading" icon="fa-solid fa-circle-notch" spin/>
         </button>
       </div>
     </div>

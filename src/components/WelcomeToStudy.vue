@@ -3,19 +3,21 @@
     <div v-if="this.store.getCurrentStep === 'welcome-to-study'">
       <div>
         <h1>
-          Are you as biased as an AI? Let's find out!
+          Are you more biased than an AI? Let's find out!
         </h1>
         <div class="col-12 mt-5">
           <div class="row">
             <div class="col-12 col-lg-8">
               <p class="h3">
-                Welcome and thank you for your interest in our LabintheWild test.
+                Welcome and thank you for your interest in our LabintheWild experiment.
               </p>
               <p class="h3 mt-5">
-                Tell us what you think the persons whose resumes you are shown do for a profession, and we will show you how gender biased you are compared to our AI and other LabintheWild users.
+                We will show you some short biographies.
+                Tell us what you think the person in each short biography has for a profession.
+                We will show you your performance and how gender biased you are compared to our AI and other LabintheWild users.
               </p>
               <p class="h3 mt-5">
-                <b> Normally, it takes 15 minutes to finish the test. </b>
+                <b> Normally, it takes 15 minutes to finish the experiment. </b>
               </p>
             </div>
             <div class="col-12 col-lg-4">

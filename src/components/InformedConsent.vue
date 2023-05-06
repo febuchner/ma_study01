@@ -8,12 +8,11 @@
         <p><strong> Why we are doing this research: </strong>
           The goal of this project is to collect data on the impact of an AI on human decision-making, using profession
           identification
-          via a short resume written in English.
+          via a short biography written in English.
         </p>
         <p><strong> What you will have to do: </strong>
           After filling out demographic information, we will provide you instructions on the first part of this study.
-          In this, you will decide which of the five given professions the person to whom the resume belongs is most
-          likely to have.
+          In this, decide which of the five listed professions the person on the short biography most likely has.
           In total, you will be presented with 10 examples.
           After that, you will receive instructions for the second part of the study.
           Here you do the same as in the first part, except that now you are supported in your decision-making by our
