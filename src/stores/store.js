@@ -34,7 +34,7 @@ export const useStore = defineStore('store', {
                 "user-cookie-consent": null,
             },
             AI_error_ids: [1398, 3588, 750, 3147, 4831, 1034, 4468, 225, 99, 15967, 993, 203, 552, 1458], // #14
-            AI_truth_ids: [27, 70, 306, 325, 2, 682, 3754, 15, 19, 103, 44, 297, 357, 116, 201, 71], //#16
+            AI_truth_ids: [70, 306, 2, 682, 3754, 15, 103, 357, 116, 201, 71], //#11
             labelling_ids: [],
             labelling_items: [],
             study_ids: [],
@@ -46,11 +46,6 @@ export const useStore = defineStore('store', {
                 labelling_answer2: null,
                 labelling_answer3: null,
                 labelling_answer4: null,
-                labelling_answer5: null,
-                labelling_answer6: null,
-                labelling_answer7: null,
-                labelling_answer8: null,
-                labelling_answer9: null,
             },
             study_answers: {
                 study_answer00: null,
@@ -68,11 +63,6 @@ export const useStore = defineStore('store', {
                 study_answer12: null,
                 study_answer13: null,
                 study_answer14: null,
-                study_answer15: null,
-                study_answer16: null,
-                study_answer17: null,
-                study_answer18: null,
-                study_answer19: null,
             },
             aiInsights: {
                 "ai-use-prediction": null,
@@ -288,12 +278,28 @@ export const useStore = defineStore('store', {
             state.stepIndex += stepsToGo
         },
         distributeIds(state) {
+            state.study_ids = [];
+            state.labelling_ids = [];
+
             this.shuffle(state.AI_error_ids);
-            state.labelling_ids = state.AI_error_ids.slice(0, 10);
-            state.study_ids = state.AI_error_ids.slice(10, state.AI_error_ids.length);
-            state.AI_truth_ids.forEach(function (id) {
-                state.study_ids.push(id);
-            });
+            this.shuffle(state.AI_truth_ids);
+            let n = 0;
+            while (n <= 4) {
+                state.labelling_ids.push(state.AI_error_ids[n]);
+                n++;
+            }
+
+            let m = 5;
+            while (m <= 8) {
+                state.study_ids.push(state.AI_error_ids[m]);
+                m++;
+            }
+
+            let p = 0;
+            while (p <= 10) {
+                state.study_ids.push(state.AI_truth_ids[p]);
+                p++;
+            }
             this.shuffle(state.study_ids);
         },
         decideStudyCondition(state) {
@@ -303,13 +309,7 @@ export const useStore = defineStore('store', {
          * Shuffles array in place.
          */
         shuffle(arr) {
-            let j, x, index;
-            for (index = arr.length - 1; index > 0; index--) {
-                j = Math.floor(Math.random() * (index + 1));
-                x = arr[index];
-                arr[index] = arr[j];
-                arr[j] = x;
-            }
+            arr.sort(() => Math.random() - 0.5);
             return arr;
         },
         saveLabelsForCM(state, answer, name, item) {

@@ -88,21 +88,6 @@
               <div v-else-if="this.trial_index === 14">
                 <ProfessionSelection inputanswer="study_answers" inputname="study_answer14" inputitems="study_items"/>
               </div>
-              <div v-else-if="this.trial_index === 15">
-                <ProfessionSelection inputanswer="study_answers" inputname="study_answer15" inputitems="study_items"/>
-              </div>
-              <div v-else-if="this.trial_index === 16">
-                <ProfessionSelection inputanswer="study_answers" inputname="study_answer16" inputitems="study_items"/>
-              </div>
-              <div v-else-if="this.trial_index === 17">
-                <ProfessionSelection inputanswer="study_answers" inputname="study_answer17" inputitems="study_items"/>
-              </div>
-              <div v-else-if="this.trial_index === 18">
-                <ProfessionSelection inputanswer="study_answers" inputname="study_answer18" inputitems="study_items"/>
-              </div>
-              <div v-else-if="this.trial_index === 19">
-                <ProfessionSelection inputanswer="study_answers" inputname="study_answer19" inputitems="study_items"/>
-              </div>
             </div>
           </div>
         </div>

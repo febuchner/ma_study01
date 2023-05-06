@@ -30,21 +30,6 @@
               <div v-else-if="this.trial_index === 4">
                 <ProfessionSelection inputanswer="labelling_answers" inputname="labelling_answer4" inputitems="labelling_items"/>
               </div>
-              <div v-else-if="this.trial_index === 5">
-                <ProfessionSelection inputanswer="labelling_answers" inputname="labelling_answer5" inputitems="labelling_items"/>
-              </div>
-              <div v-else-if="this.trial_index === 6">
-                <ProfessionSelection inputanswer="labelling_answers" inputname="labelling_answer6" inputitems="labelling_items"/>
-              </div>
-              <div v-else-if="this.trial_index === 7">
-                <ProfessionSelection inputanswer="labelling_answers" inputname="labelling_answer7" inputitems="labelling_items"/>
-              </div>
-              <div v-else-if="this.trial_index === 8">
-                <ProfessionSelection inputanswer="labelling_answers" inputname="labelling_answer8" inputitems="labelling_items"/>
-              </div>
-              <div v-else-if="this.trial_index === 9">
-                <ProfessionSelection inputanswer="labelling_answers" inputname="labelling_answer9" inputitems="labelling_items"/>
-              </div>
             </div>
           </div>
         </div>
