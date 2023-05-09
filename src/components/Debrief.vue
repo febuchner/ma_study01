@@ -4,7 +4,7 @@
       <div class="px-3">
 
         <div class="mb-5">
-          <h1> Thank you for participating! </h1>
+          <h1>General questions on our experiment!</h1>
           <p>
             <span>
               Before seeing your gender bias, please let us know what you thought of the experiment! <br>

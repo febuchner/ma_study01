@@ -20,7 +20,6 @@ const sharemodal = ref(false);
 <template>
   <header class="row mb-5">
     <div class="col-12 col-sm-6 d-flex justify-content-start">
-      <img alt="labintheWild logo" class="logo d-inline-flex" src="@/assets/labintheWild-logo.png" width="150"/>
     </div>
     <div class="col-12 col-sm-6 d-flex justify-content-start justify-content-sm-end">
       <button type="button" class="btn btn-primary" @click="sharemodal = !sharemodal">

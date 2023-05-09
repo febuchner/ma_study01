@@ -40,7 +40,7 @@ export default {
             data: this.acc_you,
           },
           {
-            label: 'Average LabintheWild users',
+            label: 'Average users',
             backgroundColor: '#99BA6A',
             data: this.acc_litw,
           },

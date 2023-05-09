@@ -13,7 +13,7 @@
         </div>
 
         <b-form-group
-            class="mb-3"
+            class="mb-4"
             label-class="font-weight-bold"
         >
           <template v-slot:label>
@@ -23,27 +23,6 @@
           <b-form-textarea v-model="aiUsePrediction" rows="2"
                            placeholder="Please enter your thoughts."></b-form-textarea>
         </b-form-group>
-
-        <h5 class="mt-5 mb-3">Well done! You can now go to the next and final page before you see your performance and
-          gender
-          bias score.
-          <br>
-          But if you want to help us even more with our experiment, we would be happy if you could take a little time to
-          answer the questions below.
-          Thank you!
-        </h5>
-
-        <div class="mx-3 text-danger" v-if="this.showFormError">Please answer all required fields of the form first.
-        </div>
-
-        <button @click="validateForm" type="submit" class="btn btn-primary mt-3 mb-5">
-          Next
-          <font-awesome-icon icon="fa-solid fa-arrow-right"/>
-        </button>
-
-        <h5 class="mt-4 mb-4">These are optional questions. Again, you do not have to answer them to continue with the
-          experiment.
-        </h5>
 
         <div v-for="(n,index) in this.AIErrorSampleIds" class="pb-2">
           <div v-if="index === 0">
@@ -211,7 +190,8 @@
                   label-class="font-weight-bold"
               >
                 <template v-slot:label>
-                  Describe with only a few words what made you finally choose your answer!
+                  Describe with only a few words what made you finally choose your answer!<span
+                    class="text-danger fw-bolder">*</span>
                 </template>
                 <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample00" rows="2"
                                  placeholder="Please enter your thoughts.">
@@ -387,7 +367,8 @@
                   label-class="font-weight-bold"
               >
                 <template v-slot:label>
-                  Describe with only a few words what made you finally choose your answer!
+                  Describe with only a few words what made you finally choose your answer!<span
+                    class="text-danger fw-bolder">*</span>
                 </template>
                 <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample01" rows="2"
                                  placeholder="Please enter your thoughts.">
@@ -563,7 +544,8 @@
                   label-class="font-weight-bold"
               >
                 <template v-slot:label>
-                  Describe with only a few words what made you finally choose your answer!
+                  Describe with only a few words what made you finally choose your answer!<span
+                    class="text-danger fw-bolder">*</span>
                 </template>
                 <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample02" rows="2"
                                  placeholder="Please enter your thoughts.">
@@ -739,7 +721,8 @@
                   label-class="font-weight-bold"
               >
                 <template v-slot:label>
-                  Describe with only a few words what made you finally choose your answer!
+                  Describe with only a few words what made you finally choose your answer!<span
+                    class="text-danger fw-bolder">*</span>
                 </template>
                 <b-form-textarea v-model="whyChooseAnswerAtAIErrorSample03" rows="2"
                                  placeholder="Please enter your thoughts.">
@@ -836,7 +819,20 @@ export default {
   },
   methods: {
     isValidInputs: function () {
-      if (this.store.getAiUsePrediction !== null) {
+      if (this.store.getAiUsePrediction !== null &&
+          ((this.store.getUserAnswerSameAsAIAtAIErrorSample00) ? (this.store.getUseConsiderationAIErrorSample00 !== null &&
+              this.store.getOtherAnswerConsiderationAtAIErrorSample00 !== null &&
+              this.store.getWhyChooseAnswerAtAIErrorSample00 !== null) : true) &&
+          ((this.store.getUserAnswerSameAsAIAtAIErrorSample01) ? (this.store.getUseConsiderationAIErrorSample01 !== null &&
+              this.store.getOtherAnswerConsiderationAtAIErrorSample01 !== null &&
+              this.store.getWhyChooseAnswerAtAIErrorSample01 !== null) : true) &&
+          ((this.store.getUserAnswerSameAsAIAtAIErrorSample02) ? (this.store.getUseConsiderationAIErrorSample02 !== null &&
+              this.store.getOtherAnswerConsiderationAtAIErrorSample02 !== null &&
+              this.store.getWhyChooseAnswerAtAIErrorSample02 !== null) : true) &&
+          ((this.store.getUserAnswerSameAsAIAtAIErrorSample03) ? (this.store.getUseConsiderationAIErrorSample03 !== null &&
+              this.store.getOtherAnswerConsiderationAtAIErrorSample03 !== null &&
+              this.store.getWhyChooseAnswerAtAIErrorSample03 !== null) : true)
+      ) {
         this.showFormError = false
         return true
       } else {
@@ -846,6 +842,7 @@ export default {
     },
     validateForm: function () {
       if (this.isValidInputs()) {
+        this.store.generateMTurkID(this.store);
         this.store.nextStep(this.store, 1);
       }
     }

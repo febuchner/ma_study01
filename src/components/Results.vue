@@ -3,12 +3,26 @@
     <div v-if="this.store.getCurrentStep === 'results'">
       <div class="px-0 px-sm-3">
         <div class="">
-          <h1>This is your gender bias!</h1>
+          <h1>Thank you for participating!</h1>
         </div>
+
+        <div class="my-5 pb-5">
+          <h2>This is your Mechanical Turk Code:</h2>
+          <div class="bg-profession">
+            <h3 class="py-4 ps-3 text-center">{{ this.store.userInput.userMturkID }}</h3>
+          </div>
+        </div>
+
+        <div class=" text-center mt-3">
+          <h3 class="mb-3">Share the study with your friends so they can test themselves.</h3>
+          <SocialMediaShare/>
+        </div>
+
+        <hr class="my-5 pb-3"/>
 
         <div class="results">
           <h2 class="my-5">This graph shows you your personal gender bias compared to that of our AI and to the average
-            of all other LabintheWild users who have taken this experiment.</h2>
+            of all other users who have taken this experiment.</h2>
           <ResultBarChart chartlabel="Average gender bias"
                           :data_AI="this.data_AI_average"
                           :data_you="this.data_you_average"
@@ -38,22 +52,20 @@
             </div>
 
             <div v-if="isNaN(data_litw_you_avg_closer_to_zero) || this.data_litw_average === null">
-              We can't say whether you are on average more or less gender biased than the average of other LabintheWild
-              users.
+              We can't say whether you are on average more or less gender biased than the average of other users.
             </div>
             <div v-if="data_litw_you_avg_closer_to_zero === null && this.data_litw_average != null">
-              Because your average gender bias score is just as far from zero as the average score of other LabintheWild
-              users, <strong>you are on average just as gender biased as other LabintheWild users</strong>!
+              Because your average gender bias score is just as far from zero as the average score of other users,
+              <strong>you are on average just as gender biased as other users</strong>!
             </div>
             <div v-else-if="data_litw_you_avg_closer_to_zero === true && this.data_litw_average != null">
-              Because your average gender bias score is closer to zero than the average of other LabintheWild users,
+              Because your average gender bias score is closer to zero than the average of other users,
               <strong>you
-                are on average less gender biased than the average of other LabintheWild users</strong>!
+                are on average less gender biased than the average of other users</strong>!
             </div>
             <div v-else-if="data_litw_you_avg_closer_to_zero === false && this.data_litw_average != null">
-              Because your average gender bias score is further away from zero than the average of other LabintheWild
-              users,
-              <strong>you are on average more gender biased than the average of other LabintheWild users</strong>!
+              Because your average gender bias score is further away from zero than the average of other users,
+              <strong>you are on average more gender biased than the average of other users</strong>!
             </div>
 
             <div v-if="isFinite(this.data_you_average) && this.data_you_average > this.data_AI_average">
@@ -103,10 +115,10 @@
           <div class="mt-5">
             In the graph above you can see your average of the five TPR gender gaps as <strong>average gender
             bias</strong>.
-            <p>Below you find your <strong>personal accuracy</strong> on this experiment and a breakdown of your gender bias
-              for <strong>each of the five professions</strong> compared
-              to our AI and
-              the average of all other LabintheWild users who have taken this experiment.</p>
+            <p>Below you find your <strong>personal accuracy</strong> on this experiment and a breakdown of your gender
+              bias
+              for <strong>each of the five professions</strong> compared to our AI and the average of all other users
+              who have taken this experiment.</p>
             <div class="my-5">
               <h2>Personal accuracy</h2>
               <AccuracyBarChart chartlabel="Accuracy"
@@ -126,12 +138,11 @@
               <div v-if="isFinite(this.acc_you[0]) && this.acc_you[0] < 89.03">This means that you worked <strong>less
                 accurately</strong> than our AI, which has an accuracy of 89.03%.
               </div>
-              <div v-if="isFinite(this.acc_litw[0])">In comparison, the average LabintheWild user has an accuracy of
+              <div v-if="isFinite(this.acc_litw[0])">In comparison, the average user has an accuracy of
                 {{ this.acc_litw[0] }}% on this experiment.
               </div>
               <div>The graphs in the middle and to the right show you how your accuracy is distributed between the two
-                genders "female and "male" and also gives direct comparative values of our AI and the average
-                LabintheWild user.
+                genders "female and "male" and also gives direct comparative values of our AI and the average user.
               </div>
 
             </div>
@@ -222,9 +233,11 @@
         <div class="text-center">
           <div class="mb-5">
             <h2>Thank you for participating in our study! We hope you had fun.</h2>
+            <h2>You can close this browser window now.</h2>
             <p class="mt-4">
               Your results will help us gaining insights in two main areas. <br>
-              First, we will be able to rate the difficulty of the different short biographies based on the percentage of the most
+              First, we will be able to rate the difficulty of the different short biographies based on the percentage
+              of the most
               common profession chosen by the users.
               Prior work suggested that reliance on AI-suggested assistance increases as the task's complexity rises
               [2].
@@ -246,68 +259,8 @@
               1-13).
             </p>
           </div>
-          <div class="mt-5">
-            <h3 class="mb-3">Share the study with your friends so they can test themselves.</h3>
-            <SocialMediaShare/>
-          </div>
         </div>
       </div>
-
-      <hr class="my-5"/>
-
-      <h2 class="text-center">These are other fun studies you can try if you liked ours! <br>
-        You can also return to <a href="https://www.labinthewild.org/">labinthewild.org</a> or close this browser
-        window.</h2>
-
-      <div class="row mt-5">
-        <div class="col-sm-4">
-          <div>
-            <a href="https://www.labinthewild.org/studies/toxicity/?locale=en" target="_blank" rel="noreferrer"
-               class="d-flex justify-content-center">
-              <img class="img-fluid w-50" src="https://www.labinthewild.org/images/toxicity-icon.png">
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-8">
-          <div class="header">
-            <h3>
-              <a
-                  href="https://www.labinthewild.org/studies/toxicity/?locale=en" target="_blank" rel="noreferrer">Are
-                you better than an AI in noticing hateful speech?
-              </a>
-            </h3>
-          </div>
-          <div>
-            <p>Rate what speech is hateful and we'll show you how well you detect hateful speech compared to an AI and
-              others.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="row mt-5">
-        <div class="col-sm-4">
-          <div>
-            <a href="https://culturaldelphii.labinthewild.org/" target="_blank" rel="noreferrer"
-               class="d-flex justify-content-center">
-              <img class="img-fluid w-50" src="https://www.labinthewild.org/images/culturaldelphii-logo.png">
-            </a>
-          </div>
-        </div>
-        <div class="col-sm-8">
-          <div class="header">
-            <h3>
-              <a href="https://culturaldelphii.labinthewild.org/" target="_blank" rel="noreferrer">
-                Could you live with an AI and its morals?
-              </a>
-            </h3>
-          </div>
-          <div>
-            <p>Tell us your moral judgments on certain situations and we will show you how you compare to others' and an
-              AI.</p>
-          </div>
-        </div>
-      </div>
-
 
     </div>
   </transition>

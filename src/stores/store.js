@@ -23,6 +23,7 @@ export const useStore = defineStore('store', {
             ],
             userInput: {
                 userID: null,
+                userMturkID: null,
                 "consent-accepted": null,
                 "user-taken-test-before": null,
                 "user-age": null,
@@ -80,29 +81,29 @@ export const useStore = defineStore('store', {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
                     ai_prediction_consideration: null,
-                    other_answer_consideration:null,
-                    why_choose_answer:null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
                 },
                 ai_error_sample_01: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
                     ai_prediction_consideration: null,
-                    other_answer_consideration:null,
-                    why_choose_answer:null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
                 },
                 ai_error_sample_02: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
                     ai_prediction_consideration: null,
-                    other_answer_consideration:null,
-                    why_choose_answer:null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
                 },
                 ai_error_sample_03: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
                     ai_prediction_consideration: null,
-                    other_answer_consideration:null,
-                    why_choose_answer:null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
                 },
 
             },
@@ -523,6 +524,24 @@ export const useStore = defineStore('store', {
 
         userSameAnswerAsPrediction(state, index, storeposition) {
             state.aiInsights[storeposition]['user_answer_same_as_ai'] = state.study_items[index]['prediction'] === Object.values(state.study_answers)[index];
+        },
+
+        generateMTurkID(state) {
+            let userID = state.userInput.userID;
+            let endLetters = this.getRandomLetters(4);
+            state.userInput.userMturkID = "OR-"+userID+endLetters;
+        },
+
+        getRandomLetters(length) {
+            let result = '-';
+            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const charactersLength = characters.length;
+            let counter = 0;
+            while (counter < length) {
+                result += characters.charAt(Math.floor(Math.random() * charactersLength));
+                counter += 1;
+            }
+            return result;
         },
     },
 })
