@@ -95,6 +95,28 @@
           </b-form-group>
         </div>
 
+        <b-form-group
+            class="mb-4"
+            label-class="font-weight-bold">
+          <template v-slot:label>
+            Have you ever used a computer? <span class="text-danger fw-bolder">*</span>
+          </template>
+          <b-form-radio class="my-1 me-2 d-inline-flex"
+                        v-model="attentioncheck03"
+                        name="attentioncheck03"
+                        value="true"
+                        button
+          >Yes
+          </b-form-radio>
+          <b-form-radio class="my-1 mx-2 d-inline-flex"
+                        v-model="attentioncheck03"
+                        name="attentioncheck03"
+                        value="false"
+                        button
+          >No
+          </b-form-radio>
+        </b-form-group>
+
         <div class="mx-3 text-danger" v-if="this.showFormError">Please answer all required fields of the form first.
         </div>
 
@@ -162,6 +184,13 @@ export default {
         this.store.debrief['user-cheat-description'] = value;
       },
     },
+    attentioncheck03: {
+      get() {
+      },
+      set(value) {
+        this.store.attentionCheck['attentionCheck03'] = value;
+      },
+    }
   },
   methods: {
     isValidInputs: function () {

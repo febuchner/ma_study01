@@ -22,6 +22,11 @@ export const useStore = defineStore('store', {
                 'debrief',
                 'results',
             ],
+            attentionCheck: {
+                attentionCheck01: null,
+                attentionCheck02: null,
+                attentionCheck03: null,
+            },
             userInput: {
                 userID: null,
                 userMturkID: null,
@@ -30,6 +35,7 @@ export const useStore = defineStore('store', {
                 "user-age": null,
                 "user-education": null,
                 "user-gender": null,
+                "user-year": null,
                 "user-english-proficiency": null,
                 "user-ml-knowledge": null,
                 "user-ai-attitude": null,
@@ -150,6 +156,9 @@ export const useStore = defineStore('store', {
         getUserGender(state) {
             return state.userInput['user-gender'];
         },
+        getUserYear(state) {
+            return state.userInput['user-year'];
+        },
         getUserEnglishProficiency(state) {
             return state.userInput['user-english-proficiency'];
         },
@@ -245,7 +254,16 @@ export const useStore = defineStore('store', {
         },
         getStudyCondition(state) {
             return state['study_condition'];
-        }
+        },
+        getAttentionCheck01(state) {
+            return state.attentionCheck['attentionCheck01'];
+        },
+        getAttentionCheck02(state) {
+            return state.attentionCheck['attentionCheck02'];
+        },
+        getAttentionCheck03(state) {
+            return state.attentionCheck['attentionCheck03'];
+        },
     },
     actions: {
         async initParticipant(state) {
@@ -530,7 +548,7 @@ export const useStore = defineStore('store', {
         generateMTurkID(state) {
             let userID = state.userInput.userID;
             let endLetters = this.getRandomLetters(4);
-            state.userInput.userMturkID = "OR-"+userID+endLetters;
+            state.userInput.userMturkID = "OR-" + userID + endLetters;
         },
 
         getRandomLetters(length) {
@@ -543,6 +561,10 @@ export const useStore = defineStore('store', {
                 counter += 1;
             }
             return result;
+        },
+        calculateAttentionCheck01(state) {
+            let check = parseInt(state.userInput['user-age']) + parseInt(state.userInput['user-year'])
+            state.attentionCheck['attentionCheck01'] = check.toString();
         },
     },
 })

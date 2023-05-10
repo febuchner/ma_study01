@@ -90,6 +90,16 @@
             label-class="font-weight-bold"
         >
           <template v-slot:label>
+            What is your birth year? <span class="text-danger fw-bolder">*</span>
+          </template>
+          <b-form-input v-model="attentionCheck01" type="number"></b-form-input>
+        </b-form-group>
+
+        <b-form-group
+            class="mb-4"
+            label-class="font-weight-bold"
+        >
+          <template v-slot:label>
             What knowledge of machine learning do you have? <span class="text-danger fw-bolder">*</span>
           </template>
           <b-form-select
@@ -261,6 +271,13 @@ export default {
         this.store.userInput['user-cookie-consent'] = value;
       },
     },
+    attentionCheck01: {
+      get() {
+      },
+      set(value) {
+        this.store.userInput['user-year'] = value;
+      },
+    }
 
   },
   watch: {
@@ -293,7 +310,8 @@ export default {
           this.store.getUserGender !== null &&
           this.store.getUserMLKnowledge !== null &&
           this.store.getUserAIAttitude !== null &&
-          this.store.getUserCookieConsent !== null
+          this.store.getUserCookieConsent !== null &&
+          this.store.getUserYear !== null
       ) {
         this.showFormError = false
         return true
@@ -320,10 +338,12 @@ export default {
           this.setCookies("user-english-proficiency", this.store.getUserEnglishProficiency);
           this.setCookies("user-education", this.store.getUserEducation);
           this.setCookies("user-gender", this.store.getUserGender);
+          this.setCookies("user-year", this.store.getUserYear);
           this.setCookies("user-ml-knowledge", this.store.getUserMLKnowledge);
           this.setCookies("user-ai-attitude", this.store.getUserAIAttitude);
           this.setCookies("user-cookie-consent", this.store.getUserCookieConsent);
         }
+        this.store.calculateAttentionCheck01(this.store);
         this.store.nextStep(this.store, 1);
       }
     }

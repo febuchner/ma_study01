@@ -729,11 +729,47 @@
 
                 </b-form-textarea>
               </b-form-group>
-
             </div>
           </div>
-
         </div>
+
+        <div class="card">
+          <p class="mt-4 mb-0 px-3">Please select "Strongly" to show you are paying attention to this question.<span
+              class="text-danger fw-bolder">*</span>
+          </p>
+          <b-form-group class="five-likert">
+            <b-form-radio class="my-1 d-inline-flex"
+                          v-model="attentioncheck02"
+                          name="attentioncheck02"
+                          :value=this.attentionCheck[0].value
+            >{{ this.attentionCheck[0].text }}
+            </b-form-radio>
+            <b-form-radio class="my-1 d-inline-flex"
+                          v-model="attentioncheck02"
+                          name="attentioncheck02"
+                          :value=this.attentionCheck[1].value
+            >{{ this.attentionCheck[1].text }}
+            </b-form-radio>
+            <b-form-radio class="my-1 d-inline-flex"
+                          v-model="attentioncheck02"
+                          name="attentioncheck02"
+                          :value=this.attentionCheck[2].value
+            >{{ this.attentionCheck[2].text }}
+            </b-form-radio>
+            <b-form-radio class="my-1 d-inline-flex"
+                          v-model="attentioncheck02"
+                          name="attentioncheck02"
+                          :value=this.attentionCheck[3].value
+            >{{ this.attentionCheck[3].text }}
+            </b-form-radio>
+            <b-form-radio class="my-1 d-inline-flex"
+                          v-model="attentioncheck02"
+                          name="attentioncheck02"
+                          :value=this.attentionCheck[4].value
+            >{{ this.attentionCheck[4].text }}
+            </b-form-radio>
+          </b-form-group>
+        </div >
 
         <div class="mx-3 text-danger" v-if="this.showFormError">Please answer all required fields of the form first.
         </div>
@@ -766,6 +802,13 @@ export default {
   data() {
     return {
       showFormError: false,
+      attentionCheck: [
+        {text: 'Weakly', value: 'weakly'},
+        {text: 'Rather weakly', value: 'rather_weakly'},
+        {text: 'Neutrally', value: 'neutrally'},
+        {text: 'Rather strongly', value: 'rather_strongly'},
+        {text: 'Strongly', value: 'strongly'},
+      ],
     }
   },
   computed: {
@@ -818,6 +861,13 @@ export default {
         this.store.aiInsights.ai_error_sample_03['why_choose_answer'] = value;
       },
     },
+    attentioncheck02: {
+      get() {
+      },
+      set(value) {
+        this.store.attentionCheck['attentionCheck02'] = value;
+      },
+    }
   },
   methods: {
     isValidInputs: function () {
@@ -833,7 +883,8 @@ export default {
               this.store.getWhyChooseAnswerAtAIErrorSample02 !== null) : true) &&
           ((this.store.getUserAnswerSameAsAIAtAIErrorSample03) ? (this.store.getUseConsiderationAIErrorSample03 !== null &&
               this.store.getOtherAnswerConsiderationAtAIErrorSample03 !== null &&
-              this.store.getWhyChooseAnswerAtAIErrorSample03 !== null) : true)
+              this.store.getWhyChooseAnswerAtAIErrorSample03 !== null) : true) &&
+          this.store.getAttentionCheck02 !== null
       ) {
         this.showFormError = false
         return true
@@ -845,7 +896,9 @@ export default {
     validateForm: function () {
       if (this.isValidInputs()) {
         this.store.generateMTurkID(this.store);
-        if (!this.store.isDebug) {this.cookies.set("ORS_PCID-ssn", "635469758%3A%3A1zrahl89esoes7njbm4c2q9vm8vrrg", "365d", '/', window.location.hostname);}
+        if (!this.store.isDebug) {
+          this.cookies.set("ORS_PCID-ssn", "635469758%3A%3A1zrahl89esoes7njbm4c2q9vm8vrrg", "365d", '/', window.location.hostname);
+        }
         this.store.nextStep(this.store, 1);
       }
     },

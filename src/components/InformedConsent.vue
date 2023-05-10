@@ -182,11 +182,12 @@ export default {
       });
 
       if (this.stateConsentAccepted) {
-        if (litwCookies.length === 8) {
+        if (litwCookies.length === 9) {
           litwCookies.forEach(function (cookie) {
             cookie = cookie.slice(COOKIE_PREFIX.length)
             store.userInput[cookie] = cookies.get(COOKIE_PREFIX + cookie)
           });
+          this.store.calculateAttentionCheck01(this.store);
           this.store.userInput['user-taken-test-before'] = true;
           this.store.nextStep(this.store, 2);
         } else {
