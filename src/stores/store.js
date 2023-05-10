@@ -11,6 +11,7 @@ export const useStore = defineStore('store', {
             trial_index: 0,
             steps: [
                 'welcome-to-study',
+                'study-reentering',
                 'informed-consent',
                 'demographic-questions',
                 'labelling-instruction',

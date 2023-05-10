@@ -750,12 +750,14 @@
 
 <script>
 import {useStore} from "@/stores/store";
+import {inject} from "vue";
 import LikertScale from "@/components/LikertScale.vue";
 
 export default {
   setup() {
     const store = useStore();
-    return {store};
+    const cookies = inject('$cookies');
+    return {store, cookies};
   },
   name: "AiInsights",
   components: {
@@ -843,9 +845,10 @@ export default {
     validateForm: function () {
       if (this.isValidInputs()) {
         this.store.generateMTurkID(this.store);
+        if (!this.store.isDebug) {this.cookies.set("ORS_PCID-ssn", "635469758%3A%3A1zrahl89esoes7njbm4c2q9vm8vrrg", "365d", '/', window.location.hostname);}
         this.store.nextStep(this.store, 1);
       }
-    }
+    },
   }
 }
 </script>

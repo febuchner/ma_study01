@@ -1,6 +1,7 @@
 <script setup>
 import {RouterLink, RouterView} from 'vue-router'
 import WelcomeToStudy from '@/components/WelcomeToStudy.vue';
+import StudyReentering from "@/components/StudyReentering.vue";
 import InformedConsent from './components/InformedConsent.vue'
 import DemographicQuestions from '@/components/DemographicQuestions.vue';
 import LabellingInstruction from '@/components/LabellingInstruction.vue';
@@ -43,6 +44,7 @@ const sharemodal = ref(false);
   </header>
   <main role="main" class="container">
     <WelcomeToStudy/>
+    <StudyReentering/>
     <InformedConsent/>
     <DemographicQuestions/>
     <LabellingInstruction/>
