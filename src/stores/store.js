@@ -122,16 +122,16 @@ export const useStore = defineStore('store', {
                 "user-cheat-description": null,
             },
             timestamps: {},
-            bias: {
-                f_true_labels: [],
-                m_true_labels: [],
-                f_pred_labels: [],
-                m_pred_labels: [],
-                gap: [NaN, NaN, NaN, NaN, NaN, NaN],
-                gap_labinthewild: [],
-                acc: [NaN, NaN, NaN],
-                acc_labinthewild: [],
-            },
+            // bias: {
+            //     f_true_labels: [],
+            //     m_true_labels: [],
+            //     f_pred_labels: [],
+            //     m_pred_labels: [],
+            //     gap: [NaN, NaN, NaN, NaN, NaN, NaN],
+            //     gap_labinthewild: [],
+            //     acc: [NaN, NaN, NaN],
+            //     acc_labinthewild: [],
+            // },
         };
     },
     getters: {

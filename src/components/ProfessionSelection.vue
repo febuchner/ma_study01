@@ -110,14 +110,8 @@ export default {
   methods: {
     // Validate Form
     validateForm: async function () {
-      this.store.saveLabelsForCM(this.store, this.inputanswer, this.inputname, this.items[this.trial_index]);
-
       if (this.trial_index === (this.items.length - 1)) {
         this.loading = true;
-        if (this.trial_index === (this.study_items_length - 1)) {
-          await this.store.calculateBias(this.store);
-          await this.store.litwBias(this.store);
-        }
         await this.store.updateDB(this.store);
         this.store.nextStep(this.store, 1);
         this.loading = false;
