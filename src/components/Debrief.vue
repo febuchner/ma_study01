@@ -195,7 +195,8 @@ export default {
   methods: {
     isValidInputs: function () {
       if (this.store.getUserDifficulties !== null &&
-          this.store.getUserCheat !== null
+          this.store.getUserCheat !== null &&
+          this.store.getAttentionCheck03 !== null
       ) {
         this.showFormError = false
         return true
