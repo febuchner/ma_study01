@@ -182,21 +182,21 @@
                 </div>
               </div>
 
-              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
                            likert_name="null_likert_AI_prediction"
                            :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_00"
                            likert_level="ai_prediction_consideration"/>
 
               <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample00">
-                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                <LikertScale question="<span>How much did you consider to choose a <strong>different</strong> answer than the AI prediction?</span>"
                              likert_name="null_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_00"
                              likert_level="other_answer_consideration"/>
               </div>
               <div v-else>
-                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                <LikertScale question="<span>How much did you consider choosing the <strong>same</strong> answer as the AI prediction?</span>"
                              likert_name="null_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_00"
@@ -358,21 +358,21 @@
                 </div>
               </div>
 
-              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
                            likert_name="first_likert_AI_prediction"
                            :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_01"
                            likert_level="ai_prediction_consideration"/>
 
               <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample01">
-                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                <LikertScale question="<span>How much did you consider to choose a <strong>different</strong> answer than the AI prediction?</span>"
                              likert_name="first_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_01"
                              likert_level="other_answer_consideration"/>
               </div>
               <div v-else>
-                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                <LikertScale question="<span>How much did you consider choosing the <strong>same</strong> answer as the AI prediction?</span>"
                              likert_name="first_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_01"
@@ -534,21 +534,21 @@
                 </div>
               </div>
 
-              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
                            likert_name="second_likert_AI_prediction"
                            :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_02"
                            likert_level="ai_prediction_consideration"/>
 
               <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample02">
-                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                <LikertScale question="<span>How much did you consider to choose a <strong>different</strong> answer than the AI prediction?</span>"
                              likert_name="second_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_02"
                              likert_level="other_answer_consideration"/>
               </div>
               <div v-else>
-                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                <LikertScale question="<span>How much did you consider choosing the <strong>same</strong> answer as the AI prediction?</span>"
                              likert_name="second_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_02"
@@ -710,21 +710,21 @@
                 </div>
               </div>
 
-              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
                            likert_name="third_likert_AI_prediction"
                            :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_03"
                            likert_level="ai_prediction_consideration"/>
 
               <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample03">
-                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                <LikertScale question="<span>How much did you consider to choose a <strong>different</strong> answer than the AI prediction?</span>"
                              likert_name="third_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_03"
                              likert_level="other_answer_consideration"/>
               </div>
               <div v-else>
-                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                <LikertScale question="<span>How much did you consider choosing the <strong>same</strong> answer as the AI prediction?</span>"
                              likert_name="third_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_03"
@@ -885,21 +885,21 @@
                 </div>
               </div>
 
-              <LikertScale question="How much did you consider this AI prediction in your decision making?"
+              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
                            likert_name="fourth_likert_AI_prediction"
                            :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                            ai_error_sample="ai_error_sample_04"
                            likert_level="ai_prediction_consideration"/>
 
               <div v-if="this.store.getUserAnswerSameAsAIAtAIErrorSample04">
-                <LikertScale question="How much did you consider to choose a different answer than the AI prediction?"
+                <LikertScale question="<span>How much did you consider to choose a <strong>different</strong> answer than the AI prediction?</span>"
                              likert_name="fourth_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_04"
                              likert_level="other_answer_consideration"/>
               </div>
               <div v-else>
-                <LikertScale question="How much did you consider choosing the same answer as the AI prediction?"
+                <LikertScale question="<span>How much did you consider choosing the <strong>same</strong> answer as the AI prediction?</span>"
                              likert_name="fourth_likert_other_answer"
                              :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
                              ai_error_sample="ai_error_sample_04"
