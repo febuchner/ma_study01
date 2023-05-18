@@ -39,6 +39,8 @@
           <font-awesome-icon icon="fa-solid fa-arrow-right"/>
         </button>
 
+        <h5 class="mt-3">These are the optional questions.</h5>
+
         <div v-for="(n,index) in this.AIErrorSampleIds" class="pb-2">
           <div v-if="index === 0">
             <p class="mb-2">Please read the following short biography from the previous study part again and answer the
