@@ -58,6 +58,48 @@ export const useStore = defineStore('store', {
                 labelling_answer8: null,
                 labelling_answer9: null,
             },
+            labelling_pairs: {
+                labelling_round0: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round1: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round2: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round3: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round4: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round5: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round6: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round7: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round8: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round9: {
+                    id: null,
+                    user_answer: null,
+                },
+            },
             study_answers: {
                 study_answer00: null,
                 study_answer01: null,
@@ -580,6 +622,30 @@ export const useStore = defineStore('store', {
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[4], 'ai_error_sample_04');
 
             return aiErrorSamplesIndices;
+        },
+
+        getLabellingPairs(state) {
+            state.labelling_pairs.labelling_round0.id = state.labelling_ids[0];
+            state.labelling_pairs.labelling_round1.id = state.labelling_ids[1];
+            state.labelling_pairs.labelling_round2.id = state.labelling_ids[2];
+            state.labelling_pairs.labelling_round3.id = state.labelling_ids[3];
+            state.labelling_pairs.labelling_round4.id = state.labelling_ids[4];
+            state.labelling_pairs.labelling_round5.id = state.labelling_ids[5];
+            state.labelling_pairs.labelling_round6.id = state.labelling_ids[6];
+            state.labelling_pairs.labelling_round7.id = state.labelling_ids[7];
+            state.labelling_pairs.labelling_round8.id = state.labelling_ids[8];
+            state.labelling_pairs.labelling_round9.id = state.labelling_ids[9];
+
+            state.labelling_pairs.labelling_round0.user_answer = state.labelling_answers.labelling_answer0;
+            state.labelling_pairs.labelling_round1.user_answer = state.labelling_answers.labelling_answer1;
+            state.labelling_pairs.labelling_round2.user_answer = state.labelling_answers.labelling_answer2;
+            state.labelling_pairs.labelling_round3.user_answer = state.labelling_answers.labelling_answer3;
+            state.labelling_pairs.labelling_round4.user_answer = state.labelling_answers.labelling_answer4;
+            state.labelling_pairs.labelling_round5.user_answer = state.labelling_answers.labelling_answer5;
+            state.labelling_pairs.labelling_round6.user_answer = state.labelling_answers.labelling_answer6;
+            state.labelling_pairs.labelling_round7.user_answer = state.labelling_answers.labelling_answer7;
+            state.labelling_pairs.labelling_round8.user_answer = state.labelling_answers.labelling_answer8;
+            state.labelling_pairs.labelling_round9.user_answer = state.labelling_answers.labelling_answer9;
         },
 
         getAttentionChecks(state) {

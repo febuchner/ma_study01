@@ -82,6 +82,7 @@ export default {
   name: "StudyIntroduction",
   methods: {
     validateForm: function () {
+      this.store.getLabellingPairs(this.store);
       this.store.resetTrialStep(this.store);
       this.store.nextStep(this.store, 1);
     }
