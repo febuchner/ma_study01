@@ -16,8 +16,6 @@
                 Tell us what you think the person in each short biography has for a profession.
                 At the end of the study, you will receive a <strong>Completion Code</strong> that you can enter at
                 <strong>Prolific</strong> to get your reward.
-                Additionally, we will show you your performance and how gender biased you are compared to our AI and
-                other users.
               </p>
             </div>
             <div class="col-12 col-lg-4">

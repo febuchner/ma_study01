@@ -24,14 +24,9 @@
               <li>surgeon - a doctor who is specially trained to perform medical operations</li>
             </ul>
           </div>
-
-          <div class="mt-4">
-            Based on your given answers from the first and second part, we will present you your gender bias compared to
-            that of our AI and other users at the end of the study.
-          </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-5">
           Below you will find a picture that shows you what the first part looks like with some instructions on how to
           do it:
         </div>

@@ -7,7 +7,7 @@
           <h1>General questions on our experiment!</h1>
           <p>
             <span>
-              Before seeing your gender bias, please let us know what you thought of the experiment! <br>
+              Please let us know what you thought of the experiment! <br>
               <i><span class="text-danger fw-bold">*</span> marks a required field.</i>
             </span>
           </p>
