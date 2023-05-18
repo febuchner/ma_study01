@@ -29,20 +29,18 @@ export const useStore = defineStore('store', {
             },
             userInput: {
                 userID: null,
-                userMturkID: null,
+                userProlificID: null,
                 "consent-accepted": null,
                 "user-taken-test-before": null,
                 "user-age": null,
-                "user-education": null,
                 "user-gender": null,
-                "user-year": null,
-                "user-english-proficiency": null,
                 "user-ml-knowledge": null,
                 "user-ai-attitude": null,
                 "user-cookie-consent": null,
             },
             AI_error_ids: [1398, 3588, 750, 3147, 4831, 1034, 4468, 225, 99, 15967, 993, 203, 552, 1458], // #14
-            AI_truth_ids: [27, 70, 306, 325, 2, 682, 3754, 15, 19, 103, 44, 297, 357, 116, 201, 71], //#16
+            AI_truth_ids: [70, 306, 325, 2, 682, 3754, 15, 19, 44, 297, 357, 116, 201, 71], //#14 excluded 27, 103
+            AI_check_ids: [27224, 27225], //#2
             labelling_ids: [],
             labelling_items: [],
             study_ids: [],
@@ -87,6 +85,7 @@ export const useStore = defineStore('store', {
                 ai_error_sample_00: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
+                    user_answer: null,
                     ai_prediction_consideration: null,
                     other_answer_consideration: null,
                     why_choose_answer: null,
@@ -94,6 +93,7 @@ export const useStore = defineStore('store', {
                 ai_error_sample_01: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
+                    user_answer: null,
                     ai_prediction_consideration: null,
                     other_answer_consideration: null,
                     why_choose_answer: null,
@@ -101,6 +101,7 @@ export const useStore = defineStore('store', {
                 ai_error_sample_02: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
+                    user_answer: null,
                     ai_prediction_consideration: null,
                     other_answer_consideration: null,
                     why_choose_answer: null,
@@ -108,6 +109,15 @@ export const useStore = defineStore('store', {
                 ai_error_sample_03: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
+                    user_answer: null,
+                    ai_prediction_consideration: null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
+                },
+                ai_error_sample_04: {
+                    ai_error_id: null,
+                    user_answer_same_as_ai: null,
+                    user_answer: null,
                     ai_prediction_consideration: null,
                     other_answer_consideration: null,
                     why_choose_answer: null,
@@ -147,20 +157,14 @@ export const useStore = defineStore('store', {
         getUserTakenTestBefore(state) {
             return state.userInput['user-taken-test-before'];
         },
+        getUserProlificID(state) {
+            return state.userInput['userProlificID'];
+        },
         getUserAge(state) {
             return state.userInput['user-age'];
         },
-        getUserEducation(state) {
-            return state.userInput['user-education'];
-        },
         getUserGender(state) {
             return state.userInput['user-gender'];
-        },
-        getUserYear(state) {
-            return state.userInput['user-year'];
-        },
-        getUserEnglishProficiency(state) {
-            return state.userInput['user-english-proficiency'];
         },
         getUserMLKnowledge(state) {
             return state.userInput['user-ml-knowledge'];
@@ -221,6 +225,18 @@ export const useStore = defineStore('store', {
         },
         getWhyChooseAnswerAtAIErrorSample03(state) {
             return state.aiInsights.ai_error_sample_03['why_choose_answer'];
+        },
+        getUseConsiderationAIErrorSample04(state) {
+            return state.aiInsights.ai_error_sample_04['ai_prediction_consideration'];
+        },
+        getUserAnswerSameAsAIAtAIErrorSample04(state) {
+            return state.aiInsights.ai_error_sample_04['user_answer_same_as_ai'];
+        },
+        getOtherAnswerConsiderationAtAIErrorSample04(state) {
+            return state.aiInsights.ai_error_sample_04['other_answer_consideration'];
+        },
+        getWhyChooseAnswerAtAIErrorSample04(state) {
+            return state.aiInsights.ai_error_sample_04['why_choose_answer'];
         },
         getUserComment(state) {
             return state.debrief['user-comment'];
@@ -313,23 +329,40 @@ export const useStore = defineStore('store', {
 
             this.shuffle(state.AI_error_ids);
             this.shuffle(state.AI_truth_ids);
+            this.shuffle(state.AI_check_ids);
+
+
             let n = 0;
-            while (n <= 9) {
+            while (n <= 8) {
                 state.labelling_ids.push(state.AI_error_ids[n]);
                 n++;
             }
 
-            let m = 10;
+            let q = 0;
+            while (q <= 0) {
+                state.labelling_ids.push(state.AI_check_ids[q]);
+                q++;
+            }
+
+            let m = 9;
             while (m <= 13) {
                 state.study_ids.push(state.AI_error_ids[m]);
                 m++;
             }
 
             let p = 0;
-            while (p <= 15) {
+            while (p <= 13) {
                 state.study_ids.push(state.AI_truth_ids[p]);
                 p++;
             }
+
+            let r = 1;
+            while (r <= 1) {
+                state.study_ids.push(state.AI_check_ids[r]);
+                r++;
+            }
+
+            this.shuffle(state.labelling_ids);
             this.shuffle(state.study_ids);
         },
         decideStudyCondition(state) {
@@ -532,39 +565,41 @@ export const useStore = defineStore('store', {
             state.aiInsights.ai_error_sample_01.ai_error_id = state.study_ids[aiErrorSamplesIndices[1]];
             state.aiInsights.ai_error_sample_02.ai_error_id = state.study_ids[aiErrorSamplesIndices[2]];
             state.aiInsights.ai_error_sample_03.ai_error_id = state.study_ids[aiErrorSamplesIndices[3]];
+            state.aiInsights.ai_error_sample_04.ai_error_id = state.study_ids[aiErrorSamplesIndices[4]];
+
+            state.aiInsights.ai_error_sample_00.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[0]]
+            state.aiInsights.ai_error_sample_01.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[1]]
+            state.aiInsights.ai_error_sample_02.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[2]]
+            state.aiInsights.ai_error_sample_03.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[3]]
+            state.aiInsights.ai_error_sample_04.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[4]]
 
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[0], 'ai_error_sample_00');
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[1], 'ai_error_sample_01');
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[2], 'ai_error_sample_02');
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[3], 'ai_error_sample_03');
+            this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[4], 'ai_error_sample_04');
 
             return aiErrorSamplesIndices;
         },
 
+        getAttentionChecks(state) {
+            let aiCheckIndicesFromLabelling;
+            let aiCheckIndicesFromStudy;
+            state.AI_check_ids.forEach(function (element) {
+                if (state.labelling_ids.includes(element)) {
+                    aiCheckIndicesFromLabelling = state.labelling_ids.indexOf(element);
+                }
+                if (state.study_ids.includes(element)) {
+                    aiCheckIndicesFromStudy = state.study_ids.indexOf(element);
+                }
+            });
+
+            state.attentionCheck.attentionCheck01 = state.labelling_items[aiCheckIndicesFromLabelling]['title'] === Object.values(state.labelling_answers)[aiCheckIndicesFromLabelling];
+            state.attentionCheck.attentionCheck02 = state.study_items[aiCheckIndicesFromStudy]['title'] === Object.values(state.study_answers)[aiCheckIndicesFromStudy];
+        },
+
         userSameAnswerAsPrediction(state, index, storeposition) {
             state.aiInsights[storeposition]['user_answer_same_as_ai'] = state.study_items[index]['prediction'] === Object.values(state.study_answers)[index];
-        },
-
-        generateMTurkID(state) {
-            let userID = state.userInput.userID;
-            let endLetters = this.getRandomLetters(4);
-            state.userInput.userMturkID = "OR-" + userID + endLetters;
-        },
-
-        getRandomLetters(length) {
-            let result = '-';
-            const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            const charactersLength = characters.length;
-            let counter = 0;
-            while (counter < length) {
-                result += characters.charAt(Math.floor(Math.random() * charactersLength));
-                counter += 1;
-            }
-            return result;
-        },
-        calculateAttentionCheck01(state) {
-            let check = parseInt(state.userInput['user-age']) + parseInt(state.userInput['user-year'])
-            state.attentionCheck['attentionCheck01'] = check.toString();
         },
     },
 })

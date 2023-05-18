@@ -14,8 +14,8 @@
               <p class="h3 mt-5">
                 We will show you some short biographies.
                 Tell us what you think the person in each short biography has for a profession.
-                At the end of the study, you will receive a <strong>Mechanical Turk Code</strong> that you can enter to
-                get your reward.
+                At the end of the study, you will receive a <strong>Completion Code</strong> that you can enter at
+                <strong>Prolific</strong> to get your reward.
                 Additionally, we will show you your performance and how gender biased you are compared to our AI and
                 other users.
               </p>
@@ -57,10 +57,10 @@ export default {
       if (!this.store.isDebug && this.cookies.isKey('ORS_PCID-ssn')) {
         this.store.nextStep(this.store, 1);
       } else {
-      this.loading = true;
-      await this.store.initParticipant(this.store);
-      this.store.nextStep(this.store, 2);
-      this.loading = false;
+        this.loading = true;
+        await this.store.initParticipant(this.store);
+        this.store.nextStep(this.store, 2);
+        this.loading = false;
       }
     }
   }
