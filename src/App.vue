@@ -1,6 +1,7 @@
 <script setup>
 import {RouterLink, RouterView} from 'vue-router'
 import WelcomeToStudy from '@/components/WelcomeToStudy.vue';
+import StudyReentering from "@/components/StudyReentering.vue";
 import InformedConsent from './components/InformedConsent.vue'
 import DemographicQuestions from '@/components/DemographicQuestions.vue';
 import LabellingInstruction from '@/components/LabellingInstruction.vue';
@@ -20,7 +21,6 @@ const sharemodal = ref(false);
 <template>
   <header class="row mb-5">
     <div class="col-12 col-sm-6 d-flex justify-content-start">
-      <img alt="labintheWild logo" class="logo d-inline-flex" src="@/assets/labintheWild-logo.png" width="150"/>
     </div>
     <div class="col-12 col-sm-6 d-flex justify-content-start justify-content-sm-end">
       <button type="button" class="btn btn-primary" @click="sharemodal = !sharemodal">
@@ -44,6 +44,7 @@ const sharemodal = ref(false);
   </header>
   <main role="main" class="container">
     <WelcomeToStudy/>
+    <StudyReentering/>
     <InformedConsent/>
     <DemographicQuestions/>
     <LabellingInstruction/>

@@ -42,7 +42,7 @@ export default {
             data: [this.data_you],
           },
           {
-            label: 'Average LabintheWild users',
+            label: 'Average users',
             backgroundColor: '#99BA6A',
             data: [this.data_litw],
           },

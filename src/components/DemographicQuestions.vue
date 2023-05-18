@@ -11,6 +11,17 @@
           </p>
         </div>
 
+
+        <b-form-group
+            class="mb-4"
+            label-class="font-weight-bold"
+        >
+          <template v-slot:label>
+            What is your Prolific ID? <span class="text-danger fw-bolder">*</span>
+          </template>
+          <b-form-input v-model="userProlificID"></b-form-input>
+        </b-form-group>
+
         <b-form-group
             class="mb-4"
             label-class="font-weight-bold">
@@ -43,33 +54,6 @@
           </template>
           <b-form-input v-model="userAge" type="number" min="1" max="100" @blur="isValidAge"></b-form-input>
           <div class="mx-3 text-danger" v-if="this.showAgeError">Please enter a valid age between 1 and 100.</div>
-        </b-form-group>
-
-        <b-form-group
-            class="mb-4"
-            label-class="font-weight-bold"
-        >
-          <template v-slot:label>
-            What English skills do you have? <span class="text-danger fw-bolder">*</span>
-          </template>
-          <b-form-select
-              v-model="userEnglishProficiency"
-              :options="englishProficiency">
-          </b-form-select>
-        </b-form-group>
-
-        <b-form-group
-            class="mb-4"
-            label-class="font-weight-bold"
-        >
-          <template v-slot:label>
-            What is the highest level of education that you have received? <span
-              class="text-danger fw-bolder">*</span>
-          </template>
-          <b-form-select
-              v-model="userEducation"
-              :options="educationLevels">
-          </b-form-select>
         </b-form-group>
 
         <b-form-group
@@ -166,22 +150,6 @@ export default {
       showAgeError: false,
       minAge: 1,
       maxAge: 100,
-      englishProficiency: [
-        {text: 'Basic', value: 'basic'},
-        {text: 'Intermediate', value: 'intermediate'},
-        {text: 'Upper-Intermediate', value: 'upper-intermediate'},
-        {text: 'Proficient', value: 'proficient'},
-        {text: 'Mother tongue', value: 'motherTongue'},
-      ],
-      educationLevels: [
-        {text: "Pre-High School", value: "pre-high_school"},
-        {text: "High School", value: "high_school"},
-        {text: "Bachelor’s or equivalent level", value: "bachelor"},
-        {text: "Master’s or equivalent level", value: "master"},
-        {text: "PhD", value: "PhD"},
-        {text: "Postdoctoral", value: "postdoctoral"},
-        {text: "Other", value: "other"},
-      ],
       genders: [
         {text: "Male", value: "male"},
         {text: "Female", value: "female"},
@@ -219,20 +187,6 @@ export default {
         this.store.userInput['user-age'] = value;
       },
     },
-    userEnglishProficiency: {
-      get() {
-      },
-      set(value) {
-        this.store.userInput['user-english-proficiency'] = value;
-      },
-    },
-    userEducation: {
-      get() {
-      },
-      set(value) {
-        this.store.userInput['user-education'] = value;
-      },
-    },
     userGender: {
       get() {
       },
@@ -261,7 +215,13 @@ export default {
         this.store.userInput['user-cookie-consent'] = value;
       },
     },
-
+    userProlificID: {
+      get() {
+      },
+      set(value) {
+        this.store.userInput['userProlificID'] = value;
+      },
+    },
   },
   watch: {
     userAge(value) {
@@ -288,12 +248,11 @@ export default {
           this.store.getUserAge !== null &&
           this.store.getUserAge >= this.minAge &&
           this.store.getUserAge <= this.maxAge &&
-          this.store.getUserEnglishProficiency !== null &&
-          this.store.getUserEducation !== null &&
           this.store.getUserGender !== null &&
           this.store.getUserMLKnowledge !== null &&
           this.store.getUserAIAttitude !== null &&
-          this.store.getUserCookieConsent !== null
+          this.store.getUserCookieConsent !== null &&
+          this.store.getUserProlificID !== null
       ) {
         this.showFormError = false
         return true
@@ -317,12 +276,11 @@ export default {
         if (this.store.getUserCookieConsent === "true") {
           this.setCookies("user-taken-test-before", this.store.getUserTakenTestBefore);
           this.setCookies("user-age", this.store.getUserAge);
-          this.setCookies("user-english-proficiency", this.store.getUserEnglishProficiency);
-          this.setCookies("user-education", this.store.getUserEducation);
           this.setCookies("user-gender", this.store.getUserGender);
           this.setCookies("user-ml-knowledge", this.store.getUserMLKnowledge);
           this.setCookies("user-ai-attitude", this.store.getUserAIAttitude);
           this.setCookies("user-cookie-consent", this.store.getUserCookieConsent);
+          this.setCookies("userProlificID", this.store.getUserProlificID);
         }
         this.store.nextStep(this.store, 1);
       }

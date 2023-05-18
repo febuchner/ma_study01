@@ -20,7 +20,8 @@
           The second part consists of 20 examples.
         </p>
         <p><strong> What you will get out of it: </strong>
-          You will see how you perform and how gender biased you are compared to our AI and other LabintheWild users.
+          At the end of the study, you will receive a <strong>Completion Code</strong> that you can enter at <strong>Prolific</strong>
+          to get your reward.
         </p>
         <p><strong> Are there any risks: </strong>
           We do not anticipate any risks. You can always choose to leave this study by
@@ -52,14 +53,17 @@
           carried out automatically, you may be entitled to data transferability (Act 20 GDPR).
           If you make use of your rights mentioned above, the public office checks whether the legal requirements for
           these are met. Furthermore, there is a right of appeal to the Bavarian State Commissioner for Data Protection.
-          You can contact by Bavarian State Office for Data Protection Supervision (BayLDA), Promenade 27, 91522 Ansbach,
+          You can contact by Bavarian State Office for Data Protection Supervision (BayLDA), Promenade 27, 91522
+          Ansbach,
           <span class="text-nowrap">+49 (0) 981 53 1300</span>, <a
               href="mailto:poststelle@lda.bayern.de">poststelle@lda.bayern.de</a>, online complaint form for data
           protection violations: <a href="https://www.lda.bayern.de/de/beschwerde.html" target="_blank">www.lda.bayern.de/de/beschwerde</a>.
           <br>
           <br>
-          Your randomly generated personal studyID is <span class="studyID">{{ this.userID }}</span>. Please note it down and keep it
-          safe in case you want to contact us about your data. You can revoke your consent to the processing of your data by a short
+          Your randomly generated personal studyID is <span class="studyID">{{ this.userID }}</span>. Please note it
+          down and keep it
+          safe in case you want to contact us about your data. You can revoke your consent to the processing of your
+          data by a short
           statement and naming your studyID at any time in the future.
           The legality of the data processing carried out on the basis of the consent until revocation remains
           unaffected by this.
@@ -181,7 +185,7 @@ export default {
       });
 
       if (this.stateConsentAccepted) {
-        if (litwCookies.length === 8) {
+        if (litwCookies.length === 7) {
           litwCookies.forEach(function (cookie) {
             cookie = cookie.slice(COOKIE_PREFIX.length)
             store.userInput[cookie] = cookies.get(COOKIE_PREFIX + cookie)

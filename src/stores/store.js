@@ -11,6 +11,7 @@ export const useStore = defineStore('store', {
             trial_index: 0,
             steps: [
                 'welcome-to-study',
+                'study-reentering',
                 'informed-consent',
                 'demographic-questions',
                 'labelling-instruction',
@@ -21,20 +22,25 @@ export const useStore = defineStore('store', {
                 'debrief',
                 'results',
             ],
+            attentionCheck: {
+                attentionCheck01: null,
+                attentionCheck02: null,
+                attentionCheck03: null,
+            },
             userInput: {
                 userID: null,
+                userProlificID: null,
                 "consent-accepted": null,
                 "user-taken-test-before": null,
                 "user-age": null,
-                "user-education": null,
                 "user-gender": null,
-                "user-english-proficiency": null,
                 "user-ml-knowledge": null,
                 "user-ai-attitude": null,
                 "user-cookie-consent": null,
             },
             AI_error_ids: [1398, 3588, 750, 3147, 4831, 1034, 4468, 225, 99, 15967, 993, 203, 552, 1458], // #14
-            AI_truth_ids: [27, 70, 306, 325, 2, 682, 3754, 15, 19, 103, 44, 297, 357, 116, 201, 71], //#16
+            AI_truth_ids: [70, 306, 325, 2, 682, 3754, 15, 19, 44, 297, 357, 116, 201, 71], //#14 excluded 27, 103
+            AI_check_ids: [27224, 27225], //#2
             labelling_ids: [],
             labelling_items: [],
             study_ids: [],
@@ -51,6 +57,48 @@ export const useStore = defineStore('store', {
                 labelling_answer7: null,
                 labelling_answer8: null,
                 labelling_answer9: null,
+            },
+            labelling_pairs: {
+                labelling_round0: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round1: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round2: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round3: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round4: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round5: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round6: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round7: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round8: {
+                    id: null,
+                    user_answer: null,
+                },
+                labelling_round9: {
+                    id: null,
+                    user_answer: null,
+                },
             },
             study_answers: {
                 study_answer00: null,
@@ -79,30 +127,42 @@ export const useStore = defineStore('store', {
                 ai_error_sample_00: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
+                    user_answer: null,
                     ai_prediction_consideration: null,
-                    other_answer_consideration:null,
-                    why_choose_answer:null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
                 },
                 ai_error_sample_01: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
+                    user_answer: null,
                     ai_prediction_consideration: null,
-                    other_answer_consideration:null,
-                    why_choose_answer:null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
                 },
                 ai_error_sample_02: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
+                    user_answer: null,
                     ai_prediction_consideration: null,
-                    other_answer_consideration:null,
-                    why_choose_answer:null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
                 },
                 ai_error_sample_03: {
                     ai_error_id: null,
                     user_answer_same_as_ai: null,
+                    user_answer: null,
                     ai_prediction_consideration: null,
-                    other_answer_consideration:null,
-                    why_choose_answer:null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
+                },
+                ai_error_sample_04: {
+                    ai_error_id: null,
+                    user_answer_same_as_ai: null,
+                    user_answer: null,
+                    ai_prediction_consideration: null,
+                    other_answer_consideration: null,
+                    why_choose_answer: null,
                 },
 
             },
@@ -114,16 +174,16 @@ export const useStore = defineStore('store', {
                 "user-cheat-description": null,
             },
             timestamps: {},
-            bias: {
-                f_true_labels: [],
-                m_true_labels: [],
-                f_pred_labels: [],
-                m_pred_labels: [],
-                gap: [NaN, NaN, NaN, NaN, NaN, NaN],
-                gap_labinthewild: [],
-                acc: [NaN, NaN, NaN],
-                acc_labinthewild: [],
-            },
+            // bias: {
+            //     f_true_labels: [],
+            //     m_true_labels: [],
+            //     f_pred_labels: [],
+            //     m_pred_labels: [],
+            //     gap: [NaN, NaN, NaN, NaN, NaN, NaN],
+            //     gap_labinthewild: [],
+            //     acc: [NaN, NaN, NaN],
+            //     acc_labinthewild: [],
+            // },
         };
     },
     getters: {
@@ -139,17 +199,14 @@ export const useStore = defineStore('store', {
         getUserTakenTestBefore(state) {
             return state.userInput['user-taken-test-before'];
         },
+        getUserProlificID(state) {
+            return state.userInput['userProlificID'];
+        },
         getUserAge(state) {
             return state.userInput['user-age'];
         },
-        getUserEducation(state) {
-            return state.userInput['user-education'];
-        },
         getUserGender(state) {
             return state.userInput['user-gender'];
-        },
-        getUserEnglishProficiency(state) {
-            return state.userInput['user-english-proficiency'];
         },
         getUserMLKnowledge(state) {
             return state.userInput['user-ml-knowledge'];
@@ -211,6 +268,18 @@ export const useStore = defineStore('store', {
         getWhyChooseAnswerAtAIErrorSample03(state) {
             return state.aiInsights.ai_error_sample_03['why_choose_answer'];
         },
+        getUseConsiderationAIErrorSample04(state) {
+            return state.aiInsights.ai_error_sample_04['ai_prediction_consideration'];
+        },
+        getUserAnswerSameAsAIAtAIErrorSample04(state) {
+            return state.aiInsights.ai_error_sample_04['user_answer_same_as_ai'];
+        },
+        getOtherAnswerConsiderationAtAIErrorSample04(state) {
+            return state.aiInsights.ai_error_sample_04['other_answer_consideration'];
+        },
+        getWhyChooseAnswerAtAIErrorSample04(state) {
+            return state.aiInsights.ai_error_sample_04['why_choose_answer'];
+        },
         getUserComment(state) {
             return state.debrief['user-comment'];
         },
@@ -243,7 +312,16 @@ export const useStore = defineStore('store', {
         },
         getStudyCondition(state) {
             return state['study_condition'];
-        }
+        },
+        getAttentionCheck01(state) {
+            return state.attentionCheck['attentionCheck01'];
+        },
+        getAttentionCheck02(state) {
+            return state.attentionCheck['attentionCheck02'];
+        },
+        getAttentionCheck03(state) {
+            return state.attentionCheck['attentionCheck03'];
+        },
     },
     actions: {
         async initParticipant(state) {
@@ -293,23 +371,40 @@ export const useStore = defineStore('store', {
 
             this.shuffle(state.AI_error_ids);
             this.shuffle(state.AI_truth_ids);
+            this.shuffle(state.AI_check_ids);
+
+
             let n = 0;
-            while (n <= 9) {
+            while (n <= 8) {
                 state.labelling_ids.push(state.AI_error_ids[n]);
                 n++;
             }
 
-            let m = 10;
+            let q = 0;
+            while (q <= 0) {
+                state.labelling_ids.push(state.AI_check_ids[q]);
+                q++;
+            }
+
+            let m = 9;
             while (m <= 13) {
                 state.study_ids.push(state.AI_error_ids[m]);
                 m++;
             }
 
             let p = 0;
-            while (p <= 15) {
+            while (p <= 13) {
                 state.study_ids.push(state.AI_truth_ids[p]);
                 p++;
             }
+
+            let r = 1;
+            while (r <= 1) {
+                state.study_ids.push(state.AI_check_ids[r]);
+                r++;
+            }
+
+            this.shuffle(state.labelling_ids);
             this.shuffle(state.study_ids);
         },
         decideStudyCondition(state) {
@@ -512,13 +607,61 @@ export const useStore = defineStore('store', {
             state.aiInsights.ai_error_sample_01.ai_error_id = state.study_ids[aiErrorSamplesIndices[1]];
             state.aiInsights.ai_error_sample_02.ai_error_id = state.study_ids[aiErrorSamplesIndices[2]];
             state.aiInsights.ai_error_sample_03.ai_error_id = state.study_ids[aiErrorSamplesIndices[3]];
+            state.aiInsights.ai_error_sample_04.ai_error_id = state.study_ids[aiErrorSamplesIndices[4]];
+
+            state.aiInsights.ai_error_sample_00.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[0]]
+            state.aiInsights.ai_error_sample_01.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[1]]
+            state.aiInsights.ai_error_sample_02.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[2]]
+            state.aiInsights.ai_error_sample_03.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[3]]
+            state.aiInsights.ai_error_sample_04.user_answer = Object.values(state.study_answers)[aiErrorSamplesIndices[4]]
 
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[0], 'ai_error_sample_00');
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[1], 'ai_error_sample_01');
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[2], 'ai_error_sample_02');
             this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[3], 'ai_error_sample_03');
+            this.userSameAnswerAsPrediction(state, aiErrorSamplesIndices[4], 'ai_error_sample_04');
 
             return aiErrorSamplesIndices;
+        },
+
+        getLabellingPairs(state) {
+            state.labelling_pairs.labelling_round0.id = state.labelling_ids[0];
+            state.labelling_pairs.labelling_round1.id = state.labelling_ids[1];
+            state.labelling_pairs.labelling_round2.id = state.labelling_ids[2];
+            state.labelling_pairs.labelling_round3.id = state.labelling_ids[3];
+            state.labelling_pairs.labelling_round4.id = state.labelling_ids[4];
+            state.labelling_pairs.labelling_round5.id = state.labelling_ids[5];
+            state.labelling_pairs.labelling_round6.id = state.labelling_ids[6];
+            state.labelling_pairs.labelling_round7.id = state.labelling_ids[7];
+            state.labelling_pairs.labelling_round8.id = state.labelling_ids[8];
+            state.labelling_pairs.labelling_round9.id = state.labelling_ids[9];
+
+            state.labelling_pairs.labelling_round0.user_answer = state.labelling_answers.labelling_answer0;
+            state.labelling_pairs.labelling_round1.user_answer = state.labelling_answers.labelling_answer1;
+            state.labelling_pairs.labelling_round2.user_answer = state.labelling_answers.labelling_answer2;
+            state.labelling_pairs.labelling_round3.user_answer = state.labelling_answers.labelling_answer3;
+            state.labelling_pairs.labelling_round4.user_answer = state.labelling_answers.labelling_answer4;
+            state.labelling_pairs.labelling_round5.user_answer = state.labelling_answers.labelling_answer5;
+            state.labelling_pairs.labelling_round6.user_answer = state.labelling_answers.labelling_answer6;
+            state.labelling_pairs.labelling_round7.user_answer = state.labelling_answers.labelling_answer7;
+            state.labelling_pairs.labelling_round8.user_answer = state.labelling_answers.labelling_answer8;
+            state.labelling_pairs.labelling_round9.user_answer = state.labelling_answers.labelling_answer9;
+        },
+
+        getAttentionChecks(state) {
+            let aiCheckIndicesFromLabelling;
+            let aiCheckIndicesFromStudy;
+            state.AI_check_ids.forEach(function (element) {
+                if (state.labelling_ids.includes(element)) {
+                    aiCheckIndicesFromLabelling = state.labelling_ids.indexOf(element);
+                }
+                if (state.study_ids.includes(element)) {
+                    aiCheckIndicesFromStudy = state.study_ids.indexOf(element);
+                }
+            });
+
+            state.attentionCheck.attentionCheck01 = state.labelling_items[aiCheckIndicesFromLabelling]['title'] === Object.values(state.labelling_answers)[aiCheckIndicesFromLabelling];
+            state.attentionCheck.attentionCheck02 = state.study_items[aiCheckIndicesFromStudy]['title'] === Object.values(state.study_answers)[aiCheckIndicesFromStudy];
         },
 
         userSameAnswerAsPrediction(state, index, storeposition) {

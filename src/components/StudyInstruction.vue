@@ -40,14 +40,9 @@
               <span style="background-color: rgb(0, 139, 251);">Blue</span> means the highlighted word is against the AI's prediction. The bluer the highlighted word is the stronger it is against the prediction of our AI.
           </span>
           </div>
-
-          <div class="mt-4">
-            Based on your given answers from the first and second part, we will present you your gender bias compared to
-            that of our AI and other LabintheWild users at the end of the study.
-          </div>
         </div>
 
-        <div class="mt-4">
+        <div class="mt-5">
           Below you will find a picture that shows you what the second part looks like with some instructions on how to
           do it:
         </div>
@@ -82,6 +77,7 @@ export default {
   name: "StudyIntroduction",
   methods: {
     validateForm: function () {
+      this.store.getLabellingPairs(this.store);
       this.store.resetTrialStep(this.store);
       this.store.nextStep(this.store, 1);
     }

@@ -23,19 +23,19 @@
   </div>
 
   <div v-if="isNaN(closer_to_zero_litw) || this.data_litw_profession === null">
-    We can't say whether you are more or less gender biased than other LabintheWild users.
+    We can't say whether you are more or less gender biased than other users.
   </div>
   <div v-if="closer_to_zero_litw === null && this.data_litw_profession != null">
-    Because your "{{ this.profession }}" gender bias score is just as far from zero as the score of other LabintheWild
-    users, <strong>you are just as gender biased as other LabintheWild users</strong>!
+    Because your "{{ this.profession }}" gender bias score is just as far from zero as the score of other users,
+    <strong>you are just as gender biased as other users</strong>!
   </div>
   <div v-else-if="closer_to_zero_litw === true && this.data_litw_profession != null">
-    Because your "{{ this.profession }}" gender bias score is closer to zero than that of other LabintheWild users, <strong>you
-    are less gender biased than other LabintheWild users</strong>!
+    Because your "{{ this.profession }}" gender bias score is closer to zero than that of other users,
+    <strong>you are less gender biased than other users</strong>!
   </div>
   <div v-else-if="closer_to_zero_litw === false && this.data_litw_profession != null">
-    Because your "{{ this.profession }}" gender bias score is further away from zero than that of other LabintheWild users,
-    <strong>you are more gender biased than other LabintheWild users</strong>!
+    Because your "{{ this.profession }}" gender bias score is further away from zero than that of other users,
+    <strong>you are more gender biased than other users</strong>!
   </div>
 
   <div v-if="isFinite(this.data_you_profession) && this.data_you_profession > this.data_AI_profession">
