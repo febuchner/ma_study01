@@ -9,7 +9,8 @@
         <div class="my-5 pb-5">
           <h2>This is your Completion Code for Prolific:</h2>
           <div class="bg-profession">
-            <h3 class="py-4 ps-3 text-center">C1MGVBLH</h3>
+            <h3 v-if="!this.store.getAttentionCheck01 || !this.store.getAttentionCheck02 || this.store.getAttentionCheck03 !== 'true'" class="py-4 ps-3 text-center">C16I52IS</h3>
+            <h3 v-else class="py-4 ps-3 text-center">C1MGVBLH</h3>
           </div>
         </div>
 
