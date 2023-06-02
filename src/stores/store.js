@@ -33,6 +33,7 @@ export const useStore = defineStore('store', {
                 "consent-accepted": null,
                 "user-taken-test-before": null,
                 "user-age": null,
+                "user-education": null,
                 "user-gender": null,
                 "user-ml-knowledge": null,
                 "user-ai-attitude": null,
@@ -204,6 +205,9 @@ export const useStore = defineStore('store', {
         },
         getUserAge(state) {
             return state.userInput['user-age'];
+        },
+        getUserEducation(state) {
+            return state.userInput['user-education'];
         },
         getUserGender(state) {
             return state.userInput['user-gender'];

@@ -61,6 +61,20 @@
             label-class="font-weight-bold"
         >
           <template v-slot:label>
+            What is the highest level of education that you have received? <span
+              class="text-danger fw-bolder">*</span>
+          </template>
+          <b-form-select
+              v-model="userEducation"
+              :options="educationLevels">
+          </b-form-select>
+        </b-form-group>
+
+        <b-form-group
+            class="mb-4"
+            label-class="font-weight-bold"
+        >
+          <template v-slot:label>
             What is your gender? <span class="text-danger fw-bolder">*</span>
           </template>
           <b-form-select
@@ -150,6 +164,12 @@ export default {
       showAgeError: false,
       minAge: 1,
       maxAge: 100,
+      educationLevels: [
+        {text: "Undergraduate degree (e.g. BA/BSc)", value: "undergraduate"},
+        {text: "Graduate degree (e.g. MA/MSc/MPhil)", value: "graduate"},
+        {text: "Doctorate degree (e.g. PhD)", value: "doctorate"},
+        {text: "Other", value: "other"},
+      ],
       genders: [
         {text: "Male", value: "male"},
         {text: "Female", value: "female"},
@@ -185,6 +205,13 @@ export default {
       },
       set(value) {
         this.store.userInput['user-age'] = value;
+      },
+    },
+    userEducation: {
+      get() {
+      },
+      set(value) {
+        this.store.userInput['user-education'] = value;
       },
     },
     userGender: {
@@ -248,6 +275,7 @@ export default {
           this.store.getUserAge !== null &&
           this.store.getUserAge >= this.minAge &&
           this.store.getUserAge <= this.maxAge &&
+          this.store.getUserEducation !== null &&
           this.store.getUserGender !== null &&
           this.store.getUserMLKnowledge !== null &&
           this.store.getUserAIAttitude !== null &&
@@ -276,6 +304,7 @@ export default {
         if (this.store.getUserCookieConsent === "true") {
           this.setCookies("user-taken-test-before", this.store.getUserTakenTestBefore);
           this.setCookies("user-age", this.store.getUserAge);
+          this.setCookies("user-education", this.store.getUserEducation);
           this.setCookies("user-gender", this.store.getUserGender);
           this.setCookies("user-ml-knowledge", this.store.getUserMLKnowledge);
           this.setCookies("user-ai-attitude", this.store.getUserAIAttitude);
