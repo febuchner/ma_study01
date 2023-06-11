@@ -16,6 +16,9 @@
                 Tell us what you think the person in each short biography has for a profession.
                 At the end of the study, you will receive a <strong>Completion Code</strong> that you can enter at
                 <strong>Prolific</strong> to get your reward.
+                <br>
+                This reward consists of a base pay of £2.00 and a performance-based bonus.
+                For each profession you correctly predict, you will receive an additional £0.01.
               </p>
             </div>
             <div class="col-12 col-lg-4">
