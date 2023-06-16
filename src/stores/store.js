@@ -33,6 +33,7 @@ export const useStore = defineStore('store', {
                 "consent-accepted": null,
                 "user-taken-test-before": null,
                 "user-age": null,
+                "user-education": null,
                 "user-gender": null,
                 "user-ml-knowledge": null,
                 "user-ai-attitude": null,
@@ -174,16 +175,10 @@ export const useStore = defineStore('store', {
                 "user-cheat-description": null,
             },
             timestamps: {},
-            // bias: {
-            //     f_true_labels: [],
-            //     m_true_labels: [],
-            //     f_pred_labels: [],
-            //     m_pred_labels: [],
-            //     gap: [NaN, NaN, NaN, NaN, NaN, NaN],
-            //     gap_labinthewild: [],
-            //     acc: [NaN, NaN, NaN],
-            //     acc_labinthewild: [],
-            // },
+            bias: {
+                true_labels: [],
+                pred_labels: [],
+            },
         };
     },
     getters: {
@@ -204,6 +199,9 @@ export const useStore = defineStore('store', {
         },
         getUserAge(state) {
             return state.userInput['user-age'];
+        },
+        getUserEducation(state) {
+            return state.userInput['user-education'];
         },
         getUserGender(state) {
             return state.userInput['user-gender'];
@@ -322,6 +320,9 @@ export const useStore = defineStore('store', {
         getAttentionCheck03(state) {
             return state.attentionCheck['attentionCheck03'];
         },
+        getUserAccuracy(state){
+            return state.bias['acc'];
+        },
     },
     actions: {
         async initParticipant(state) {
@@ -417,14 +418,22 @@ export const useStore = defineStore('store', {
             arr.sort(() => Math.random() - 0.5);
             return arr;
         },
-        saveLabelsForCM(state, answer, name, item) {
-            if (item['gender'] === 'F') {
-                state.bias['f_true_labels'].push(item['title']);
-                state.bias['f_pred_labels'].push(state[answer][name]);
-            } else {
-                state.bias['m_true_labels'].push(item['title']);
-                state.bias['m_pred_labels'].push(state[answer][name]);
+        saveLabels(state, answer, name, item) {
+            state.bias['true_labels'].push(item['title']);
+            state.bias['pred_labels'].push(state[answer][name]);
+        },
+        calcNumbCorrectAnswers(state){
+            // The order of the arguments has to be (trueLabels, predictedLabels) !!!
+            let confmatrix = ConfusionMatrix.fromLabels(state.bias['true_labels'], state.bias['pred_labels']);
+            let acc = confmatrix.getAccuracy();
+            acc = acc * 30;
+            if (state.attentionCheck.attentionCheck01 === true) {
+                acc--;
             }
+            if (state.attentionCheck.attentionCheck01 === true) {
+                acc--;
+            }
+            state.bias['acc'] = acc;
         },
         calculateBias(state) {
             // The order of the arguments has to be (trueLabels, predictedLabels) !!!

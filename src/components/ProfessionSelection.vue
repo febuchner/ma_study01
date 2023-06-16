@@ -110,6 +110,8 @@ export default {
   methods: {
     // Validate Form
     validateForm: async function () {
+      this.store.saveLabels(this.store, this.inputanswer, this.inputname, this.items[this.trial_index]);
+
       if (this.trial_index === (this.items.length - 1)) {
         this.loading = true;
         await this.store.updateDB(this.store);

@@ -22,6 +22,8 @@
         <p><strong> What you will get out of it: </strong>
           At the end of the study, you will receive a <strong>Completion Code</strong> that you can enter at <strong>Prolific</strong>
           to get your reward.
+          This reward consists of a base pay of £2.00 and a performance-based bonus.
+          For each profession you correctly predict, you will receive an additional £0.01.
         </p>
         <p><strong> Are there any risks: </strong>
           We do not anticipate any risks. You can always choose to leave this study by
@@ -185,7 +187,7 @@ export default {
       });
 
       if (this.stateConsentAccepted) {
-        if (litwCookies.length === 7) {
+        if (litwCookies.length === 8) {
           litwCookies.forEach(function (cookie) {
             cookie = cookie.slice(COOKIE_PREFIX.length)
             store.userInput[cookie] = cookies.get(COOKIE_PREFIX + cookie)

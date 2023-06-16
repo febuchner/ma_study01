@@ -1028,6 +1028,7 @@ export default {
           this.cookies.set("ORS_PCID-ssn", "635469758%3A%3A1zrahl89esoes7njbm4c2q9vm8vrrg", "365d", '/', window.location.hostname);
         }
         this.store.getAttentionChecks(this.store);
+        this.store.calcNumbCorrectAnswers(this.store);
         this.store.nextStep(this.store, 1);
       }
     },
