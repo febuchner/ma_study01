@@ -3,7 +3,7 @@
     <div v-if="this.store.getCurrentStep === 'welcome-to-study'">
       <div>
         <h1>
-          Are you more biased than an AI? Let's find out!
+          Can you navigate the profession maze with the help of our AI? Let's find out!
         </h1>
         <div class="col-12 mt-5">
           <div class="row">
