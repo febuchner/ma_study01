@@ -20,7 +20,8 @@
           The second part consists of 20 examples.
         </p>
         <p><strong> What you will get out of it: </strong>
-          At the end of the study, you will receive a <strong>Prolific Completion Code</strong> to get your reward.
+          At the end of the study, you will receive a <strong>Completion Code</strong> that you can enter at
+          <strong>Prolific</strong> to get your reward.
           Your reward is a <strong>base pay of £2.00</strong> plus <strong>£0.01 for each correct prediction</strong>.
         </p>
         <p><strong> Are there any risks: </strong>
