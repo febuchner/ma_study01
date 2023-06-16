@@ -20,13 +20,7 @@ const sharemodal = ref(false);
 
 <template>
   <header class="row mb-5">
-    <div class="col-12 col-sm-6 d-flex justify-content-start">
-    </div>
-    <div class="col-12 col-sm-6 d-flex justify-content-start justify-content-sm-end">
-      <button type="button" class="btn btn-primary" @click="sharemodal = !sharemodal">
-        <font-awesome-icon icon="fa-solid fa-share-nodes"/>
-        Share
-      </button>
+    <div class="col-12 mb-4">
     </div>
 
     <b-modal v-model="sharemodal" title="Share the study!" hide-footer>
