@@ -12,13 +12,13 @@
                 Welcome and thank you for your interest in our experiment.
               </p>
               <p class="h3 mt-5">
-                We will show you some short biographies.
                 Tell us what you think the person in each short biography has for a profession.
-                At the end of the study, you will receive a <strong>Completion Code</strong> that you can enter at
-                <strong>Prolific</strong> to get your reward.
+                At the end of the study, you will receive your <strong>Prolific Completion Code</strong>.
                 <br>
-                This reward consists of a base pay of £2.00 and a performance-based bonus.
-                For each profession you correctly predict, you will receive an additional £0.01.
+                Your reward is a base pay of <strong>£2.00</strong> plus <strong>£0.01 for each correct prediction</strong>.
+              </p>
+              <p class="h3 mt-5">
+                Please do not use the back and forward buttons of your browser to navigate, but only the buttons provided by us on the website.
               </p>
             </div>
             <div class="col-12 col-lg-4">
