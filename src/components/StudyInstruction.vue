@@ -31,6 +31,7 @@
           <div class="mt-4">
             <strong>This time, our AI tells you the profession it has calculated for the person on the short biography to help you make
               your decision.</strong>
+            <br>
             <span v-if="this.store.study_condition === 'with_explanation_highlights'">
               <br>
                <strong>Also, the AI highlights words in the short biography that led to its prediction.</strong>
