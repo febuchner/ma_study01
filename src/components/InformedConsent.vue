@@ -20,10 +20,8 @@
           The second part consists of 20 examples.
         </p>
         <p><strong> What you will get out of it: </strong>
-          At the end of the study, you will receive a <strong>Completion Code</strong> that you can enter at <strong>Prolific</strong>
-          to get your reward.
-          This reward consists of a base pay of £2.00 and a performance-based bonus.
-          For each profession you correctly predict, you will receive an additional £0.01.
+          At the end of the study, you will receive a <strong>Prolific Completion Code</strong> to get your reward.
+          Your reward is a <strong>base pay of £2.00</strong> plus <strong>£0.01 for each correct prediction</strong>.
         </p>
         <p><strong> Are there any risks: </strong>
           We do not anticipate any risks. You can always choose to leave this study by
@@ -62,11 +60,10 @@
           protection violations: <a href="https://www.lda.bayern.de/de/beschwerde.html" target="_blank">www.lda.bayern.de/de/beschwerde</a>.
           <br>
           <br>
-          Your randomly generated personal studyID is <span class="studyID">{{ this.userID }}</span>. Please note it
-          down and keep it
-          safe in case you want to contact us about your data. You can revoke your consent to the processing of your
-          data by a short
-          statement and naming your studyID at any time in the future.
+          If you wish to contact us about your data or would like us to delete your data, please feel free to contact
+          us.
+          You can revoke your consent to the processing of your data or request the removal of your data by sending a short
+          statement and naming your ProlificID at any time in the future.
           The legality of the data processing carried out on the basis of the consent until revocation remains
           unaffected by this.
 
@@ -152,13 +149,6 @@ export default {
     }
   },
   computed: {
-    userID: {
-      get() {
-        return this.store.userInput['userID'];
-      },
-      set(value) {
-      },
-    },
     consentAccepted: {
       get() {
         return this.store.userInput['consent-accepted'];
@@ -187,12 +177,11 @@ export default {
       });
 
       if (this.stateConsentAccepted) {
-        if (litwCookies.length === 8) {
+        if (litwCookies.length === 7) {
           litwCookies.forEach(function (cookie) {
             cookie = cookie.slice(COOKIE_PREFIX.length)
             store.userInput[cookie] = cookies.get(COOKIE_PREFIX + cookie)
           });
-          this.store.userInput['user-taken-test-before'] = true;
           this.store.nextStep(this.store, 2);
         } else {
           this.store.nextStep(this.store, 1);

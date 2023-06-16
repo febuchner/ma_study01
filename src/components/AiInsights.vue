@@ -182,9 +182,9 @@
                 </div>
               </div>
 
-              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
+              <LikertScale question="<span>How much did you think about the AI prediction in this case?</span>"
                            likert_name="null_likert_AI_prediction"
-                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                           :levels="['Not at all', 'Not much', 'A bit', 'Strongly', 'Very strongly']"
                            ai_error_sample="ai_error_sample_00"
                            likert_level="ai_prediction_consideration"/>
 
@@ -358,9 +358,9 @@
                 </div>
               </div>
 
-              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
+              <LikertScale question="<span>How much did you think about the AI prediction in this case?</span>"
                            likert_name="first_likert_AI_prediction"
-                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                           :levels="['Not at all', 'Not much', 'A bit', 'Strongly', 'Very strongly']"
                            ai_error_sample="ai_error_sample_01"
                            likert_level="ai_prediction_consideration"/>
 
@@ -534,9 +534,9 @@
                 </div>
               </div>
 
-              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
+              <LikertScale question="<span>How much did you think about the AI prediction in this case?</span>"
                            likert_name="second_likert_AI_prediction"
-                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                           :levels="['Not at all', 'Not much', 'A bit', 'Strongly', 'Very strongly']"
                            ai_error_sample="ai_error_sample_02"
                            likert_level="ai_prediction_consideration"/>
 
@@ -710,9 +710,9 @@
                 </div>
               </div>
 
-              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
+              <LikertScale question="<span>How much did you think about the AI prediction in this case?</span>"
                            likert_name="third_likert_AI_prediction"
-                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                           :levels="['Not at all', 'Not much', 'A bit', 'Strongly', 'Very strongly']"
                            ai_error_sample="ai_error_sample_03"
                            likert_level="ai_prediction_consideration"/>
 
@@ -885,9 +885,9 @@
                 </div>
               </div>
 
-              <LikertScale question="<span>How much did you consider this AI prediction in your decision making?</span>"
+              <LikertScale question="<span>How much did you think about the AI prediction in this case?</span>"
                            likert_name="fourth_likert_AI_prediction"
-                           :levels="['Weakly', 'Rather weakly', 'Neutrally', 'Rather strongly', 'Strongly']"
+                           :levels="['Not at all', 'Not much', 'A bit', 'Strongly', 'Very strongly']"
                            ai_error_sample="ai_error_sample_04"
                            likert_level="ai_prediction_consideration"/>
 

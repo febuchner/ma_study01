@@ -6,7 +6,7 @@
           <h1>Thank you for participating!</h1>
         </div>
 
-        <div class="my-5 pb-5">
+        <div class="my-5 pb-3">
           <h2>This is your Completion Code for Prolific:</h2>
           <div class="bg-profession">
             <h3 v-if="!this.store.getAttentionCheck01 || !this.store.getAttentionCheck02 || this.store.getAttentionCheck03 !== 'true'" class="py-4 ps-3 text-center">C16I52IS</h3>
@@ -40,13 +40,6 @@
             <h3 v-else-if="this.store.getUserAccuracy === 1" class="py-4 ps-3 text-center">C1SD4BR3</h3>
             <h3 v-else class="py-4 ps-3 text-center">C1MGVBLH</h3>
           </div>
-        </div>
-
-        <hr class="my-5"/>
-
-        <div class=" text-center mt-3">
-          <h3 class="mb-3">If you like this study, we would be happy if you share it with your friends.</h3>
-          <SocialMediaShare/>
         </div>
 
         <hr class="my-5"/>

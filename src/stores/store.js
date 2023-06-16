@@ -31,7 +31,6 @@ export const useStore = defineStore('store', {
                 userID: null,
                 userProlificID: null,
                 "consent-accepted": null,
-                "user-taken-test-before": null,
                 "user-age": null,
                 "user-education": null,
                 "user-gender": null,
@@ -190,9 +189,6 @@ export const useStore = defineStore('store', {
         },
         getConsentAccepted(state) {
             return state.userInput['consent-accepted'];
-        },
-        getUserTakenTestBefore(state) {
-            return state.userInput['user-taken-test-before'];
         },
         getUserProlificID(state) {
             return state.userInput['userProlificID'];

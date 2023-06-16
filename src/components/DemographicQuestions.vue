@@ -24,29 +24,6 @@
 
         <b-form-group
             class="mb-4"
-            label-class="font-weight-bold">
-          <template v-slot:label>
-            Have you taken this experiment before? <span class="text-danger fw-bolder">*</span>
-          </template>
-
-          <b-form-radio class="my-1 me-2 d-inline-flex"
-              v-model="userTakenTestBefore"
-              name="userTakenTestBefore"
-              value="true"
-              button
-          >Yes
-          </b-form-radio>
-          <b-form-radio class="my-1 mx-2 d-inline-flex"
-              v-model="userTakenTestBefore"
-              name="userTakenTestBefore"
-              value="false"
-              button
-          >No
-          </b-form-radio>
-        </b-form-group>
-
-        <b-form-group
-            class="mb-4"
             label-class="font-weight-bold"
         >
           <template v-slot:label>
@@ -193,13 +170,6 @@ export default {
     }
   },
   computed: {
-    userTakenTestBefore: {
-      get() {
-      },
-      set(value) {
-        this.store.userInput['user-taken-test-before'] = value;
-      },
-    },
     userAge: {
       get() {
       },
@@ -271,8 +241,7 @@ export default {
       alert('We can store your personal demographics information if you are on a personal computer you use on your own. This will allow you to skip this form if you take this experiment again, e.g. if you had to abort the study but want to start it again. If you\'d prefer not to have a saved copy, or if others are using this computer, press "No".');
     },
     isValidInputs: function () {
-      if (this.store.getUserTakenTestBefore !== null &&
-          this.store.getUserAge !== null &&
+      if (this.store.getUserAge !== null &&
           this.store.getUserAge >= this.minAge &&
           this.store.getUserAge <= this.maxAge &&
           this.store.getUserEducation !== null &&
@@ -302,7 +271,6 @@ export default {
     validateForm: function () {
       if (this.isValidInputs()) {
         if (this.store.getUserCookieConsent === "true") {
-          this.setCookies("user-taken-test-before", this.store.getUserTakenTestBefore);
           this.setCookies("user-age", this.store.getUserAge);
           this.setCookies("user-education", this.store.getUserEducation);
           this.setCookies("user-gender", this.store.getUserGender);
