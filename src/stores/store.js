@@ -6,7 +6,7 @@ import {db} from '@/firebase/firebase';
 export const useStore = defineStore('store', {
     state: () => {
         return {
-            isDebug: false,
+            isDebug: true,
             stepIndex: 0,
             trial_index: 0,
             steps: [
